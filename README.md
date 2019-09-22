@@ -14,7 +14,6 @@
 - has_many :items
 - has_many :comments
 - has_many :reviews
-- has_many :favorite_items
 
 
 # user_profiles
@@ -63,6 +62,7 @@
 
 
 ## reviews
+
 |Column|Type|Options|
 |------|----|-------|
 |high|int|null: true|
@@ -72,9 +72,9 @@
 
 ### Association
 - belongs_to :user
-- belongs_to :
 
 ## item_images
+
 |Column|Type|Options|
 |------|----|-------|
 |image|str|null: false|
@@ -83,10 +83,12 @@
 ### Association
 - belongs_to :item
 
-## categorys
+## categories (gem 'ancestory'を使用)
+
 |Column|Type|Options|
 |------|----|-------|
 |name|str|null: false|
+|ancestroy|str||
 
 ### Association
 - has_many :items
