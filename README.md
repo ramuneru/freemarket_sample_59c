@@ -25,4 +25,4 @@ Things you may want to cover:
 * Hello World (Kuroki)
 
 
-test(kabakirui)
+
