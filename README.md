@@ -188,7 +188,6 @@ https://gyazo.com/d7711121b3c609fb92b6691308355b30
 ### Association
 - has_many :items
 
-
 ## seller
 
 |Column|Type|Options|
