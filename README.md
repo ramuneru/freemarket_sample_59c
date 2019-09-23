@@ -12,6 +12,7 @@
 
 ### Association
 - has_one :user_profile
+- has_one :credit_card
 
 - has_many :items
 - has_many :comments
@@ -35,7 +36,6 @@
 
 ### Association
 - belongs_to :user
-- has_one :credit_card
 
 
 ## addresses
@@ -48,10 +48,10 @@
 |block_number|string|null:false|
 |building|string||
 |phone|string||
-|user_profile_id|references|null:false,foreign_key: true|
+|user_id|references|null:false,foreign_key: true|
 
 ### Association
-- belongs_to :user_profile
+- belongs_to :user
 - belongs_to :region
 
 ## region
@@ -68,9 +68,11 @@
 |------|----|-------|
 |likes|integer||
 |item_id|references|null:false, foreign_key:true|
+|user_id|references|null:false, foreign_key:true|
 
 ### Association
 - belongs_to :item
+- belongs_to :user
 
 
 ## reviews
@@ -108,7 +110,7 @@
 |image_id|references|null: false, foreign_key:true|
 |price|integer|null:false|
 |category_id|references|null:false, foreign_key:true|
-|status|string|null:false|
+|status|integer|null:false, enum|
 |size_id|references|foreign_key:true|
 |region_id|references|null:false|
 |shipping_fee_burden|string|null:false|
@@ -136,6 +138,7 @@
 - has_many :comments
 - has_many :trade_messages
 
+- statusはenumで管理
 
 ## images
 
@@ -219,7 +222,8 @@
 |user_id|references|null: false|
 
 ### Association
-- has_many :items
+- belongs_to :item
+- belongs_to :user
 
 
 ## trade_messages
