@@ -1,6 +1,6 @@
 # README
 
-[![Image from Gyazo](https://i.gyazo.com/d7711121b3c609fb92b6691308355b30.png)](https://gyazo.com/d7711121b3c609fb92b6691308355b30)
+[![Image from Gyazo](https://i.gyazo.com/48de2bc77080a1d65dd7893710a1627a.png)](https://gyazo.com/48de2bc77080a1d65dd7893710a1627a)
 
 ## users
 
@@ -15,8 +15,7 @@
 
 - has_many :items
 - has_many :comments
-- has_many :reviews
-- has_many :likes
+
 
 
 ## user_profiles
@@ -36,7 +35,7 @@
 
 ### Association
 - belongs_to :user
-- has_one :card
+- has_one :credit_card
 
 
 ## addresses
@@ -48,7 +47,7 @@
 |city|string|null:false|
 |block_number|string|null:false|
 |building|string||
-|phone_for_shipping|string||
+|phone|string||
 |user_profile_id|references|null:false,foreign_key: true|
 
 ### Association
@@ -62,6 +61,7 @@
 
 ### Association
 - has_many :addresses
+- belongs_to :item
 
 ## likes
 |Column|Type|Options|
@@ -81,9 +81,10 @@
 |medium|integer||
 |low|integer||
 |comment|text||
+|item_id|references||
 
 ### Association
-- belongs_to :user_profile
+- belongs_to :item
 
 
 ## credit_cards
@@ -96,7 +97,7 @@
 |security_code|integer|null:false|
 
 ### Association
-- belongs_to :user
+- belongs_to :user_profile
 
 
 ## items
@@ -152,12 +153,13 @@
 |------|----|-------|
 |name|string|null: false|
 |ancestry|string||
+|categories_size_id|references||
 
 ### Association
-- has_many :items, through: category_sizes
-- has_many :category_sizes
+- has_many :items, through: categories_size
+- has_many :categories_size
 
-## category_sizes
+## categories_size
 
 |Column|Type|Options|
 |------|----|-------|
@@ -173,11 +175,11 @@
 |Column|Type|Options|
 |------|----|-------|
 |size|string|null: false|
-|category_id|integer||
+|categories_size_id|references|null :false|
 
 - has_many :items
 - has_many :categories
-- has_many :sizes, through: category_sizes
+- has_many :sizes, through: categories_size
 
 
 ## brands
@@ -192,17 +194,21 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false|
+|user_id|references|null: false|
+|item_id|references|null: false|
 
 - belongs_to :item
+- belongs_to :user
 
 ## buyer
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer||
+|user_id|references||
+|item_id|references|null: false|
 
 - belongs_to :item
+- belongs_to :user
 
 
 ## comments
@@ -221,9 +227,8 @@
 |------|----|-------|
 |message|text||
 |item_id|references|null: false|
-|user_id|references|null: false|
+
 
 ### Association
-- belongs_to :item_id
-- belongs_to :buyer_id
-- belongs_to :seller_id
+- belongs_to :item
+
