@@ -108,7 +108,7 @@
 |price|integer|null:false|
 |category_id|references|null:false, foreign_key:true|
 |status|string|null:false|
-|size_id|references|foreing_key:true|
+|size_id|references|foreign_key:true|
 |region_id|references|null:false|
 |shipping_fee_burden|string|null:false|
 |shipping_method|string|null:false|
@@ -146,12 +146,12 @@
 ### Association
 - belongs_to :item
 
-## categories (gem 'ancestory'を使用)
+## categories (gem 'ancestry'を使用)
 
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|ancestory|string||
+|ancestry|string||
 
 ### Association
 - has_many :items, through: category_sizes
