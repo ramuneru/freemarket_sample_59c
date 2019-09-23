@@ -1,6 +1,6 @@
 # README
 
-https://gyazo.com/d7711121b3c609fb92b6691308355b30
+[![Image from Gyazo](https://i.gyazo.com/d7711121b3c609fb92b6691308355b30.png)]
 
 ## users
 
@@ -23,7 +23,7 @@ https://gyazo.com/d7711121b3c609fb92b6691308355b30
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false,foregin_key: true|
+|user_id|references|null: false,foreign_key: true|
 |nickname|string|null:false|
 |family_name|string|null:false|
 |last_name|string|null:false|
@@ -44,12 +44,12 @@ https://gyazo.com/d7711121b3c609fb92b6691308355b30
 |Column|Type|Options|
 |------|----|-------|
 |postal_code|string|null:false|
-|region_id|references|null:false,foregin_key:true|
+|region_id|references|null:false,foreign_key:true|
 |city|string|null:false|
 |block_number|string|null:false|
 |building|string||
 |phone_for_shipping|string||
-|user_profile_id|references|null:false,foregin_key: true|
+|user_profile_id|references|null:false,foreign_key: true|
 
 ### Association
 - belongs_to :user_profile
@@ -141,7 +141,7 @@ https://gyazo.com/d7711121b3c609fb92b6691308355b30
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null: false|
-|item_id|references|null: false, foregin_key: true|
+|item_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :item
