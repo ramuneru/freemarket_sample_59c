@@ -1,6 +1,6 @@
 # README
 
-[![Image from Gyazo](https://i.gyazo.com/d7711121b3c609fb92b6691308355b30.png)]
+[![Image from Gyazo](https://i.gyazo.com/d7711121b3c609fb92b6691308355b30.png)](https://gyazo.com/d7711121b3c609fb92b6691308355b30)
 
 ## users
 
