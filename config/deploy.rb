@@ -24,6 +24,9 @@ set :rbenv_ruby, '2.5.1' #カリキュラム通りに進めた場合、2.5.1か2
 set :ssh_options, auth_methods: ['publickey'],
                   keys: ['~/.ssh/mercariteamc.pem']
 
+# どのディレクトリにmaster.keyがあるか参照先を指定する
+set :linked_files, fetch(:linked_files, []).push("config/master.key")
+
 # プロセス番号を記載したファイルの場所
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 
