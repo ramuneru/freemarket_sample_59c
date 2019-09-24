@@ -1,36 +1,43 @@
 # README
 
-# users
+[![ER図](https://i.gyazo.com/fc5f3347f460c64f8b589d33bcad7baf.png)](https://gyazo.com/fc5f3347f460c64f8b589d33bcad7baf)
+
+## users
 
 |Column|Type|Options|
 |------|----|-------|
-|email|str|null: false, unique: true|
-|password|str|null: false, unique: true|
-|phone|integer|null: false, unique: true|
+|email|string|null: false, unique: true|
+|password|string|null: false, unique: true|
+|phone|string|null: false, unique: true|
 
 ### Association
-- belongs_to :user_profile
-- has_many :addresses
+- has_one :user_profile, dependent: :destroy
+- has_one :address, dependent: :destroy
+- has_one :credit_card, dependent: :destroy
+- has_one :seller
+
 - has_many :items
 - has_many :comments
-- has_many :reviews
+- has_many :buyers
+- has_many :likes
+- has_many :sns_credentials, dependent: :destroy
 
 
-# user_profiles
+
+## user_profiles
 
 |Column|Type|Options|
 |------|----|-------|
-|Nickname|str|null:false|
-|Family_name|str|null:false|
-|Last_name|str|null:false|
-|family_name_kana|str|null:false|
-|last_name_kana|str|null:false|
-|birth_year|int|null:false|
-|birth_month|int|null:false|
-|birth_day|int|null:false|
-|icon_image|text|null:true|
-|introduction|text|null:true|
-|user_id|ref|null: false,foregin_key: true|
+|user_id|references|null: false,foreign_key: true|
+|nickname|string|null:false|
+|family_name|string|null:false|
+|last_name|string|null:false|
+|family_name_kana|string|null:false|
+|last_name_kana|string|null:false|
+|introduction|text||
+|birth_day|string|null:false|
+|icon_image|text||
+|total_sales|integer||
 
 ### Association
 - belongs_to :user
@@ -40,64 +47,195 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|postal_code|int|null:false|
-|region_id|ref|null:false,foregin_key:true|
-|city|str|null:false|
-|block_number|str|null:false|
-|building|str|null:true|
-|phone_for_shipping|str|null:true|
-|user_id|ref|null:false,foregin_key: true|
+|user_id|references|null:false, foreign_key: true|
+|postal_code|string|null:false|
+|region|integer|null:false|
+|city|string|null:false|
+|block|string|null:false|
+|building|string||
+|phone|string||
+
 
 ### Association
 - belongs_to :user
-- belongs_to :region
 
-# region
+
+## likes
 |Column|Type|Options|
 |------|----|-------|
-|name|str|null: false, unique: true|
+|item_id|references|null:false, foreign_key:true|
+|user_id|references|null:false, foreign_key:true|
 
 ### Association
-- has_many :addresses
+- belongs_to :item
+- belongs_to :user
 
 
 ## reviews
 
 |Column|Type|Options|
 |------|----|-------|
-|high|int|null: true|
-|medium|int|null: true|
-|low|int|null: true|
-|comment|text|null: true|
-
-### Association
-- belongs_to :user
-
-## item_images
-
-|Column|Type|Options|
-|------|----|-------|
-|image|str|null: false|
-|item_id|ref|null: false, foregin_key: true|
+|high|integer||
+|medium|integer||
+|low|integer||
+|comment|text||
+|item_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :item
 
-## categories (gem 'ancestory'を使用)
+
+## credit_cards
+|Column|Type|Options|
+|------|----|-------|
+|card_number|string|null:false, unique: true|
+|valid_month|integer|null:false|
+|valid_year|integer|null:false|
+|security_code|integer|null:false|
+|user_id|integer|null: false, foreign_key:true|
+
+### Association
+- belongs_to :user
+
+<!-- payjp導入時、テーブルの有無を再考 -->
+
+## sns_credentialsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true|
+|uid|string|null: false, unique: true|
+|provider|string|null: false|
+
+### Association
+- belongs_to :user, optional: true
+
+
+
+## items
+|Column|Type|Options|
+|------|----|-------|
+|title|string|null: false, unique: true, index:true|
+|description|text|null:false|
+|price|integer|null:false|
+|category_id|references|null:false, foreign_key:true|
+|brand_id|references|foreign_key:true|
+|status|integer|null:false, enum|
+|size_id|references|foreign_key:true|
+|region|integer|null:false|
+|shipping_fee_burden|string|null:false|
+|shipping_method|string|null:false|
+|shipping_duration|string|null:false|
+|sold_date|string||
+|seller_id|references|null:false, foreign_key:true|
+|buyer_id|references|foreign_key:true|
+|like_id|references|foreign_key: true|
+|comment_id|references|foreign_key:true|
+|user_id|references|null:false, foreign_key: true|
+
+- belongs_to :user
+- belongs_to :category, dependent: :destroy
+
+- has_one :brand, dependent: :destroy
+- has_one :seller
+- has_one :buyer
+
+- has_many :images, dependent: :destroy
+- has_many :likes, dependent: :destroy
+- has_many :comments, dependent: :destroy
+- has_many :trade_messages, dependent: :destroy
+
+- statusはenumで管理
+
+## images
 
 |Column|Type|Options|
 |------|----|-------|
-|name|str|null: false|
-|ancestroy|str||
+|image|string|null: false|
+|item_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :item
+
+## categories (gem 'ancestry'を使用)
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|ancestry|string||
+|size_id|references|foreign_key: true|
 
 ### Association
 - has_many :items
+- has_ancestry
+
+
+## sizes  (gem 'ancestry'を使用)
+
+|Column|Type|Options|
+|------|----|-------|
+|size|string|null: false|
+|ancestry|string||
+
+- has_many :categories
+- has_ancestry
+
 
 ## brands
 |Column|Type|Options|
 |------|----|-------|
-|name|str|null: false|
+|brand|string||
 
 ### Association
 - has_many :items
+
+
+## comments
+|Column|Type|Options|
+|------|----|-------|
+|comment|text||
+|item_id|references|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :item
+- belongs_to :user
+
+
+## seller
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
+
+- belongs_to :item
+- belongs_to :user
+- has_many :trade_messages
+
+## buyer
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false,foreign_key: true|
+|item_id|references|null: false,foreign_key: true|
+
+- belongs_to :item
+- belongs_to :user
+- has_many :trade_messages
+
+
+## trade_messages
+|Column|Type|Options|
+|------|----|-------|
+|message|text||
+|item_id|references|null: false, foreign_key: true|
+|seller_id|references|null: false, foreign_key: true|
+|buyer_id|references|null: false, foreign_key: true|
+
+
+### Association
+- belongs_to :item
+- belongs_to :seller
+- belongs_to :buyer
+
 
