@@ -1,6 +1,6 @@
 # README
 
-[![ER図](https://i.gyazo.com/493c7ec90ffa4dd093b3c480d0b6d478.png)](https://gyazo.com/493c7ec90ffa4dd093b3c480d0b6d478)
+[![ER図](https://i.gyazo.com/fc5f3347f460c64f8b589d33bcad7baf.png)](https://gyazo.com/fc5f3347f460c64f8b589d33bcad7baf)
 
 ## users
 
@@ -11,15 +11,16 @@
 |phone|string|null: false, unique: true|
 
 ### Association
-- has_one :user_profile
-- has_one :address
-- has_one :credit_card
+- has_one :user_profile, dependent: :destroy
+- has_one :address, dependent: :destroy
+- has_one :credit_card, dependent: :destroy
 - has_one :seller
 
 - has_many :items
 - has_many :comments
 - has_many :buyers
 - has_many :likes
+- has_many :sns_credentials, dependent: :destroy
 
 
 
@@ -78,7 +79,7 @@
 |medium|integer||
 |low|integer||
 |comment|text||
-|item_id|references|foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :item
@@ -87,7 +88,7 @@
 ## credit_cards
 |Column|Type|Options|
 |------|----|-------|
-|card_number|string|null:false|
+|card_number|string|null:false, unique: true|
 |valid_month|integer|null:false|
 |valid_year|integer|null:false|
 |security_code|integer|null:false|
@@ -98,11 +99,22 @@
 
 <!-- payjp導入時、テーブルの有無を再考 -->
 
+## sns_credentialsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true|
+|uid|string|null: false, unique: true|
+|provider|string|null: false|
+
+### Association
+- belongs_to :user, optional: true
+
+
 
 ## items
 |Column|Type|Options|
 |------|----|-------|
-|title|string|null: false, index:true|
+|title|string|null: false, unique: true, index:true|
 |description|text|null:false|
 |price|integer|null:false|
 |category_id|references|null:false, foreign_key:true|
@@ -121,17 +133,16 @@
 |user_id|references|null:false, foreign_key: true|
 
 - belongs_to :user
-- belongs_to :category
-- belongs_to :size
+- belongs_to :category, dependent: :destroy
 
-- has_one :brand
+- has_one :brand, dependent: :destroy
 - has_one :seller
 - has_one :buyer
 
-- has_many :images
-- has_many :likes
-- has_many :comments
-- has_many :trade_messages
+- has_many :images, dependent: :destroy
+- has_many :likes, dependent: :destroy
+- has_many :comments, dependent: :destroy
+- has_many :trade_messages, dependent: :destroy
 
 - statusはenumで管理
 
@@ -172,7 +183,7 @@
 ## brands
 |Column|Type|Options|
 |------|----|-------|
-|brand|string|null: false|
+|brand|string||
 
 ### Association
 - has_many :items
@@ -205,7 +216,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|foreign_key: true|
+|user_id|references|null: false,foreign_key: true|
 |item_id|references|null: false,foreign_key: true|
 
 - belongs_to :item
@@ -218,9 +229,8 @@
 |------|----|-------|
 |message|text||
 |item_id|references|null: false, foreign_key: true|
-|seller_id|references|foreign_key: true|
-|buyer_id|references|foreign_key: true|
-
+|seller_id|references|null: false, foreign_key: true|
+|buyer_id|references|null: false, foreign_key: true|
 
 
 ### Association
