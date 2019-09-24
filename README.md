@@ -1,6 +1,6 @@
 # README
 
-[![ER図](https://i.gyazo.com/c31bda4e541f942258a09cc9127c0f73.png)](https://gyazo.com/c31bda4e541f942258a09cc9127c0f73)
+[![ER図](https://i.gyazo.com/493c7ec90ffa4dd093b3c480d0b6d478.png)](https://gyazo.com/493c7ec90ffa4dd093b3c480d0b6d478)
 
 ## users
 
@@ -48,7 +48,7 @@
 |------|----|-------|
 |user_id|references|null:false, foreign_key: true|
 |postal_code|string|null:false|
-|region_id|references|null:false, foreign_key:true|
+|region|integer|null:false|
 |city|string|null:false|
 |block|string|null:false|
 |building|string||
@@ -57,18 +57,7 @@
 
 ### Association
 - belongs_to :user
-- has_one :region
 
-## regions
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false, unique: true|
-
-### Association
-- has_many :addresses
-- belongs_to :item
-
-<!-- regionテーブルは今後enumで管理に変更の可能性あり -->
 
 ## likes
 |Column|Type|Options|
@@ -120,7 +109,7 @@
 |brand_id|references|foreign_key:true|
 |status|integer|null:false, enum|
 |size_id|references|foreign_key:true|
-|region_id|references|null:false, foreign_key: true|
+|region|integer|null:false|
 |shipping_fee_burden|string|null:false|
 |shipping_method|string|null:false|
 |shipping_duration|string|null:false|
@@ -134,7 +123,6 @@
 - belongs_to :user
 - belongs_to :category
 - belongs_to :size
-- belongs_to :region
 
 - has_one :brand
 - has_one :seller
