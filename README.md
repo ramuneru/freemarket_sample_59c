@@ -1,6 +1,6 @@
 # README
 
-[![Image from Gyazo](https://i.gyazo.com/7381b9aeb7ad8292603e58b5bfa10268.png)](https://gyazo.com/7381b9aeb7ad8292603e58b5bfa10268)
+[![ER図](https://i.gyazo.com/c31bda4e541f942258a09cc9127c0f73.png)](https://gyazo.com/c31bda4e541f942258a09cc9127c0f73)
 
 ## users
 
@@ -12,10 +12,14 @@
 
 ### Association
 - has_one :user_profile
+- has_one :address
 - has_one :credit_card
+- has_one :seller
 
 - has_many :items
 - has_many :comments
+- has_many :buyers
+- has_many :likes
 
 
 
@@ -42,19 +46,20 @@
 
 |Column|Type|Options|
 |------|----|-------|
+|user_id|references|null:false, foreign_key: true|
 |postal_code|string|null:false|
-|region_id|references|null:false,foreign_key:true|
+|region_id|references|null:false, foreign_key:true|
 |city|string|null:false|
-|block_number|string|null:false|
+|block|string|null:false|
 |building|string||
 |phone|string||
-|user_id|references|null:false,foreign_key: true|
+
 
 ### Association
 - belongs_to :user
-- belongs_to :region
+- has_one :region
 
-## region
+## regions
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, unique: true|
@@ -63,10 +68,11 @@
 - has_many :addresses
 - belongs_to :item
 
+<!-- regionテーブルは今後enumで管理に変更の可能性あり -->
+
 ## likes
 |Column|Type|Options|
 |------|----|-------|
-|likes|integer||
 |item_id|references|null:false, foreign_key:true|
 |user_id|references|null:false, foreign_key:true|
 
@@ -83,7 +89,7 @@
 |medium|integer||
 |low|integer||
 |comment|text||
-|item_id|references||
+|item_id|references|foreign_key: true|
 
 ### Association
 - belongs_to :item
@@ -92,14 +98,16 @@
 ## credit_cards
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|foreign_key:true|
 |card_number|string|null:false|
 |valid_month|integer|null:false|
 |valid_year|integer|null:false|
 |security_code|integer|null:false|
+|user_id|integer|null: false, foreign_key:true|
 
 ### Association
-- belongs_to :user_profile
+- belongs_to :user
+
+<!-- payjp導入時、テーブルの有無を再考 -->
 
 
 ## items
@@ -107,22 +115,21 @@
 |------|----|-------|
 |title|string|null: false, index:true|
 |description|text|null:false|
-|image_id|references|null: false, foreign_key:true|
 |price|integer|null:false|
 |category_id|references|null:false, foreign_key:true|
+|brand_id|references|foreign_key:true|
 |status|integer|null:false, enum|
 |size_id|references|foreign_key:true|
-|region_id|references|null:false|
+|region_id|references|null:false, foreign_key: true|
 |shipping_fee_burden|string|null:false|
 |shipping_method|string|null:false|
 |shipping_duration|string|null:false|
 |sold_date|string||
 |seller_id|references|null:false, foreign_key:true|
 |buyer_id|references|foreign_key:true|
-|brand_id|references|foreign_key:true|
 |like_id|references|foreign_key: true|
 |comment_id|references|foreign_key:true|
-|user_id|references|foreign_key: true|
+|user_id|references|null:false, foreign_key: true|
 
 - belongs_to :user
 - belongs_to :category
@@ -156,33 +163,22 @@
 |------|----|-------|
 |name|string|null: false|
 |ancestry|string||
-|categories_size_id|references||
+|size_id|references|foreign_key: true|
 
 ### Association
-- has_many :items, through: categories_size
-- has_many :categories_size
+- has_many :items
+- has_ancestry
 
-## categories_size
 
-|Column|Type|Options|
-|------|----|-------|
-|category_id|references|null: false, foreign_key: true|
-|size_id|references|null: false, foreign_key: true|
-
-### Association
-- belongs_to :category
-- belongs_to :size
-
-## sizes
+## sizes  (gem 'ancestry'を使用)
 
 |Column|Type|Options|
 |------|----|-------|
 |size|string|null: false|
-|categories_size_id|references|null :false|
+|ancestry|string||
 
-- has_many :items
 - has_many :categories
-- has_many :sizes, through: categories_size
+- has_ancestry
 
 
 ## brands
@@ -193,46 +189,55 @@
 ### Association
 - has_many :items
 
-## seller
-
-|Column|Type|Options|
-|------|----|-------|
-|user_id|references|null: false|
-|item_id|references|null: false|
-
-- belongs_to :item
-- belongs_to :user
-
-## buyer
-
-|Column|Type|Options|
-|------|----|-------|
-|user_id|references||
-|item_id|references|null: false|
-
-- belongs_to :item
-- belongs_to :user
-
 
 ## comments
 |Column|Type|Options|
 |------|----|-------|
 |comment|text||
-|item_id|references|null: false|
-|user_id|references|null: false|
+|item_id|references|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :item
 - belongs_to :user
+
+
+## seller
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
+
+- belongs_to :item
+- belongs_to :user
+- has_many :trade_messages
+
+## buyer
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|foreign_key: true|
+|item_id|references|null: false,foreign_key: true|
+
+- belongs_to :item
+- belongs_to :user
+- has_many :trade_messages
 
 
 ## trade_messages
 |Column|Type|Options|
 |------|----|-------|
 |message|text||
-|item_id|references|null: false|
+|item_id|references|null: false, foreign_key: true|
+|seller_id|references|foreign_key: true|
+|buyer_id|references|foreign_key: true|
+
 
 
 ### Association
 - belongs_to :item
+- belongs_to :seller
+- belongs_to :buyer
+
 
