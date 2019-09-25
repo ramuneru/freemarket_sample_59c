@@ -3,9 +3,13 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title FreemarketSample59c
+    = favicon_link_tag('favicon-32.ico')
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+        %link{rel:"stylesheet", type:"text/css", href:"//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"}
+    %link{href: "https://fonts.googleapis.com/icon?family=Material+Icons", rel: "stylesheet"}
   %body
+    = render "shared/main-header"
     = yield
