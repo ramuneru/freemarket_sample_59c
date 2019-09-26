@@ -93,6 +93,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 end
 
-config.assets.css_compressor = :sass
 config.assets.enabled = true
 config.assets.compile = true
