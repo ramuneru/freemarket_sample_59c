@@ -1,3 +1,133 @@
 // Place all the styles related to the signup controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  border-style: solid;
+  border-width: 0;
+  font-size: inherit;
+  line-height: inherit;
+  text-decoration: none;
+}
+body{
+  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  position: relative;
+  background: rgb(245, 245, 245);
+  color: rgb(51, 51, 51);
+  font-size: 14px;
+  height: 100vh;
+  line-height: 1;
+  .single-container{
+    .single-header{
+      height: 128px;
+      text-align: center;
+      .img{
+        margin: 40px 0 0;
+        width: 185px;
+        height: 49px;
+        line-height: 49px;
+      }
+    }
+    .single-main{
+      display: block;
+      background-repeat: no-repeat;
+
+      .l-single-container{
+        width: 700px;
+        margin: 0 auto;
+        background-color:#fff;
+        .l-single-head.registration{
+          font-size: 22px;
+          padding: 32px;
+          font-weight: bold;
+          text-align: center;
+        }
+        .l-single-inner.registration-form{
+          padding: 40px 40px 64px;
+          border-top: 1px solid #f5f5f5;
+          
+          .l-single-content{
+            max-width: 343px;
+            margin: 0 auto;
+            .button-default{
+              display: block;
+              width: 100%;
+              line-height: 48px;
+              font-size: 14px;
+              font-style: normal;
+              border: 1px solid transparent;
+              -webkit-transition: all ease-out .3s;
+              transition: all ease-out .3s;
+              cursor: pointer;
+              text-align: center;
+            }
+            .red{
+              background-color: #ea352d;
+              color: #fff;
+              border-radius: 4px;
+              margin: 16px 0 0;
+              font-weight: bold;
+              .icon-mail{
+                color: #fff;
+                font-weight: bold;
+                font-size: 20px;
+              }
+            }
+            .blue{
+              background-color: #385185;
+              color: #fff;
+              border-radius: 4px;
+              margin: 16px 0 0;
+              font-weight: bold;
+            }
+            .white{
+              background: #fff url(/jp/assets/img/common/common/google.svg) no-repeat 3px top;
+              background-color: white;
+              border: #979797 solid 1px;
+              margin: 16px 0 0;
+              border-radius: 4px;
+              color: black;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+    .single-footer{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      padding: 40px 0;
+      text-align: center;
+      width: 456px;
+      height: 200px;
+      margin: 0 auto;
+      
+      .firstchild{
+        margin: 0;
+        font-size: 12px;
+        display: inline-block;
+      }
+      .lineup{
+        display: inline-block;
+        font-size: 12px;
+        margin: 0 0 0 16px;
+      }
+      .linkblack{
+        color: #333333;
+        text-decoration: none;
+      }
+      .ct {
+        margin: 8px 0 0;
+        small{
+          color: #333333;
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
