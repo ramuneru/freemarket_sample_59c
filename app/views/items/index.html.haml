@@ -1,18 +1,27 @@
+= render "shared/main-header"
+
 .main-content
   .slick-container
-    .slider
-      %ul.slider
+    .sliders
+      .slider
         %li
           = link_to 'https://www.mercari.com/jp/featured/camp/' do
-            = image_tag 'camp.png', class: 'slider-camp'
+            = image_tag 'slider-camp.png', class: 'slide'
         %li
           = link_to 'https://www.mercari.com/jp/featured/camp/' do
-            = image_tag 'camp.png', class: 'slider-camp'
+            -# = image_tag 'slider-room.jpg', class: 'slide', id: 'slider-room'
+            = image_tag 'slider-camp.png', class: 'slide'
 
+        -# .slide-arrow-left
+        -#   .slide-arrow.prev-arrow
+        -#     = image_tag 'carousel-prev.png'
 
-
-
-
+        -# .slide-arrow-right
+        -#   .slide-arrow-left-block
+        -#     = image_tag 'carousel-next.png'
+  
+  
+  = render "shared/main_product_nav"
 
 =link_to "#" do
   .exhibit__button
@@ -21,3 +30,7 @@
         出品
       .exhibit__button__content__icon
         %i.fa.fa-camera
+
+
+
+= render "shared/main-footer"
