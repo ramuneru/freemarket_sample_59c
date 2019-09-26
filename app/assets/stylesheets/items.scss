@@ -5,21 +5,7 @@
   width: 100%;
   margin: 0 auto;
   max-width: 700px;
-
   position: relative;
-}
-
-.slider-container{
-  width: 100vw;
-  .slider{
-    %li{
-      .slider-camp{
-        height: 290px;
-        width: 400px;
-        background: cover;
-      }
-    }
-  }
 }
 
 .exhibit__button{
