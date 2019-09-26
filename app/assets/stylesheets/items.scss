@@ -1,0 +1,47 @@
+.main-content{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 700px;
+
+  position: relative;
+}
+
+.slider-container{
+  .slider{
+    %li{
+      .slider-camp{
+        height: 290px;
+        width: 400px;
+        background: cover;
+      }
+    }
+  }
+}
+
+.exhibit__button{
+  background-color: rgb(234, 53, 45);
+  border-radius: 50%;
+  bottom: 32px;
+  height: 160px;
+  right: 32px;
+  width: 160px;
+  position: fixed;
+
+  &__content{
+    height: 160px;
+    width: 160px;
+    padding-top: 32px; 
+    color:white;
+    text-align: center;
+    &__text{
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+    .fa.fa-camera{
+      font-size: 3.8rem;
+    }
+  }
+}

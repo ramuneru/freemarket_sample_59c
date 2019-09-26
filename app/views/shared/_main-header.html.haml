@@ -1,128 +1,37 @@
 %header.main-header
-  .main-header-inner
-    .main-header-main
-      .main-header-main-left
-        %h1.main-header-main-left__logo
-          = link_to root_path do
-            = image_tag ("//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?3856598694"), size: "134x36"
-      .main-header-main-right
-        = form_with url: search_products_path, method: :get, class: :"main-header-main-right__form", local: true do |f|
-          = f.text_field :keyword, value: @keyword ,placeholder: "何かお探しですか？", class: "main-header-main-right__form--input"
-          = button_tag type: 'submit', class: "main-header-main-right__form--icon" do
-            %i.fa.fa-search
-    .main-header-nav
-      .main-header-nav-left
-        %ul.header-product-nav
-          %li.header-product-nav__list
-            = link_to root_path do
-              %i.fa.fa-bars.header-product-nav__list--icon
-              %span.header-product-nav__list--font
-                カテゴリーから探す
-            %ul.header-product-nav-parent
-              - header_category_parents.each do |category_parent|
-                %li.header-product-nav-parent__list
-                  = link_to "#{category_parent.name}", category_path(category_parent.id), class: "header-product-nav-parent__list--button", value: category_parent.id
-                  %ul.header-product-nav-child
-          %li.header-product-nav__list
-            = link_to root_path do
-              %i.fa.fa-tag.header-product-nav__list--icon
-              %span.header-product-nav__list--font
-                ブランドから探す 
-            %ul.header-product-nav-parent
-              %li.header-product-nav-parent__list
-                = link_to "シャネル", root_path, class: "header-product-nav-parent__list--button"
-              %li.header-product-nav-parent__list
-                = link_to "ナイキ", root_path, class: "header-product-nav-parent__list--button"
-              %li.header-product-nav-parent__list
-                = link_to "ルイヴィトン", root_path, class: "header-product-nav-parent__list--button"
-      .main-header-nav-right
-      -# ログイン機能実装後に実装
-      - if user_signed_in?
-        %ul.header-user-nav
-          %li.header-user-nav__list.info-list
-            = link_to root_path, class:"header-user-nav__list--color" do
-              %i.fa.fa-bell.header-user-nav__list--icon
-              %span.header-user-nav__list--font
-                お知らせ
-            -# メガメニュー1（サーバサイド実装時に実装）
-            %ul.header-user-nav-information
-              %li.header-user-nav-information__list
-                = link_to root_path, class: "header-user-nav-information__list--button" do
-                  .main-header-inform-box
-                    = image_tag ("//gyazo.com/68950dc5d9f99aceef33e13743682caa.png"), size: "48x48", class: "main-header-inform-box__img"
-                    .main-header-inform-box__message
-                      %span
-                        事務局からの個別メッセージ
-                      %br
-                      %span
-                      「Googleからのログイン通知」
-                      %br
-                      %i.fa.fa-clock-o
-                        8時間前
-                    %i.fa.fa-chevron-right.main-header-inform-box__icon
-          %li.header-user-nav__list.todo-list
-            = link_to root_path, class:"header-user-nav__list--color"do
-              %i.fa.fa-check.header-user-nav__list--icon
-              %span.header-user-nav__list--font
-                やることリスト
-            -# メガメニュー1（サーバサイド実装時に実装）
-            %ul.header-user-nav-todo
-              %li.header-user-nav-todo__list
-                = link_to root_path, class: "header-user-nav-todo--button" do
-                  = image_tag ("//gyazo.com/bd7c86764dd3c3e769d3192e26b0176a.png"), size: "300x200", class: "main-header-inform-box__img"
-          %li.header-user-nav__list.mypage-info
-            = link_to mypages_path ,class:"header-user-nav__list--color" do
-              %i.fa.fa-smile-o.header-user-nav__list--icon
-              %span.header-user-nav__list--font
-                マイページ
-            -# メガメニュー1（サーバサイド実装時に実装）
-            .header-user-nav-mypage
-              = image_tag ("//gyazo.com/626572e7da5f53aae3cfca8eec28170d.png"), size: "300x100", class: "header-user-nav-mypage__img"
-              %p.header-user-nav-mypage__user-name
-                = @current_user.nickname
-              .header-user-nav-mypage__user-action
-                = link_to "評価数:0" ,root_path, class: "header-user-nav-mypage__user-action--link" 
-                = link_to "出品数:0", root_path, class: "header-user-nav-mypage__user-action--link"
-              %ul.header-user-nav-mypage__asset
-                %li
-                  = link_to root_path, class: "header-user-nav-mypage__asset--button" do
-                    売上金
-                    ¥1000000
-                    %i.fa.fa-chevron-right
-                %li
-                  = link_to root_path, class: "header-user-nav-mypage__asset--button" do
-                    ポイント
-                    P500000
-                    %i.fa.fa-chevron-right
-              %ul.header-user-nav-mypage__related-puroduct
-                %li
-                  = link_to root_path , class: "header-user-nav-mypage__related-puroduct--button" do
-                    いいね！一覧
-                    %i.fa.fa-chevron-right.related-puroduct-icon
-                %li
-                  = link_to root_path , class: "header-user-nav-mypage__related-puroduct--button" do
-                    出品した商品 - 出品中
-                    %i.fa.fa-chevron-right.related-puroduct-icon
-                %li
-                  = link_to root_path , class: "header-user-nav-mypage__related-puroduct--button" do
-                    出品した商品 - 取引中
-                    %i.fa.fa-chevron-right.related-puroduct-icon
-                %li
-                  = link_to root_path , class: "header-user-nav-mypage__related-puroduct--button" do
-                    出品した商品 - 売却済み
-                    %i.fa.fa-chevron-right.related-puroduct-icon
-                %li
-                  = link_to root_path , class: "header-user-nav-mypage__related-puroduct--button" do
-                    購入した商品 - 取引中
-                    %i.fa.fa-chevron-right.related-puroduct-icon
-                %li
-                  = link_to root_path , class: "header-user-nav-mypage__related-puroduct--button" do
-                    こ運輸した商品 - 過去の取引
-                    %i.fa.fa-chevron-right.related-puroduct-icon
-      - else
-        %ul.header-login-nav
-          %li.header-login-nav__signup
-            = link_to "新規会員登録", sign_up_users_path, class: "header-login-nav__signup--button"
-          %li.header-login-nav__login
-            = link_to "ログイン", login_users_path, class: "header-login-nav__login--button"
+  .main-header__inner
+    .main-header__inner__top
+      .main-header__inner__top__logo
+        = link_to root_path do
+          = image_tag "logo.svg", alt: 'mercari', size:"134x36"
+  
+      .main-header__inner__top__search
+        = form_with url: "#", method: :get do |f|
+          = f.text_field :keyword, placeholder: "何かお探しですか？", class: "main-header__inner__top__search__bar"
+          = f.submit class: "search-btn", value: ""
+        %i.fa.fa-search
 
+
+    .main-header__inner__bottom
+      .main-header__inner__bottom__left__block
+        .main-header__inner__bottom__left__block__category
+          =link_to "#", class:'link' do
+            %i.fa.fa-list
+            カテゴリーから探す
+        .main-header__inner__bottom__left__block__brand
+          =link_to "#", class:'link' do
+            %i.fa.fa-tag
+            ブランドから探す
+
+      .main-header__inner__bottom__right__block
+        .main-header__inner__bottom__right__block__register
+          =link_to '#', class: 'header-btn' do
+            .btn-red 新規会員登録
+        .main-header__inner__bottom__right__block__login
+          =link_to '#', class: 'header-btn'do
+            .btn-blue ログイン
+            
+
+        
+
+          
