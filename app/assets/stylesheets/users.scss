@@ -5,15 +5,13 @@
 .mypage{
   margin: 40px auto 0;
   width: 1020px;
+  &__side-bar{
+    width: 280px;
+    margin: 0 40px 0 0;
+  }
 }
 
-.mypage__side-bar{
-  width: 280px;
-  margin: 0 40px 0 0;
-}
-
-
-.mypage-nav-list-item {
+.mypage__side-bar__list-item{
   display: block;
   padding: 16px;
   background: #fff;
@@ -22,19 +20,11 @@
   border-bottom:2px solid whitesmoke;
 }
 
-.hulu2{
-  display: inline-block;
-  
-}
-
 .fa-angle-right{
   float: right;
 }
-.mypage-nav-list-item li{
-  min-height: 48px;
-}
 
-.mypage-nav-head{
+.mypage-nav__head{
   margin: 40px 0 5px 0;
   font-size: 17px;
 }
