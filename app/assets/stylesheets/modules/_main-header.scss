@@ -1,0 +1,144 @@
+.main-header {
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  color: $black;
+  &__inner{
+    width: 700px;
+    margin: 0px auto;
+    padding: 8px 0px 0px;
+    &__top{
+      display: flex;
+      -webkit-box-pack: justify;
+      justify-content: space-between;
+      &__logo{
+        -webkit-box-align: center;
+        align-items: center;
+        display: flex;
+        height: 40px;
+        margin-right: 45px;
+      }
+      &__search{
+        position: relative;
+        width: 100%;
+        &__bar{    
+          background-color: rgb(245, 245, 245);
+          font-size: 16px;
+          height: 40px;
+          line-height: 1.4em;
+          width: calc(100% - 62px);
+          -webkit-appearance: none;
+          border-width: 1px;
+          border-style: solid;
+          border-color: rgb(204, 204, 204);
+          border-image: initial;
+          border-radius: 4px;
+          outline: none;
+          padding: 0px 50px 0px 10px;
+          transition: all 0.3s ease-out 0s;
+          &:focus {
+            border: 1px solid skyblue;
+            outline: none;
+          }
+        }
+        .search-btn{
+          background-color: transparent;
+          cursor: pointer;
+          height: 40px;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+          width: 40px;
+          // -webkit-appearance: none;
+          border-style: none;
+          border-radius: 0px 4px 4px 0px;
+          padding: 0px;
+        }
+          fa_icon {
+          color: #434a54;
+          position: absolute;
+          top: 14px;
+          right: 16px;
+          cursor: pointer;
+          }
+        // }
+      }
+    }
+    &__bottom{
+      display: flex;
+      -webkit-box-pack: justify;
+      justify-content: space-between;
+      margin-top: 8px;
+      &__left__block{
+        display: flex;
+        margin-left: -3px;
+        font-size: 14px;
+        font-family: "游ゴシック体", "YuGothic";
+        color: #333;
+        font-weight: bold;
+        vertical-align: middle;
+        &__category{
+          padding-right: 10px;
+          
+        }
+        &__brand{
+          padding-left: 10px;
+        }
+        .link {
+          text-decoration: none;
+          display: flex;
+          vertical-align: middle;
+          
+          i{
+            color: red;
+          }
+          .header__text{
+            vertical-align: middle;
+            color: #333;
+
+          }
+
+        }
+      }
+      &__right__block{
+        display: flex;
+        &__register{
+          text-align: center;
+          text-decoration: none;
+          .btn-red{
+            background-color: rgb(234, 53, 45);
+            color: rgb(255, 255, 255);
+            display: block;
+            font-size: 14px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgb(234, 53, 45);
+            border-image: initial;
+            border-radius: 4px;
+            padding: 8px 10px;
+          }
+        }
+        &__login{
+          text-align: center;
+          margin-left: 11px;
+          .btn-blue{
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 149, 238);
+            display: block;
+            font-size: 14px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgb(0, 149, 238);
+            border-image: initial;
+            border-radius: 4px;
+            padding: 8px 10px;
+            transition: all 0.3s ease-out 0s;
+          }
+        }
+        .header-btn{
+          text-decoration: none;
+        }
+
+      }
+    }
+  }
+}
