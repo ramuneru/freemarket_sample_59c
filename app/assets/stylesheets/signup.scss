@@ -46,7 +46,7 @@ body{
           border-top: 1px solid #f5f5f5;
           
           .l-single-content{
-            max-width: 343px;
+            max-width: 345px;
             margin: 0 auto;
             .button-default{
               display: block;
@@ -66,10 +66,15 @@ body{
               border-radius: 4px;
               margin: 16px 0 0;
               font-weight: bold;
-              .icon-mail{
-                color: #fff;
-                font-weight: bold;
+              .m-icon{
                 font-size: 20px;
+                display: inline-block;
+                margin-top: 15px;
+              }
+              p{
+                display: inline-block;
+                margin-right: 8rem;
+                
               }
             }
             .blue{
@@ -78,15 +83,35 @@ body{
               border-radius: 4px;
               margin: 16px 0 0;
               font-weight: bold;
+              .f-icon{
+                font-size:20px;
+                margin: 0 auto;
+                margin-top: 15px;
+                display: inline-block;
+              }
+              p{
+                display: inline-block;
+                margin-right: 10rem;
+              }
             }
             .white{
-              background: #fff url(/jp/assets/img/common/common/google.svg) no-repeat 3px top;
               background-color: white;
               border: #979797 solid 1px;
               margin: 16px 0 0;
               border-radius: 4px;
-              color: black;
               font-weight: bold;
+              .g-link{
+                color: black;
+              }
+              .g-icon{
+                font-size: 20px;
+                margin-top: 15px;
+                display: inline-block;
+              }
+              p{
+                display: inline-block;
+                margin-right: 11rem;
+              }    
             }
           }
         }

@@ -12,16 +12,16 @@
             .l-single-content
               .button-default.red
                 = link_to "https://www.mercari.com/jp/signup/registration/" ,class:"red" do
-                  %i.icon-mail.fa.fa-envelope-o
-                  メールアドレスで登録する
+                  = fa_icon 'envelope', class:"m-icon"
+                  %p メールアドレスで登録する
               .button-default.blue
-                = link_to "https://www.facebook.com/", class:"blue" do
-                  %i.icon-facebook
-                    Facebookで登録する
+                = link_to "https://www.facebook.com/", class: "blue" do
+                  = fa_icon 'facebook-square', class:"f-icon"
+                  %p Facebookで登録する
               .button-default.white
-                = link_to "https://accounts.google.com/", class: "white" do
-                  = fa icon
-                    Googleで登録する
+                = link_to "https://accounts.google.com/", class:"g-link" do
+                  = fa_icon 'google', class:"g-icon"
+                  %p Googleで登録する
     %footer.single-footer
       %nav
         %ul.clearfix
