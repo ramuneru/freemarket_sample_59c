@@ -16,7 +16,6 @@
   right: 32px;
   width: 160px;
   position: fixed;
-
   &__content{
     height: 160px;
     width: 160px;
@@ -25,10 +24,10 @@
     text-align: center;
     &__text{
       font-size: 22px;
-      margin-bottom: 8px;
     }
     .fa.fa-camera{
-      font-size: 3.8rem;
+      font-size: 3.5rem;
+      margin-top: 8px;
     }
   }
 }

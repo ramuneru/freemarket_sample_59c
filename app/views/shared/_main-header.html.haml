@@ -8,8 +8,8 @@
       .main-header__inner__top__search
         = form_with url: "#", method: :get do |f|
           = f.text_field :keyword, placeholder: "何かお探しですか？", class: "main-header__inner__top__search__bar"
-          = f.submit class: "search-btn", value: ""
-        %i.fa.fa-search
+          = button_tag type: 'submit', class: "search-btn" do
+            = fa_icon "search"
 
 
     .main-header__inner__bottom
@@ -17,11 +17,14 @@
         .main-header__inner__bottom__left__block__category
           =link_to "#", class:'link' do
             %i.fa.fa-list
-            カテゴリーから探す
+            .header__text
+              カテゴリーから探す
+            
         .main-header__inner__bottom__left__block__brand
           =link_to "#", class:'link' do
             %i.fa.fa-tag
-            ブランドから探す
+            .header__text
+              ブランドから探す
 
       .main-header__inner__bottom__right__block
         .main-header__inner__bottom__right__block__register

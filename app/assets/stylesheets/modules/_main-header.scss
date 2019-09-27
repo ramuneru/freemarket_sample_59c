@@ -48,18 +48,19 @@
           right: 0px;
           top: 0px;
           width: 40px;
-          -webkit-appearance: none;
+          // -webkit-appearance: none;
           border-style: none;
           border-radius: 0px 4px 4px 0px;
           padding: 0px;
         }
-        .fa-search{
+          fa_icon {
           color: #434a54;
           position: absolute;
           top: 14px;
           right: 16px;
           cursor: pointer;
-        }
+          }
+        // }
       }
     }
     &__bottom{
@@ -70,15 +71,31 @@
       &__left__block{
         display: flex;
         margin-left: -3px;
+        font-size: 14px;
         font-family: "游ゴシック体", "YuGothic";
+        color: #333;
+        font-weight: bold;
+        vertical-align: middle;
         &__category{
           padding-right: 10px;
+          
         }
         &__brand{
           padding-left: 10px;
         }
         .link {
           text-decoration: none;
+          display: flex;
+          vertical-align: middle;
+          
+          i{
+            color: red;
+          }
+          .header__text{
+            vertical-align: middle;
+            color: #333;
+
+          }
 
         }
       }

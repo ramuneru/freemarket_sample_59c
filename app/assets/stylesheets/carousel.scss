@@ -4,10 +4,19 @@
   height: 290px;
 }
 
+.slider{
+  margin: 0 auto;
+}
+
+.slide-list{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
 .slide {
   width: auto;
   height: 290px;
-  margin: 0 auto;
 }
 #slider-room{
   width:100%;

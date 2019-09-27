@@ -1,12 +1,11 @@
 @import './config/reset';
 @import './config/colors';
-@import './mixin/main-header';
 @import './mixin/variables';
 @import "sigUp_1";
 @import "users";
+@import './modules/main_product';
 @import './modules/main-header';
 @import './modules/main-footer';
-@import './modules/main_product_nav';
 @import './items';
 @import 'font-awesome';
 @import "slick-theme"; 
