@@ -69,6 +69,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'carrierwave'
+gem 'devise'
 gem 'erb2haml'
 gem 'fog-aws'
 gem 'font-awesome-rails'
