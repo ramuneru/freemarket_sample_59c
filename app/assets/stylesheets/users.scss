@@ -18,10 +18,9 @@
   font-size: 14px;
   color: #333;
   border-bottom:2px solid whitesmoke;
-}
-
-.fa-angle-right{
-  float: right;
+  &:hover {
+    background-color: #eee;
+  }
 }
 
 .mypage-nav__head{
