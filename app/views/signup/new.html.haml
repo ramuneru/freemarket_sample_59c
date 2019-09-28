@@ -3,7 +3,7 @@
     .ser
       %header.single-header
         %h1
-          = link_to image_tag("logo.svg", class:"img"), "https://www.mercari.com/jp/"
+          = link_to image_tag("logo.svg", class:"img"), root_path
       %main.single-main
         %section.l-single-container
           %h2.l-single-head.registration
@@ -34,7 +34,7 @@
           %li.lineup
             = link_to "https://www.mercari.com/jp/tokutei/" ,class:"linkblack" do
               特定商取引に関する表記
-      = link_to "https://www.mercari.com/jp/", class:"single-footer-logo" do
+      = link_to root_path, class:"single-footer-logo" do
         %img{class:"single-footer-logo",alt: "mercari", height:"65", width:"80", src:"//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?872667783"}/
       %p.ct
         %small © 2019 Mercari
