@@ -5,9 +5,10 @@
 .mypage{
   margin: 40px auto 0;
   width: 1020px;
+  display: flex;
   &__side-bar{
     width: 280px;
-    margin: 0 40px 0 0;
+    margin: 0 40px 40px 0;
   }
 }
 
@@ -26,4 +27,31 @@
 .mypage-nav__head{
   margin: 40px 0 5px 0;
   font-size: 17px;
+}
+
+.main-contents{
+  width: 700px;
+}
+
+.main-contents__user{
+  background: url(RED19923025_TP_V.jpg);
+  height: 200px;
+  text-align: center;
+}
+
+.main-contents__user__icon{
+  text-align: center;
+  color: black;
+}
+
+.bold{
+  
+}
+
+.iroiro{
+  text-align: center;
+
+}
+.hyouka{
+
 }

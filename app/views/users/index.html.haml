@@ -1,2 +1,32 @@
 = render "shared/main-header"
-= render "users/side_bar"
+.mypage
+  = render "users/side_bar"
+
+  .main-contents
+    .main-contents__user
+      = link_to root_path, class: "main-contents__user__icon" do
+        %figure
+          = image_tag "carousel-prev.png", size: "100*100", class: "user-icon"
+        %h2.bold
+          名前
+        .iroiro.bold
+          .hyouka
+            評価
+            %span
+              1
+          .syuppin
+            出品数
+            %span
+              0
+    .main-contents__todo
+      %ul.main-contents__todo__list
+        %li
+          %h3
+            = link_to root_path, class: "oshirase"
+            お知らせ
+        %li
+          %h3
+            = link_to root_path, class: "oshirase"
+            やることリスト
+
+= render "shared/main-footer"
