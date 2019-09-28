@@ -89,8 +89,6 @@
     grid-template-columns: repeat(5, 1fr);
     gap: 20px 20px;
     .box{
-      width: 160px;
-      height: 200px;
       background-color:white;
       box-sizing: border-box;
       opacity: 1;
@@ -99,11 +97,10 @@
       }
       .title-text{
         font-size: 14px;
+        width: 188px;
         height: 64px;
         box-sizing: border-box;
         color: #222;
-        font-size: 14px;
-        height: 64px;
         line-height: 1.4em;
         padding: 0 12px;
         white-space: normal;
@@ -124,9 +121,14 @@
         z-index: 2;
       }
       .image-box{
-        width: 100%;
-        height: auto;
+        width: 188px;
+        height: 188px;
       }
     }
   }
+}
+
+.box1{
+  width:188px;
+  height: 252px;
 }
