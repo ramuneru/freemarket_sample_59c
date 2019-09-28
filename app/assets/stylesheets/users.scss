@@ -29,6 +29,11 @@
   font-size: 17px;
 }
 
+
+
+
+
+
 .main-contents{
   width: 700px;
 }
@@ -42,16 +47,23 @@
 .main-contents__user__icon{
   text-align: center;
   color: black;
-}
-
-.bold{
   
 }
 
-.iroiro{
-  text-align: center;
-
+.user-name{
+  margin: 8px 0;
 }
-.hyouka{
 
+.user-info__display{
+  display: inline;
+}
+
+.main-contents__p__list__todo{
+  display:inline;
+}
+.mypage__trade__head{
+  background-color: #fafafa;
+  font-size: 16px;
+  padding: 16px;
+  line-height: 50px;
 }
