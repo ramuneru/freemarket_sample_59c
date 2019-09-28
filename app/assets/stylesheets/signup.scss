@@ -21,11 +21,15 @@ body{
     .single-header{
       height: 128px;
       text-align: center;
-      .img{
-        margin: 40px 0 0;
-        width: 185px;
-        height: 49px;
-        line-height: 49px;
+      h1{
+        display: inline-block;
+        margin-bottom: 30px;
+        .img{
+          margin: 40px 0 0;
+          width: 185px;
+          height: 49px;
+          line-height: 49px;
+        }
       }
     }
     .single-main{
