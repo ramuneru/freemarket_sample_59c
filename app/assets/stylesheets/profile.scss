@@ -32,7 +32,6 @@
         border-radius: 50%;
         border-style: solid;
         border-width: 0;
-
         // &:before{
         //   background-color: #ccc;
         //   display: block;
@@ -72,7 +71,6 @@
       background: #ccc;
       border-radius: 50%;
       border-style: 1px solid #ccc;
-      
       // &:before{
       //   background-color: #ccc;
       //   display: block;
@@ -171,7 +169,7 @@
     display: inline-block;
     width: calc(30% - 17px);
   }
-  single-inner.registration-form .btn-red {
+  .single-inner .registration-form .btn-red {
     margin: 24px 0 0;
   }
   .l-single-inner .btn-red {
