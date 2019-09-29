@@ -8,8 +8,8 @@
           .form-group
             %label{:for => "nickname"} ニックネーム
             %span.form-require 必須
-            = f.text_field placeholder: '例) メルカリ太郎'
-
+            %input.input-default{name: "nickname", placeholder: "例) メルカリ太郎", type: "text", value: ""}
+            
           .form-group
             %label{:for => "email"} メールアドレス
             %span.form-require 必須
