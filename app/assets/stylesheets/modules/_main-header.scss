@@ -3,6 +3,9 @@
   position: relative;
   color: $black;
   &__inner{
+    @media screen and(min-width: 1068px){
+    width: 1020px;
+    }
     width: 700px;
     margin: 0px auto;
     padding: 8px 0px 0px;
@@ -53,14 +56,13 @@
           border-radius: 0px 4px 4px 0px;
           padding: 0px;
         }
-          fa_icon {
-          color: #434a54;
-          position: absolute;
-          top: 14px;
-          right: 16px;
-          cursor: pointer;
-          }
-        // }
+        i {
+        color: #434a54;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+        }
       }
     }
     &__bottom{
@@ -138,6 +140,45 @@
           text-decoration: none;
         }
 
+      }
+    }
+  }
+}
+
+// ログイン時のヘッダー右下部分
+.main-header__inner__bottom__right__block-logged-in{
+  float: right;
+  .lists-logged-in{
+    display: flex;
+    .list{
+      vertical-align: middle;
+      display: flex;
+      height: 44px;
+      line-height: 32px;
+      font-size: 14px;
+      color: #333;
+      .flex{
+        color: #333;
+        text-decoration: none;
+        display: flex;
+        width: 100%;
+        i {
+          color: lightgray;
+          font-size: 18px;
+          margin: 0 10px 0 0;
+          vertical-align: middle;
+        }
+        .bell {
+          width: 16px;
+          height: 20px;
+
+        }
+      }
+      .circle-photo{
+        width: 32px;
+        height: 32px;
+        background-color: lightgray;
+        border-radius: 50px;
       }
     }
   }
