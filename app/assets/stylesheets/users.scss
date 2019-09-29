@@ -5,25 +5,148 @@
 .mypage{
   margin: 40px auto 0;
   width: 1020px;
+  display: flex;
   &__side-bar{
     width: 280px;
-    margin: 0 40px 0 0;
-  }
-}
-
-.mypage__side-bar__list-item{
-  display: block;
-  padding: 16px;
-  background: #fff;
-  font-size: 14px;
-  color: #333;
-  border-bottom:2px solid whitesmoke;
-  &:hover {
-    background-color: #eee;
+    margin: 0 40px 40px 0;
+    &__list-item{
+      display: block;
+      padding: 16px;
+      background: #fff;
+      font-size: 14px;
+      color: #333;
+      border-bottom:2px solid whitesmoke;
+      &:hover {
+        background-color: #eee;
+      }
+    }
   }
 }
 
 .mypage-nav__head{
   margin: 40px 0 5px 0;
   font-size: 17px;
+}
+
+.main-contents{
+  width: 700px;
+  &__user{
+    background: url(RED19923025_TP_V.jpg);
+    height: 200px;
+    text-align: center;
+    padding-top: 50px; 
+    &__icon{
+      text-align: center;
+      color: black;
+    }
+  }
+}
+
+
+
+
+
+.user-name{
+  margin: 8px 0;
+}
+
+.user-info__display{
+  display: inline-block;
+}
+
+
+
+.main-contents__list{
+  margin-bottom: 80px;
+  width: 700px;
+  &__ul{
+    height: 80px;
+    background-color: #fafafa;
+    text-align: center;
+    line-height: 80px;
+    &__todo{
+      cursor: pointer;
+      font-size: 20px;
+      text-align: center;
+      color: #333;
+    }
+  }
+}
+.main-contents__list__ul li{
+  float: left;
+  vertical-align: middle;
+  width: 50%;
+  transition: .3s;
+}
+.main-contents__list__ul li.active {
+  color: #fff;
+  background: #fb4343;
+  cursor: auto;
+}
+.main-contents__list__ul li:nth-child(1) {
+	display: block;
+}
+
+
+.mypage__trade__head{
+  background-color: #fafafa;
+  font-size: 16px;
+  padding: 16px;
+  line-height: 50px;
+}
+
+
+.lists-way ul {
+  display: none;
+}
+.lists-way ul.show {
+  display: block;
+}
+.lists-way__item{
+  margin: 15px 40px 0 68px;
+  position: absolute;
+}
+
+
+.user-icon{
+  border-radius: 50%;
+}
+
+.mini-icon{
+  position: absolute;
+}
+
+.list-banner{
+  display: block;
+  min-height: 60px;
+  padding: 16px;
+  color: #333;
+  background-color: #fafafa;
+  position: relative;
+  border-bottom: 2px solid whitesmoke;
+}
+
+
+.right-allow{
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  margin-top: -12px;
+}
+
+.mypage__go-list{
+  padding: 13px;
+  background-color: #fafafa;
+  a{
+    display: block;
+    height: 56px;
+    margin: 0 auto;
+    background: #eee;
+    color: #333;
+    line-height: 56px;
+    text-align: center;
+  }
+  a:hover{
+    background-color: aquamarine;
+  }
 }
