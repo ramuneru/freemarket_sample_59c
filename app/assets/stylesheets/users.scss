@@ -150,3 +150,55 @@
     background-color: aquamarine;
   }
 }
+
+
+.profile-change{
+  width: 700px;
+  height: 400px;
+  background-color: #fafafa;
+  text-align: center;
+  &__head{
+    font-size: 28px;
+    height: 50px;
+  }
+  &__name{
+    background: url(RED19923025_TP_V.jpg);
+    height: 150px;
+    padding-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    &__input{
+      border-radius: 4px;
+      width: 200px;
+      height: 40px;
+      margin: 35px 0 0 10px;
+    }
+  }
+  &__introduction{
+    background-color: #fafafa;
+    padding:  25px;
+    &__textarea{
+      min-height: 216px;
+      display: block;
+      width: 100%;
+      border: 1px solid #ccc;
+      background: #fff;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  }
+  &__button{
+    margin: 20px auto;
+    background-color: #fb4343;
+    color: #fff;
+    font-size: 15px;
+    width: 600px;
+    height: 60px;
+  }
+}
+
+.user-icon{
+  margin-top: 15px;
+}
+
