@@ -42,6 +42,7 @@
   background: url(RED19923025_TP_V.jpg);
   height: 200px;
   text-align: center;
+  padding-top: 50px; 
 }
 
 .main-contents__user__icon{
@@ -55,15 +56,94 @@
 }
 
 .user-info__display{
-  display: inline;
+  display: inline-block;
 }
 
-.main-contents__p__list__todo{
-  display:inline;
+
+
+.main-contents__p{
+  margin-bottom: 80px;
+  width: 700px;
 }
+.main-contents__p__list{
+  height: 80px;
+  background-color: #fafafa;
+  text-align: center;
+  line-height: 80px;
+}
+.main-contents__p__list li{
+  float: left;
+  vertical-align: middle;
+  width: 50%;
+  transition: .3s;
+}
+.main-contents__p__list__todo{
+  cursor: pointer;
+  font-size: 20px;
+  text-align: center;
+  color: #333;
+  
+}
+.main-contents__p__list li.active {
+  color: #fff;
+  background: #fb4343;
+  cursor: auto;
+}
+
+
+
 .mypage__trade__head{
   background-color: #fafafa;
   font-size: 16px;
   padding: 16px;
   line-height: 50px;
+}
+
+.lists ul {
+  display: none;
+}
+.lists ul.show {
+  display: block;
+}
+.mini-merukari{
+
+}
+
+.mini-icon{
+  position: absolute;
+}
+.list-banner{
+  display: block;
+  min-height: 60px;
+  padding: 16px;
+  color: #333;
+  background-color: #fafafa;
+  position: relative;
+  border-bottom: 2px solid whitesmoke;
+}
+.lists__item{
+  margin: 15px 40px 0 68px;
+  position: absolute;
+}
+.migi{
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  margin-top: -12px;
+}
+.mypage__go-list{
+  padding: 13px;
+  background-color: #fafafa;
+}
+.mypage__go-list a{
+  display: block;
+  height: 56px;
+  margin: 0 auto;
+  background: #eee;
+  color: #333;
+  line-height: 56px;
+  text-align: center;
+}
+.mypage__go-list a:hover{
+  background-color: aquamarine;
 }

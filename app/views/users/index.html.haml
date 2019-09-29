@@ -6,7 +6,7 @@
     .main-contents__user
       = link_to root_path, class: "main-contents__user__icon" do
         %figure
-          = image_tag "member_photo_noimage_thumb.png", size: "60*60", class: "user-icon"
+          = image_tag "member_photo_noimage_thumb.png", size: "60x60", class: "user-icon"
         %h2.user-name
           名前
         %ul.user-info
@@ -19,18 +19,141 @@
             %span
               0
     .main-contents__p
-      %ul.main-contents__p
-        %li.main-contents__p__list__todo
-          お知らせ
-        %li.main-contents__p__list__todo
-          やることリスト
+      %ul.main-contents__p__list
+        %li.active
+          .main-contents__p__list__todo
+            お知らせ
+        %li
+          .main-contents__p__list__todo
+            やることリスト
+      .lists
+        %ul.show
+          %li
+            = link_to root_path, class: "list-banner" do
+              = image_tag "icon.png", size: "50x50", class: "mini-icon"
+              .lists__item
+                .lists__item__text
+                  【明日まで】スマホ出品中で１０００ポイントがもらえる♫
+                %time
+                  = fa_icon 'fas fa-clock', class: "fas fa-clock "
+                  2日前
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right migi fa-pull-right"
+          %li
+            = link_to root_path, class: "list-banner" do
+              = image_tag "icon.png", size: "50x50", class: "mini-icon"
+              .lists__item
+                .lists__item__text
+                  【明日まで】スマホ出品中で１０００ポイントがもらえる♫
+                %time
+                  = fa_icon 'fas fa-clock', class: "fas fa-clock "
+                  2日前
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right migi fa-pull-right"
+          %li
+            = link_to root_path, class: "list-banner" do
+              = image_tag "icon.png", size: "50x50", class: "mini-icon"
+              .lists__item
+                .lists__item__text
+                  【明日まで】スマホ出品中で１０００ポイントがもらえる♫
+                %time
+                  = fa_icon 'fas fa-clock', class: "fas fa-clock "
+                  2日前
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right migi fa-pull-right"
+          %li.mypage__go-list
+            = link_to root_path, class: "mypage__go-list__" do
+              一覧を見る
+        %ul
+          %li
+            = link_to root_path, class: "list-banner" do
+              = image_tag "icon.png", size: "50x50", class: "mini-icon"
+              .lists__item
+                .lists__item__text
+                  【明日まで】スマホ出品中で１０００ポイントがもらえる♫
+                %time
+                  = fa_icon 'fas fa-clock', class: "fas fa-clock "
+                  2日前
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right migi fa-pull-right"
+          %li
+            = link_to root_path, class: "list-banner" do
+              = image_tag "icon.png", size: "50x50", class: "mini-icon"
+              .lists__item
+                .lists__item__text
+                  【明日まで】スマホ出品中で１０００ポイントがもらえる♫
+                %time
+                  = fa_icon 'fas fa-clock', class: "fas fa-clock "
+                  2日前
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right migi fa-pull-right"
+          %li.mypage__go-list
+            = link_to root_path, class: "mypage__go-list__" do
+              一覧を見る
+
     .mypage__trade
       %h2.mypage__trade__head
         購入した商品
-      %ul.main-contents__todo__list
-        %li.main-contents__p__list__todo
-          取引中
-        %li.main-contents__p__list__todo
-          過去の取引
-          
+      %ul.main-contents__p__list
+        %li.active
+          .main-contents__p__list__buy
+            取引中
+        %li
+          .main-contents__p__list__buy
+            過去の取引
+      .lists
+        %ul.show
+          %li
+            = link_to root_path, class: "list-banner" do
+              = image_tag "icon.png", size: "50x50", class: "mini-icon"
+              .lists__item
+                .lists__item__text
+                  購入品
+                %time
+                  = fa_icon 'fas fa-clock', class: "fas fa-clock "
+                  2日前
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right migi fa-pull-right"
+          %li
+            = link_to root_path, class: "list-banner" do
+              = image_tag "icon.png", size: "50x50", class: "mini-icon"
+              .lists__item
+                .lists__item__text
+                  購入品
+                %time
+                  = fa_icon 'fas fa-clock', class: "fas fa-clock "
+                  2日前
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right migi fa-pull-right"
+          %li
+            = link_to root_path, class: "list-banner" do
+              = image_tag "icon.png", size: "50x50", class: "mini-icon"
+              .lists__item
+                .lists__item__text
+                  購入品
+                %time
+                  = fa_icon 'fas fa-clock', class: "fas fa-clock "
+                  2日前
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right migi fa-pull-right"
+          %li.mypage__go-list
+            = link_to root_path, class: "mypage__go-list__" do
+              一覧を見る
+        %ul
+          %li
+            = link_to root_path, class: "list-banner" do
+              = image_tag "icon.png", size: "50x50", class: "mini-icon"
+              .lists__item
+                .lists__item__text
+                  アウター
+                %time
+                  = fa_icon 'fas fa-clock', class: "fas fa-clock "
+                  2日前
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right migi fa-pull-right"
+          %li
+            = link_to root_path, class: "list-banner" do
+              = image_tag "icon.png", size: "50x50", class: "mini-icon"
+              .lists__item
+                .lists__item__text
+                  ジーンズ
+                %time
+                  = fa_icon 'fas fa-clock', class: "fas fa-clock "
+                  2日前
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right migi fa-pull-right"
+          %li.mypage__go-list
+            = link_to root_path, class: "mypage__go-list__" do
+              一覧を見る
+
 = render "shared/main-footer"
