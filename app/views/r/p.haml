@@ -1,0 +1,18 @@
+%main.single-main
+  %section.l-single-container
+    %h2.l-chapter-head.registration 電話番号の確認
+    %form.l-single-inner.registration-form{:action => "https://www.mercari.com/jp/signup/sms_confirmation/sms/", :method => "POST", :novalidate => "novalidate"}
+      %input{:name => "after_save_callback", :type => "hidden", :value => ""}/
+      .l-single-content
+        .form-group
+          %label{:for => "phone_number"} 携帯電話の番号
+          %input.input-default{:name => "phone_number", :placeholder => "携帯電話の番号を入力", :type => "tel", :value => ""}/
+        %p 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+        %button.btn-default.btn-red{:type => "submit"} SMSを送信する
+        %p ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+        .form-group.text-right
+          %a{:href => "/jp/help_center/article/244/", :target => "_blank"}
+            電話番号の確認が必要な理由
+            %i.icon-arrow-right
+      %input{:name => "__csrf_value", :type => "hidden", :value => "29877392f8ba8e6847a1ecaeb819a91eb2ef9819ba6446d7bc06042a92a3e40e7b660081f2d72e2ec6ea1952cc9a32f03d5a4fcd6e8244f8d2487802cccb178ef"}/
+      %input{:name => "id", :type => "hidden", :value => "894807894"}/

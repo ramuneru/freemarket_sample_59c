@@ -42,6 +42,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'pry-rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capistrano'
   gem 'capistrano-rbenv'
@@ -76,4 +77,5 @@ gem 'font-awesome-rails'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'mini_magick'
+gem 'recaptcha', require: "recaptcha/rails"
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
