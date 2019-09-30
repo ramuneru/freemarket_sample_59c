@@ -1,6 +1,6 @@
 # README
 
-[![ER図](https://i.gyazo.com/fc5f3347f460c64f8b589d33bcad7baf.png)](https://gyazo.com/fc5f3347f460c64f8b589d33bcad7baf)
+[![ER図](https://i.gyazo.com/4671aa333d26cd8df0ae58a4d6b80b97.png)](https://gyazo.com/4671aa333d26cd8df0ae58a4d6b80b97)
 
 ## users
 
@@ -14,10 +14,12 @@
 - has_one :user_profile, dependent: :destroy
 - has_one :address, dependent: :destroy
 - has_one :credit_card, dependent: :destroy
+<!-- sellerは要検討 -->
 - has_one :seller
 
 - has_many :items
 - has_many :comments
+<!-- buyersは要検討 -->
 - has_many :buyers
 - has_many :likes
 - has_many :sns_credentials, dependent: :destroy
@@ -35,7 +37,9 @@
 |family_name_kana|string|null:false|
 |last_name_kana|string|null:false|
 |introduction|text||
-|birth_day|string|null:false|
+|birth_year|integer|null:false|
+|birth_month|integer|null:false|
+|birth_day|integer|null:false|
 |icon_image|text||
 |total_sales|integer||
 
