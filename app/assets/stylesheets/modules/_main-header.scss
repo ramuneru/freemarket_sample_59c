@@ -3,10 +3,7 @@
   position: relative;
   color: $black;
   &__inner{
-    @media screen and(min-width: 1068px){
     width: 1020px;
-    }
-    width: 700px;
     margin: 0px auto;
     padding: 8px 0px 0px;
     &__top{
@@ -28,7 +25,7 @@
           font-size: 16px;
           height: 40px;
           line-height: 1.4em;
-          width: calc(100% - 62px);
+          width: calc(100% - 14px);
           -webkit-appearance: none;
           border-width: 1px;
           border-style: solid;
@@ -48,29 +45,33 @@
           cursor: pointer;
           height: 40px;
           position: absolute;
-          right: 0px;
+          right: 15px;
           top: 0px;
           width: 40px;
-          // -webkit-appearance: none;
           border-style: none;
           border-radius: 0px 4px 4px 0px;
           padding: 0px;
+          &:focus {
+            outline: none;
+          }
         }
         i {
         color: #434a54;
         position: absolute;
-        top: 15px;
+        top: 14px;
         right: 15px;
         cursor: pointer;
         }
       }
     }
+    // メインヘッダー下段部分
     &__bottom{
       display: flex;
       -webkit-box-pack: justify;
       justify-content: space-between;
       margin-top: 8px;
-      &__left__block{
+      &__left{
+        float: left;
         display: flex;
         margin-left: -3px;
         font-size: 14px;
@@ -78,29 +79,30 @@
         color: #333;
         font-weight: bold;
         vertical-align: middle;
-        &__category{
+        &__block{
           padding-right: 10px;
-          
-        }
-        &__brand{
-          padding-left: 10px;
-        }
-        .link {
-          text-decoration: none;
-          display: flex;
-          vertical-align: middle;
-          
-          i{
-            color: red;
+          margin: 10px 0px 0px 10px;
+          .header-text {
+            &__category, &__brand{
+              &:hover{
+                color: $link-blue;
+              }
+            }
+            &__category:before{
+              font-family: fontawesome;
+              color: red;
+              content: "\f03a";
+            }
+            &__brand:before{
+              font-family: fontawesome;
+              content: "\f02b";
+              color: red;
+            }
           }
-          .header__text{
-            vertical-align: middle;
-            color: #333;
-
-          }
-
         }
       }
+
+// メインヘッダー 下段右下-未ログイン時
       &__right__block{
         display: flex;
         &__register{
@@ -139,13 +141,12 @@
         .header-btn{
           text-decoration: none;
         }
-
       }
     }
   }
 }
 
-// ログイン時のヘッダー右下部分
+// メインヘッダー右下部分ーログイン時
 .main-header__inner__bottom__right__block-logged-in{
   float: right;
   .lists-logged-in{
@@ -157,21 +158,34 @@
       line-height: 32px;
       font-size: 14px;
       color: #333;
+      margin: 0 14px 0;
       .flex{
-        color: #333;
-        text-decoration: none;
         display: flex;
         width: 100%;
-        i {
-          color: lightgray;
-          font-size: 18px;
-          margin: 0 10px 0 0;
-          vertical-align: middle;
+        .text{
+          color: #333;
+          font-size: 14px;
+          &:hover{
+            color: $link-blue;
+          }
+          &:before{
+            font-family: fontawesome;
+            font-size: 16px; 
+            color: #ccc;
+            margin-right: 10px;
+          }
+          &:hover:before{
+            color:rgb(0, 149, 238);
+          }
         }
-        .bell {
-          width: 16px;
-          height: 20px;
-
+        .liked:before{
+          content: '\f004'; //ハートアイコン
+        }
+        .notification:before{
+          content: "\f0f3"; //ベル
+        }
+        .todo:before{
+          content: '\f00c'; //チェック
         }
       }
       .circle-photo{
@@ -179,6 +193,7 @@
         height: 32px;
         background-color: lightgray;
         border-radius: 50px;
+        margin-right: 10px;
       }
     }
   }

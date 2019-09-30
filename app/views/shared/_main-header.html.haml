@@ -13,20 +13,19 @@
 
 
     .main-header__inner__bottom
-      .main-header__inner__bottom__left__block
-        .main-header__inner__bottom__left__block__category
+      .main-header__inner__bottom__left
+        .main-header__inner__bottom__left__block
           =link_to "#", class:'link' do
-            %i.fa.fa-list
-            .header__text
+            .header-text__category
               カテゴリーから探す
             
-        .main-header__inner__bottom__left__block__brand
+        .main-header__inner__bottom__left__block
           =link_to "#", class:'link' do
-            %i.fa.fa-tag
-            .header__text
+            .header-text__brand
               ブランドから探す
 
 
+      -#  未ログイン時の記述   未実装のためコメントアウト
       -# .main-header__inner__bottom__right__block
       -#   .main-header__inner__bottom__right__block__register
       -#     =link_to new_signup_path, class: 'header-btn' do
@@ -35,22 +34,20 @@
       -#     =link_to '#', class: 'header-btn'do
       -#       .btn-blue ログイン
 
-
+      
       .main-header__inner__bottom__right__block-logged-in
         %ul.lists-logged-in
-          %li.list.liked
+          %li.list
             =link_to "#", class: "flex" do
-              = fa_icon "heart"
-              .text いいね！一覧
-          %li.list.notification
+              .text.liked いいね！一覧
+          %li.list
             =link_to "#", class: "flex" do
-              = image_tag "bell-icon.svg", class: "bell"
-              .text お知らせ
-          %li.list.todo
+              -# = image_tag "bell-icon.svg", class: "bell"
+              .text.notification お知らせ
+          %li.list
             =link_to "#", class: "flex" do
-              =fa_icon "check"
-              .text やることリスト
-          %li.list.my
+              .text.todo やることリスト
+          %li.list
             =link_to "#", class: "flex" do
               .circle-photo
               .text マイページ

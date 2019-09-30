@@ -1,0 +1,119 @@
+= render "shared/main-header"
+.item-detail-page
+  .item-detail-page__container
+    %h1.item-detail-page__container__title
+      商品タイトル
+    .item-detail-page__container__clearfix
+      .photo-box
+        .photo-box__higher
+          =image_tag "nori.jpg", class: "upper-photo"
+        .thumbnails-box
+          =image_tag "nori.jpg", class: "thumbnail"
+          =image_tag "nori.jpg", class: "thumbnail"
+          =image_tag "nori.jpg", class: "thumbnail"
+          =image_tag "nori.jpg", class: "thumbnail"
+          =image_tag "nori.jpg", class: "thumbnail"
+          =image_tag "nori.jpg", class: "thumbnail"
+
+      %table.detail-table
+        %tbody
+          %tr
+            %th 出品者
+            %td user_name
+          %tr
+            %th カテゴリー
+            %td 
+              %p 大カテゴリー
+              %p 中カテゴリー
+              %p 小カテゴリー
+          %tr
+            %th ブランド
+            %td 
+          %tr
+            %th 商品の状態
+            %td 新品未使用
+          %tr
+            %th 配送料の負担
+            %td 出品者
+          %tr
+            %th 配送の方法
+            %td らくらくメルカリ便
+          %tr
+            %th 配送元地域
+            %td 
+              =link_to "北海道", "#", class: "link-blue"
+          %tr
+            %th 発送日の目安
+            %td 1~2日で発送
+
+      .price-section
+        %span.item-price ¥2,500
+        %span.item-tax (税込)
+        %span.item-shipping 送料込み
+      
+      =link_to "#" do
+        .purchase-button
+          購入画面に進む
+
+      .item-description
+        %p.item-text  お気に入りのケースですが機種変更をしたため、不要となりました出品いたします。お値下げもいたしますので気軽にご連絡くださいませ。比較的美品と思いますが、一箇所明るいベージュ部分に他の部分の糸が混ざっている？のか少し濃くなっているところがあります。(画像１枚目)傷とかではないのですが、高いもののため自分であまりつつきたくないのでそのままにしています。
+
+      .item-button-container
+        .item-button-container__left-block
+          .item-button-container__left-block__like.item-button
+            =link_to "#", class: "link" do
+              =fa_icon "heart"
+              いいね! 6
+          .item-button-container__left-block__report.item-button
+            =link_to "#", class: "link" do
+              =fa_icon " flag"
+              .report-text
+                不適切な商品の報告
+
+        .item-button-container__right-block
+          =link_to "#", class: "link-blue" do 
+            =fa_icon "lock"
+            %span あんしん・あんぜんへの取り組み
+
+
+  .comment-box
+    .comment-box__container
+      .comment-box__container__content
+        %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        = form_with url: "#" do |form|
+          = form.text_area :comment, class: "comment-form" 
+        %button.comment-submit-button
+          コメントする
+
+
+
+
+  .prev-next-link-bar.clearfix
+    .prev-link
+      =link_to "#", class: "link-blue" do 
+        =fa_icon "chevron-left"
+        %span 前へのリンク
+
+    .next-link
+      =link_to "#", class: "link-blue" do 
+        %span 次へのリンク
+        =fa_icon "chevron-right"
+
+  -# コメント欄のコメントされたメッセージ 後日追加
+
+  .social-link
+    %ul.social-link__box
+      %li
+        =link_to "#" do
+          .case.fb
+            =fa_icon "facebook-square"
+      %li
+        =link_to "#" do
+          .case.tw
+            =fa_icon "twitter"
+      %li
+        =link_to "#" do
+          .case.pt
+            =fa_icon "pinterest"
+
+= render "shared/main-footer" 
