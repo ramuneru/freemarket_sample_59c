@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   root 'items#index'
   resources :users , only: [:index]
   resources :signup, only: [:new]
-  resources :items , only: [:index, :show]
+  resources :items , only: [:index, :show, :new]
 end
