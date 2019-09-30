@@ -1,3 +1,6 @@
+*{
+  box-sizing: border-box;
+}
 .item-detail-page{
   background: #f5f5f5;
 }
@@ -127,7 +130,6 @@
     background: #f5f5f5;
     &:hover{
       opacity: 0.7;
-
     }
   }
   &__left-block{
@@ -153,25 +155,71 @@
   }
 }
 
-.prev-next-link-bar{
-  @include clearfix();
-  margin: 24px auto 0;
-  width: 700px;
-  
-  .prev-link{
-    float: left;
- 
-  }
-  .next-link{
-    float: right;
+.comment-box{
+  margin: 8px auto;
+  &__container{
+    &__content{
+      width: 700px;
+      height: auto;
+      padding: 24px;
+      margin: 0 auto;
+      background-color: #fff;
+      p{
+        padding: 8px;
+        font-size: 14px;
+        background: #fff6de;
+      }
+      .comment-form{      
+        margin: 8px 0 0;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        min-height: 104px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background: #fff;
+        font-size: 16px;
+        line-height: 1.5;
+        cursor: text;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+
+      }
+      .comment-submit-button{
+        width: 100%;
+        margin: 8px 0 0;
+        font-size: 0;
+        text-align: center;
+        background: #aaa;
+        border: 1px solid #aaa;
+        display: block;
+        line-height: 48px;
+        cursor: pointer;
+        min-height: 1.5rem;
+        color: #fff;
+        font-size: 14px;
+        &:focus{
+          outline: none;
+        }
+        &:active{
+          background-color:rgb(103, 101, 101);
+        }
+      }
+    }
   }
 }
 
+.prev-next-link-bar{
+  @include clearfix;
+  margin: 24px auto 0;
+  width: 700px;
+  display: flex;
+  justify-content: space-between;
+}
 .link{
   color: #333;
   text-decoration: none;
 }
-
 .link-blue{
   color:#0099E8;
   text-decoration: none;
@@ -190,21 +238,37 @@
   background: white;
 }
 
-.social-link-box{
+.social-link{
   margin: 24px auto;
   padding: 32px 0 24px;
-  width: 732px;
+  width: 700px;
   background: #fff;
-  ul{
+  text-align: center;
+
+  &__box{
     margin: 16px 0 0;
-    text-align: center;
-    font-size: 0;
+    display: flex;
+    justify-content: center;
+
+    .case{
+      width: 44px;
+      height: 44px;
+      border-radius: 4px;
+      line-height: 44px;
+      color: #fff;
+    }
+    .fb{
+      background: #385185;
+      font-size: 30px;
+    }
+    .tw{
+      background: #5d9dc9;
+      font-size: 30px;
+      margin: 0 8px 0;
+    }
+    .pt{
+      background: #aa262a;
+      font-size: 30px;
+    }
   }
-}
-.case{
-  width: 44px;
-  height: 44px;
-  border-radius: 4px;
-  line-height: 44px;
-  color: black;
 }

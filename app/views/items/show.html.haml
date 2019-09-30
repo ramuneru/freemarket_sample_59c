@@ -75,6 +75,19 @@
             =fa_icon "lock"
             %span あんしん・あんぜんへの取り組み
 
+
+  .comment-box
+    .comment-box__container
+      .comment-box__container__content
+        %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        = form_with url: "#" do |form|
+          = form.text_area :comment, class: "comment-form" 
+        %button.comment-submit-button
+          コメントする
+
+
+
+
   .prev-next-link-bar.clearfix
     .prev-link
       =link_to "#", class: "link-blue" do 
@@ -86,31 +99,21 @@
         %span 次へのリンク
         =fa_icon "chevron-right"
 
+  -# コメント欄のコメントされたメッセージ 後日追加
 
-  .item-detail-page__message-box
-
-  .social-link-box
-    .social-link-box__facebook
-    .case
-      =fa_icon "facebook-square"
-    .social-link-box__twitter
-    .case
-      =fa_icon "twitter"
-    .social-link-box__pinterest
-      .case
-        =fa_icon "pinterest"
-
-
-
-
-
-
-
-
-
-
-
-
-
+  .social-link
+    %ul.social-link__box
+      %li
+        =link_to "#" do
+          .case.fb
+            =fa_icon "facebook-square"
+      %li
+        =link_to "#" do
+          .case.tw
+            =fa_icon "twitter"
+      %li
+        =link_to "#" do
+          .case.pt
+            =fa_icon "pinterest"
 
 = render "shared/main-footer" 
