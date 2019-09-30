@@ -200,3 +200,22 @@
 }
 
 
+
+
+.logout-page{
+  height: 170px;
+  width: 100%;
+  background-color: white;
+  &__btn{
+    margin: 0 auto;
+    background: #ea352d;
+    border: 1px solid #ea352d;
+    width: 40%;
+    height: 30%;
+    color: #fff;
+    display: block;
+    text-align: center;
+    margin-top: 50px;
+    line-height: 50px;
+  }
+}
