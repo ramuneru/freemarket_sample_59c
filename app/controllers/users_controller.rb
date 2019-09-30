@@ -9,4 +9,8 @@ class UsersController < ApplicationController
   def logout
     
   end
+
+  def check
+    
+  end
 end

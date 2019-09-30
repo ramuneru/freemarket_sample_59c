@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
       get 'profile'
       get 'logout'
+      get 'check'
     end
   end
   resources :signup, only: [:index,:create] do
