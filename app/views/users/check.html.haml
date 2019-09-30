@@ -1,0 +1,33 @@
+= render "shared/main-header"
+.mypage
+  = render "users/side_bar"
+  %section.mypage-identification
+    %h2.mypage-identification__head
+      本人情報の登録
+    %form.mypage-identification__form
+      -# = form_for  do |f|
+      %div
+        %p
+          お客さまの本人情報をご登録ください。
+          %br
+          登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+        %p.mypage-identification__form__pop
+          = link_to root_path, class: "mypage-identification__form__pop__go" do
+            本人確認書類のアップロードについて
+            = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+      .mypage-identification__form__group
+        %label お名前
+        %p 山田裕一
+      .mypage-identification__form__group
+        %label お名前カナ
+        %p ヤマダユウイチ
+      .mypage-identification__form__group
+        %label 生年月日
+        %p 1994/09/24
+      .mypage-identification__form__group
+        %label 郵便番号
+        %span 任意
+        %input
+
+
+= render "shared/main-footer"

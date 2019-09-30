@@ -1,0 +1,9 @@
+= render "shared/main-header"
+.mypage
+  = render "users/side_bar"
+
+  .logout-page
+    = link_to  destroy_user_session_path, method: :delete, class: 'logout-page__btn' do
+      ログアウト
+
+= render "shared/main-footer"

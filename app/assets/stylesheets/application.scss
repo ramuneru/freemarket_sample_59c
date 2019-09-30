@@ -1,8 +1,9 @@
 @import './config/reset';
 @import './config/colors';
 @import './mixin/variables';
-@import "signup";
-@import "users";
+@import 'signup';
+@import 'profile';
+@import 'users';
 @import './modules/main_product';
 @import './modules/main-header';
 @import './modules/main-footer';
