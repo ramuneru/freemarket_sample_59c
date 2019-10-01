@@ -56,12 +56,14 @@
 .payment .progress-status_bar {
   width: 100px;
 }
-#through{
-color: #ea352d;
-  .progress-status{
-    background: #ea352d;
-  }
+// プログレスバーカラー変更CSS
+#red{
+  color: #ea352d;
 }
+#active{
+  background: #ea352d;
+}
+
 .single-main {
   display: block;
   background-repeat: no-repeat;

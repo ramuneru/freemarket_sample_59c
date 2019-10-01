@@ -1,11 +1,11 @@
 @import './config/reset';
 @import './config/colors';
 @import './mixin/variables';
-@import 'signup';
-@import 'profile';
-@import 'phone';
-@import 'phone.authentication';
-@import 'progress';
+@import './registrations/signup';
+@import './registrations/profile';
+@import './registrations/phone';
+@import './registrations/phone.authentication';
+@import './registrations/address';
 @import 'users';
 @import './modules/item-exhibit-button';
 @import './modules/main_product';
