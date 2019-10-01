@@ -17,27 +17,6 @@
         %header.single-header
           %h1
             = link_to image_tag("logo.svg", class:"img"), root_path
-          .progress-bar.signup-bar
-            .clearfix
-              .active
-                会員情報
-                .progress-status-select
-                .line
-              .activeNext
-                電話番号認証
-                .progress-status
-                .line
-              .activeNext
-                お届け先住所入力
-                .progress-status
-                .line
-              .activeNext
-                支払い方法
-                .progress-status
-                .line
-              .activeComplete
-                完了
-                .progress-statusComplete
         = yield
       %footer.single-footer
         %nav
