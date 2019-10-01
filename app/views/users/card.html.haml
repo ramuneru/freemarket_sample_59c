@@ -8,10 +8,15 @@
       %section
         .add-card__list__head
           %h3 クレジットカード一覧
-        %ul.add-card__list__contents
-          %li
-            %form
-              %figure
-
+      .add-card__list__btn
+        = link_to  root_path, class: 'add-card__list__btn__red' do
+          = fa_icon 'fas fa-credit-card', class: "fas fa-credit-card" 
+          クレジットカードを追加する
+    %p.payment
+      = link_to root_path, class: "payment__go" do
+        支払い方法について
+        = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+          
+            
 
 = render "shared/main-footer"

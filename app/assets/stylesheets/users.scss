@@ -302,5 +302,40 @@
       padding: 24px 0;
       border-bottom: 1px solid #eee;
     }
+    &__btn{
+      border-bottom: 1px solid #eee;
+      padding-bottom: 24px;
+      font-family: FontAwesome;
+      content: '\f0ca';
+      color: red;
+      &__red{
+        margin: 0 auto;
+        background: #ea352d;
+        border: 1px solid #ea352d;
+        width: 50%;
+        height: 50px;
+        color: #fff;
+        display: block;
+        text-align: center;
+        margin-top: 30px;
+        line-height: 50px;
+      }
+    }
+  }
+}
+.fa-credit-card{
+  margin: 0 5px;
+}
+
+
+.payment{
+  text-align: right;
+  padding: 10px;
+  padding: 0 30px 10px 0;
+  &__go{
+    color: blue;
+  }
+  &__go:hover{
+    color: #0099e8;;
   }
 }
