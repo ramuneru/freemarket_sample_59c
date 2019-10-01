@@ -39,6 +39,28 @@ padding: 0;
   }
 }
 
+@mixin text_field-default{
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+@mixin text_area-default{
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 104px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
 
 //button タグのCSSをリセット
 @mixin btn-reset{
@@ -48,4 +70,23 @@ padding: 0;
   cursor: pointer;
   padding: 0;
   appearance: none;
+}
+
+@mixin required{
+  background: #ea352d;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+}
+
+@mixin button-default{
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
 }

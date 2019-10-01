@@ -1,0 +1,126 @@
+.item-exhibition-main-container{
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  color: #333;
+} 
+
+.sell-item{
+  width: 700px;
+  height: auto;
+  background: #fff;
+  margin: 0 auto;
+
+  &__container{
+  }
+  h2.item-regi-head{
+    padding: 32px 16px;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1.5;
+    text-align: center;
+  }
+} 
+
+.form-container{
+  border-top: 1px solid #eee;
+}
+// 画像10枚までのアップロード箇所
+.sell-upload-box{
+  width: 620px;
+  padding: 40px;
+  &__title{
+    width: 100%;
+    &__title{
+      font-size: 16px;
+      font-weight: bold;
+    }
+    // 必須ボタンCSSはvariables.scssにて@mixin requiredとして定義
+    &__required{
+      @include required;
+    }
+  }
+  p{
+    margin: 8px 0 0;
+    line-height: 1.5;
+  }
+}
+
+// 商品名〜
+.sell-content-box{
+  padding: 40px;
+  border-top: 1px solid #eee;
+  &__title{
+    font-weight: bold;
+    font-size: 14px;
+  }
+  &__required{
+    @include required;
+  }
+  .text_field{
+    @include text_field-default;
+    width: 100%;
+    margin: 8px 0 0;
+  }
+  .text_area{
+    @include text_area-default;
+    margin: 8px 0 0;
+    min-height: 104px;
+  }
+  .description{
+    margin-top: 40px;
+  }
+}
+
+.sell-content-box{
+  .head-text{
+    color: #888;
+    font-size: 14px;
+    display:inline-block;
+    .question {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #0099e8;
+      color: #fff;
+      line-height: 14px;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+  .sell-form-box{
+    float: right;
+    width: 400px;
+    margin: 0;
+    ul{
+      li{
+        label{
+
+        }
+        .required{
+          @include required;
+        
+        }
+      }
+    }
+  }
+}
+
+
+
+// 最下段 出品するボタン
+.exhibit-button-bar{
+  @include button-default;
+  margin: 40px 0 0;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+}
+// もどるボタン
+.go-back-button{
+  @include button-default;
+  background: #aaa;
+  border: 1px solid #aaa;
+  color: #fff;
+  width: 45%;
+  margin: 24px auto 0;
+}
