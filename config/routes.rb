@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
-  root "items#index"
-  resources :users , only: [:index]
+  devise_for :users
+  root 'items#index'
+  resources :items , only: [:index, :show, :new]
+  resources :users , only: [:index] do
+    collection do
+      get 'profile'
+      get 'logout'
+      get 'check'
+    end
+  end
   devise_for :users, controllers: {
     registrations: "users/registrations",
     sessions:      "users/sessions"  

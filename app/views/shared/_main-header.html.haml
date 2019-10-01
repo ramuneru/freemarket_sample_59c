@@ -6,27 +6,26 @@
           = image_tag "logo.svg", alt: 'mercari', size:"134x36"
   
       .main-header__inner__top__search
-        = form_with url: "#", method: :get do |f|
+        = form_with url: "#", method: :get, local: true do |f|
           = f.text_field :keyword, placeholder: "何かお探しですか？", class: "main-header__inner__top__search__bar"
-          = button_tag type: 'submit', class: "search-btn" do
-            = fa_icon "search"
+          = f.submit class: "search-btn", value: ""
+        = fa_icon "search"
 
 
     .main-header__inner__bottom
-      .main-header__inner__bottom__left__block
-        .main-header__inner__bottom__left__block__category
+      .main-header__inner__bottom__left
+        .main-header__inner__bottom__left__block
           =link_to "#", class:'link' do
-            %i.fa.fa-list
-            .header__text
+            .header-text__category
               カテゴリーから探す
             
-        .main-header__inner__bottom__left__block__brand
+        .main-header__inner__bottom__left__block
           =link_to "#", class:'link' do
-            %i.fa.fa-tag
-            .header__text
+            .header-text__brand
               ブランドから探す
 
 
+      -#  未ログイン時の記述   未実装のためコメントアウト
       -# .main-header__inner__bottom__right__block
       -#   .main-header__inner__bottom__right__block__register
       -#     =link_to registrations_path, class: 'header-btn' do
@@ -35,22 +34,20 @@
       -#     =link_to '#', class: 'header-btn'do
       -#       .btn-blue ログイン
 
-
+      
       .main-header__inner__bottom__right__block-logged-in
         %ul.lists-logged-in
-          %li.list.liked
+          %li.list
             =link_to "#", class: "flex" do
-              = fa_icon "heart"
-              .text いいね！一覧
-          %li.list.notification
+              .text.liked いいね！一覧
+          %li.list
             =link_to "#", class: "flex" do
-              = image_tag "bell-icon.svg", class: "bell"
-              .text お知らせ
-          %li.list.todo
+              -# = image_tag "bell-icon.svg", class: "bell"
+              .text.notification お知らせ
+          %li.list
             =link_to "#", class: "flex" do
-              =fa_icon "check"
-              .text やることリスト
-          %li.list.my
+              .text.todo やることリスト
+          %li.list
             =link_to "#", class: "flex" do
               .circle-photo
               .text マイページ

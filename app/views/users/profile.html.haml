@@ -1,0 +1,16 @@
+= render "shared/main-header"
+.mypage
+  = render "users/side_bar"
+  .profile-change
+    .profile-change__head
+      %h2
+        プロフィール
+    .profile-change__name
+      %figure
+        = image_tag "member_photo_noimage_thumb.png", size: "60x60", class: "user-icon"
+      %input.profile-change__name__input
+    .profile-change__introduction
+      %textarea.profile-change__introduction__textarea
+      %input{:type => "submit", :value => "変更する", :class => "profile-change__button"}
+
+= render "shared/main-footer"
