@@ -38,7 +38,7 @@ body {
     }
   }
 }
-.progress-status_bar2 {
+.progress-status_bar {
   position: absolute;
   left: 50%;
   top: 25px;
@@ -49,23 +49,11 @@ body {
   background: gray;
   z-index: 10;
 }
-.end-2 .progress-status_bar2 {
+.end .progress-status_bar {
   width: 0px;
 }
-.payment-2 .progress-status_bar2 {
+.payment .progress-status_bar {
   width: 100px;
-}
-#through-2 .progress-status_bar{
-  background: #ea352d;
-}
-#active-2{
-  color: #ea352d;
-  .progress-status-2 {
-    background: #ea352d;
-  }
-  .progress-status_bar-2 {
-    background: #ea352d;
-  }
 }
 .single-main{
   display: block;
