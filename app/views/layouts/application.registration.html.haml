@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title FreemarketSample59c
+    = favicon_link_tag('favicon-32.ico')
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"}
+    %script{src: "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js", type: "text/javascript"}
+    %link{href: "https://fonts.googleapis.com/icon?family=Material+Icons", rel: "stylesheet"}
+  %body
+    = yield
+    -# %footer.single-footer
+    -#   %nav
+    -#     %ul.clearfix
+    -#       %li.firstchild
+    -#         = link_to "https://www.mercari.com/jp/privacy/" ,class:"linkblack" do
+    -#           プライバシーポリシー
+    -#       %li.lineup
+    -#         = link_to "https://www.mercari.com/jp/tos/" ,class:"linkblack" do
+    -#           メルカリ利用規約
+    -#       %li.lineup
+    -#         = link_to "https://www.mercari.com/jp/tokutei/" ,class:"linkblack" do
+    -#           特定商取引に関する表記
+    -#   = link_to root_path, class:"single-footer-logo" do
+    -#     %img{class:"single-footer-logo",alt: "mercari", height:"65", width:"80", src:"//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?872667783"}/
+    -#   %p.ct
+    -#     %small © 2019 Mercari

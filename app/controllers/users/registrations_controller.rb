@@ -3,21 +3,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :set_user
   # before_action :configure_account_update_params, only: [:update]
-  layout 'application.users', except: [:profile,:phone]
+  layout "application.users"
+  layout "application.registration"
   
   def index
+    render layout: "application.users"
   end
 
   def profile
     # @user = User.new
     # @address = Address.new
     # @user_profile = UserProfile.new
-    render layout: "application.users"
+    render layout: "application.registration"
   end
 
   def phone
-    render layout: "application.users"
-
+    render layout: "application.registration"
     session[:phone] = user_params[:phone]
     session[:email] = user_params[:email]
     session[:encrypted_password] = user_params[:encrypted_password]
