@@ -6,10 +6,10 @@
           = image_tag "logo.svg", alt: 'mercari', size:"134x36"
   
       .main-header__inner__top__search
-        = form_with url: "#", method: :get do |f|
+        = form_with url: "#", method: :get, local: true do |f|
           = f.text_field :keyword, placeholder: "何かお探しですか？", class: "main-header__inner__top__search__bar"
-          = button_tag type: 'submit', class: "search-btn" do
-            = fa_icon "search"
+          = f.submit class: "search-btn", value: ""
+        = fa_icon "search"
 
 
     .main-header__inner__bottom

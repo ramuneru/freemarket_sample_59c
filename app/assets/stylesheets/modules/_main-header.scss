@@ -6,6 +6,7 @@
     width: 1020px;
     margin: 0px auto;
     padding: 8px 0px 0px;
+    // メインヘッダー 上段ロゴ＆サーチ窓部分
     &__top{
       display: flex;
       -webkit-box-pack: justify;
@@ -41,6 +42,7 @@
           }
         }
         .search-btn{
+          @include btn-reset;
           background-color: transparent;
           cursor: pointer;
           height: 40px;
@@ -59,7 +61,7 @@
         color: #434a54;
         position: absolute;
         top: 14px;
-        right: 15px;
+        right: 30px;
         cursor: pointer;
         }
       }

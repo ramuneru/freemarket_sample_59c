@@ -1,0 +1,23 @@
+.exhibit__button{
+  background-color: rgb(234, 53, 45);
+  border-radius: 50%;
+  bottom: 32px;
+  height: 160px;
+  right: 32px;
+  width: 160px;
+  position: fixed;
+  &__content{
+    height: 160px;
+    width: 160px;
+    padding-top: 32px; 
+    color:white;
+    text-align: center;
+    &__text{
+      font-size: 22px;
+    }
+    .fa.fa-camera{
+      font-size: 3.5rem;
+      margin-top: 8px;
+    }
+  }
+}
