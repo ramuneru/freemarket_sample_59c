@@ -17,4 +17,8 @@ class UsersController < ApplicationController
   def card
     
   end
+
+  def card_create
+    
+  end
 end

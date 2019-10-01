@@ -280,7 +280,7 @@
 
 .add-card{
   width: 700px;
-  height: 350px;
+  min-height: 350px;
   background-color: #fff;
   &__head{
     font-size: 24px;
@@ -298,14 +298,9 @@
         font-size: 16px;
       }
     }
-    &__contents li{
-      padding: 24px 0;
-      border-bottom: 1px solid #eee;
-    }
     &__btn{
       border-bottom: 1px solid #eee;
       padding-bottom: 24px;
-      font-family: FontAwesome;
       content: '\f0ca';
       color: red;
       &__red{
@@ -336,6 +331,6 @@
     color: blue;
   }
   &__go:hover{
-    color: #0099e8;;
+    color: #0099e8;
   }
 }

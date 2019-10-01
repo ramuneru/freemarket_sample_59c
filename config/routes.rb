@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get 'logout'
       get 'check'
       get 'card'
+      get 'card_create'
     end
   end
   resources :signup, only: [:index,:create] do
