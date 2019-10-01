@@ -62,15 +62,6 @@ color: #ea352d;
     background: #ea352d;
   }
 }
-// #through .progress-status_bar {
-//   background: #ea352d;
-// }
-// #active {
-//   color: #ea352d;
-//   .progress-status{
-//     background: #ea352d;
-//   }
-// }
 .single-main {
   display: block;
   background-repeat: no-repeat;
@@ -174,14 +165,15 @@ color: #ea352d;
   .l-single-inner.registration-form .form-group:not(:first-of-type), .l-single-inner.registration-form .btn-red {
     margin: 24px 0 0;
   }
-  p {
+  .form-group.text-right{
+    margin: 24px 0 0;
     display: inline-block;
-    .link_decoration2 {
-      display: inline-block;
-      color: #0099E8;
-      margin-left: 170px;
+    .link_decoration{
+    display: inline-block;
+    color: #0099E8;
+    margin-left: 170px;
     }
-    .rightIcon2 {
+    .rightIcon{
       color: #0099E8;
     }
   }

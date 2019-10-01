@@ -7,6 +7,66 @@ body {
   color: #333;
   line-height: 1;
 }
+.progress-2 {
+  padding: 40px 0 0 44px;
+  border: 0;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 0;
+  text-align: center;
+  &-bar2 {
+    margin: 0;
+    li {
+      margin: 0 40px 0 0;
+      padding: 0;
+      position: relative;
+      z-index: 40;
+      display: inline-block;
+      min-width: 60px;
+      font-size: 12px;
+      color: gray;
+      .progress-status-2 {
+        position: absolute;
+        left: 40%;
+        width: 12px;
+        height: 12px;
+        margin: 8px auto 0;
+        background: gray;
+        border-radius: 50%;
+        z-index: 30;
+      }
+    }
+  }
+}
+.progress-status_bar2 {
+  position: absolute;
+  left: 50%;
+  top: 25px;
+  bottom: 5px;
+  display: block;
+  width: 130px;
+  height: 2px;
+  background: gray;
+  z-index: 10;
+}
+.end-2 .progress-status_bar2 {
+  width: 0px;
+}
+.payment-2 .progress-status_bar2 {
+  width: 100px;
+}
+#through-2 .progress-status_bar{
+  background: #ea352d;
+}
+#active-2{
+  color: #ea352d;
+  .progress-status-2 {
+    background: #ea352d;
+  }
+  .progress-status_bar-2 {
+    background: #ea352d;
+  }
+}
 .single-main{
   display: block;
   background-repeat: no-repeat;
