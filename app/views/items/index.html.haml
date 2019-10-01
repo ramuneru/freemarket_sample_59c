@@ -8,7 +8,7 @@
           %li.slide-list
             = link_to 'https://www.mercari.com/jp/featured/camp/' do
               = image_tag 'slider-camp.png', class: 'slide'
-        -# %li
+        -# %li slick_slider用記述 時間があれば導入
         -#   = link_to 'https://www.mercari.com/jp/featured/camp/' do
         -#     -# = image_tag 'slider-room.jpg', class: 'slide', id: 'slider-room'
         -#     = image_tag 'slider-camp.png', class: 'slide'
@@ -20,10 +20,4 @@
 
 = render "shared/main-footer"
 
-=link_to "/" do
-  .exhibit__button
-    .exhibit__button__content
-      .exhibit__button__content__text
-        出品
-      .exhibit__button__content__icon
-        %i.fa.fa-camera
+= render "shared/item-exhibit-button"
