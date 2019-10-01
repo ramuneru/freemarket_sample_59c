@@ -13,4 +13,8 @@ class UsersController < ApplicationController
   def check
     
   end
+
+  def card
+    
+  end
 end
