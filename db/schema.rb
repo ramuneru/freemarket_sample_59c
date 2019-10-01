@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2019_09_30_121148) do
 
-
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "postal_code", null: false
@@ -40,7 +39,6 @@ ActiveRecord::Schema.define(version: 2019_09_30_121148) do
     t.integer "total_sales"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "dateOfbirth"
     t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
