@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       get 'profile'
       get 'logout'
       get 'check'
+      get 'card'
+      get 'card_create'
     end
   end
   devise_for :users, controllers: {
