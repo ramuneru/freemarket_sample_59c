@@ -36,12 +36,15 @@ class SignupController < ApplicationController
   end
 
   def phone_authen
+    render layout: 'application.user'
   end
 
   def address
+    render layout: 'application.user'
   end
 
   def credit
+    render layout: 'application.user'
   end
 
   def complete
