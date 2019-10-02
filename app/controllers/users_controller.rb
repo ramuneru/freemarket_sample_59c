@@ -19,6 +19,6 @@ class UsersController < ApplicationController
   end
 
   def card_create
-    
+    @user = User.new
   end
 end
