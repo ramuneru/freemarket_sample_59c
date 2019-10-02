@@ -9,8 +9,8 @@
   background: #fff;
   margin: 0 auto;
 
-  &__container{
-  }
+  // &__container{
+  // }
   h2.item-regi-head{
     padding: 32px 16px;
     font-size: 22px;
@@ -45,7 +45,7 @@
 }
 
 // 商品名〜
-.sell-content-box{
+.sell-content-box-top{
   padding: 40px;
   border-top: 1px solid #eee;
   &__title{
@@ -71,56 +71,119 @@
 }
 
 .sell-content-box{
-  .head-text{
-    color: #888;
-    font-size: 14px;
-    display:inline-block;
-    .question {
-      display: inline-block;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: #0099e8;
-      color: #fff;
-      line-height: 14px;
-      font-size: 12px;
-      text-align: center;
-    }
-  }
-  .sell-form-box{
-    float: right;
-    width: 400px;
+  padding: 40px;
+  border-top: 1px solid #eee;
+  display: flex;
+  .sell-left-block{
+    width: 220px;
+    height: 250px;
+    display: flex;
     margin: 0;
-    ul{
-      li{
-        label{
-
-        }
-        .required{
-          @include required;
-        
+    .head-text{
+      color: #888;
+      font-size: 14px;
+      display:inline-block;
+      .question {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #0099e8;
+        color: #fff;
+        line-height: 14px;
+        font-size: 12px;
+        text-align: center;
+        &:hover{
+          opacity: 0.7;
         }
       }
     }
   }
+  .sell-form-box{
+    width: 400px;
+    height: auto;
+    margin: 0;
+    display: block;
+    .form-block{
+      width: 400px;
+      height: 70px;
+      .sell-price{
+        padding: 0 0 24px;
+        display: flex;
+        .price-left{
+          width: 50%;
+          font-weight: 600;
+          line-height: 48px;
+        }
+        .price-right{
+          width: 50%;
+          display: flex;
+          line-height: 48px;
+          .price-input{
+            @include text_field-default;
+            width: 100%;
+            margin-left: 15px;
+            text-align: right;
+          }
+        }
+      }
+      label{
+        font-weight: 600;
+        display: inline-block;
+      }
+      .required{
+        @include required;
+      }
+      ul{
+        width: 400px;
+        height: 218px;
+        list-style: none;
+        .margin{
+          padding: 24px 0;
+          border-top: 1px solid #ccc;
+          border-bottom: 1px solid #ccc;
+          display: flex;
+          justify-content: space-between;
+        }
+        .profit{
+          padding: 24px 0;
+          display: flex;
+          justify-content: space-between;
+          .bigger {
+            font-size: 16px;
+          }
+          .sales-profit{
+            font-size: 34px;
+          }
+        }
+       
+
+      }
+
+
+    }
+  }
 }
 
 
-
-// 最下段 出品するボタン
-.exhibit-button-bar{
-  @include button-default;
-  margin: 40px 0 0;
-  background: #ea352d;
-  border: 1px solid #ea352d;
-  color: #fff;
-}
-// もどるボタン
-.go-back-button{
-  @include button-default;
-  background: #aaa;
-  border: 1px solid #aaa;
-  color: #fff;
-  width: 45%;
-  margin: 24px auto 0;
+.sell-content-box-bottom{
+  padding: 40px;
+  border-top: 1px solid #eee;
+  // 最下段 出品するボタン
+  .exhibit-button-bar{
+    @include button-default;
+    margin: 40px 0 0;
+    background: #ea352d;
+    border: 1px solid #ea352d;
+    color: #fff;
+  }
+  // もどるボタン
+  .go-back-button{
+    @include button-default;
+    background: #aaa;
+    border: 1px solid #aaa;
+    color: #fff;
+    width: 45%;
+    margin: 24px auto 0;
+  }
 }

@@ -12,45 +12,81 @@
                 必 須
           %p 最大10枚までアップロードできます
         
-        .sell-content-box
-          .sell-content-box__title
+        .sell-content-box-top
+          .sell-content-box-top__title
             商品名
-            %span.sell-content-box__required
+            %span.sell-content-box-top__required
               必須
           =f.text_field :content, placeholder:'商品名(必須40文字まで)', class: "text_field"
           
-          .sell-content-box__title.description
+          .sell-content-box-top__title.description
             商品説明
-            %span.sell-content-box__required
+            %span.sell-content-box-top__required
               必須
           =f.text_area :content, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "text_area", rows: "5"
         
         .sell-content-box
-          %h3.head-text  商品の詳細
+          .sell-left-block
+            %h3.head-text  商品の詳細
           .sell-form-box
+            .form-block
+              %label カテゴリー
+              %span.required 必須
+              = select_tag "category"
 
-        .sell-content-box
-          %h3.head-text  配送について
-          .sell-form-box
-
-        .sell-content-box
-          %h3.head-text 
-            販売価格(300〜9,999,999)
-            =link_to "?", "#", class: "link question"
-          .sell-form-box
-            %ul
-              %li 
-                %label 価格
-                %span.required 必須
+            =fa_icon "chevron-down"
             
-
-
-
-
-
-
+            .form-block
+              %label 商品の状態
+              %span.required 必須
 
         .sell-content-box
+          .sell-left-block
+            %h3.head-text  
+              配送について
+              =link_to "?", "#", class: "link question"
+          .sell-form-box
+            .form-block
+              %label 配送料の負担
+              %span.required 必須
+              = f.collection_select 
+
+
+
+            .form-block
+              %label 発送元の地域
+              %span.required 必須
+            .form-block
+              %label 発送までの日数
+              %span.required 必須
+
+        .sell-content-box
+          .sell-left-block
+            %h3.head-text 
+              販売価格(300〜9,999,999)
+              =link_to "?", "#", class: "link question"
+          .sell-form-box
+            .form-block
+              %ul
+                %li.sell-price
+                  .price-left
+                    %label 価格
+                    %span.required 必須
+                  .price-right
+                    ¥
+                    =f.text_field :content, value: "", placeholder: "例）300", class: "price-input", required: true
+                %li.sell-fee
+                    
+                %li.margin
+                  販売手数料
+                  .fee -
+
+                %li.profit
+                  %label.bigger 
+                    販売利益
+                  .sales-profit -
+
+        .sell-content-box-bottom
           .text-tags
             %p 
               =link_to "禁止されている出品" , "#", class: "link-blue"
