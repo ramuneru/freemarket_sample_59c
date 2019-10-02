@@ -69,6 +69,7 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'active_hash'
 gem 'carrierwave'
 gem 'devise'
 gem 'erb2haml'
