@@ -9,7 +9,7 @@
         .add-card__list__head
           %h3 クレジットカード一覧
       .add-card__list__btn
-        = link_to  root_path, class: 'add-card__list__btn__red' do
+        = link_to  card_create_users_path, class: 'add-card__list__btn__red' do
           = fa_icon 'fas fa-credit-card', class: "fas fa-credit-card" 
           クレジットカードを追加する
     %p.payment
