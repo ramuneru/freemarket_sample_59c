@@ -1,18 +1,16 @@
-.single-main
+%main.single-main
   .login-panel
     .login-no-account
       %p アカウントをお持ちでない方はこちら
-      = link_to index_path, class:"sigup-assist-link" do
-        新規会員登録
+      %a{:href => "https://www.mercari.com/jp/signup/?after_save_callback=%2Fjp%2F"} 新規会員登録
     .login-form-inner
       %button#facebook-login.btn-default.btn-sns.btn-sns-facebook
-        = fa_icon 'facebook-square', class:"icon-facebook"
+        %i.icon-facebook
         Facebookでログイン
       %button#google-login.btn-default.btn-sns.btn-sns-google
-        = fa_icon 'google', class:"g-icon"
         Googleでログイン
     %form{:action => "https://www.mercari.com/jp/login/", :method => "POST", :novalidate => "novalidate"}
-      .login-form-inner-ex
+      .login-form-inner
         .form-group
           %input.login-input-text.input-default{:name => "email", :placeholder => "メールアドレス", :type => "email", :value => ""}/
         .form-group
@@ -26,8 +24,7 @@
         %button.login-submit.btn-default.btn-red{:type => "submit"} ログイン
         %input{:name => "login_callback", :type => "hidden", :value => "/jp/"}/
         %input{:name => "__csrf_value", :type => "hidden", :value => "e1c1f93e58bd81edbfc8ada7584e2372f3ecbdcd073acc163d88bd3d27f7934d4e073c5ea9afce51b11b4c8411376709480ec476fd05d37de0c5a110009748475"}/
-        = link_to "https://www.mercari.com/jp/password/reset/start/" do
-          パスワードをお忘れの方
+        %a{:href => "https://www.mercari.com/jp/password/reset/start/"} パスワードをお忘れの方
   %form#login_form_facebook{:action => "/jp/login/", :method => "POST", :novalidate => "novalidate"}
     %input{:name => "__csrf_value", :type => "hidden", :value => "e1c1f93e58bd81edbfc8ada7584e2372f3ecbdcd073acc163d88bd3d27f7934d4e073c5ea9afce51b11b4c8411376709480ec476fd05d37de0c5a110009748475"}/
     %input{:name => "nickname", :type => "hidden", :value => ""}/
