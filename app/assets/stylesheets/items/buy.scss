@@ -1,0 +1,13 @@
+.buy-confirmation{
+  width: 700px;
+  margin: 0 auto;
+  background-color: #fff;
+  height: 800px;
+  &__head{
+    font-size: 24px;
+    font-weight: bold;
+    padding: 24px;
+    border-bottom: 2px solid #f5f5f5;
+    text-align: center;
+  }
+}
