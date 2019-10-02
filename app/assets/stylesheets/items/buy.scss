@@ -2,12 +2,104 @@
   width: 700px;
   margin: 0 auto;
   background-color: #fff;
-  height: 800px;
+  height: 950px;
   &__head{
     font-size: 24px;
     font-weight: bold;
     padding: 24px;
-    border-bottom: 2px solid #f5f5f5;
     text-align: center;
   }
+  &__item{
+    text-align: center;
+    padding: 24px 12.5% 30px;
+    margin-bottom: 50px;
+    border-bottom: 2px solid #f5f5f5;
+    &__inner{
+      max-width: 320px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      &__name{
+        margin-left: 20px;
+        font-weight: bold;
+      }
+    }
+  }
 }
+
+.buy-form{
+  margin: 8px 0 0;
+  line-height: 1.5;
+  font-weight: bold;
+  width: 100%;
+  &__name{
+    font-size: 20px;
+  }
+  &__point{
+    background: #ccc;
+    margin-top: 16px;
+    &__none{
+      padding: 16px;
+    }
+  }
+  &__money{
+    display: table;
+    border-collapse: collapse;
+    width: 100%;
+    & li{
+      display: table-row;
+    }
+    &__cell{
+      text-align: right;
+      display: table-cell;
+      padding-top: 15px;
+      font-size:20px;
+    }
+  }
+  &__btn{
+    width: 100%;
+    background-color: #888;
+    padding: 16px;
+    color: #fff;
+  }
+}
+
+
+.buy-form__money__cell:first-child {
+  text-align: left;
+}
+.has-error-text{
+  color: #ea352d;
+  line-height: 1.5;
+  font-size: 14px;
+  margin: 25px;
+}
+
+
+.buy-confirmation__border{
+  border-bottom:2px solid #eee;
+}
+
+.user-address{
+  max-width: 320px;
+  margin: 0 auto 70px;
+  
+}
+
+.user-address__inner__content{
+  margin-top: 5px;
+}
+.user-address__inner__change{
+  text-align: right;
+  color: blue;
+  display: block;
+}
+
+.card{
+  padding-top: 60px;
+}
+
+.credit-head{
+  margin: 30px 0 ;
+}
+
