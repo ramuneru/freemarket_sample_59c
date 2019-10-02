@@ -41,12 +41,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def phone_authen
+    render layout: "application.registration"  
   end
 
   def address
+    render layout: "application.registration"  
   end
 
   def credit
+    render layout: "application.registration"  
   end
 
   def complete
@@ -109,7 +112,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # end
     def birthday_join_params
       # パラメータ取得
-      date = params[:user][:dateOfbirth]
+      date = params[:user][:birth_year]
 
       # エラー回避 未選択だったら何もしない
       if date["birthday(1i)"].empty? && date["birthday(2i)"].empty? && date["birthday(3i)"].empty?
