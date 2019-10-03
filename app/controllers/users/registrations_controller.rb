@@ -11,9 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def profile
-    # @user = User.new
-    # @address = Address.new
-    # @user_profile = UserProfile.new
+    
     render layout: "application.registration"
   end
 
@@ -57,10 +55,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     )
     @user.build_user_profile(session[:user_profile_attributes])
     @user.build_address(session[:address_attributes])
-    # binding.pry
     if @user.save
       session[:id] = @user.id
-      redirect_to :index
+      redirect_to root_path
     else
       redirect_to :index
     end
@@ -80,17 +77,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
  
   def birthday_join_params
-    # パラメータ取得
     params.require(:birth_date).permit(:'birth_year(1i)',:'birth_year(2i)',:'birth_year(3i)')
     #date=params[:birth_date]
-    # エラー回避 未選択だったら何もしない
     # if date["birth_year(1i)"].empty? && date["birth_year(2i)"].empty? && date["birth_year(3i)"].empty?
     #    return
     # else
       # params[:birth_year] = date["birthday(1i)"]
       # params[:birth_month] = date["birthday(2i)"]
       # params[:birth_date] = date["birthday(3i)"]
-      # 年月日別々できたものを結合して新しいDate型変数を作って返す
       # Date.new date["birthday(1i)"].to_i,date["birthday(2i)"].to_i,date["birthday(3i)"].to_i
     
     #end
