@@ -57,7 +57,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     )
     @user.build_user_profile(session[:user_profile_attributes])
     @user.build_address(session[:address_attributes])
-    binding.pry
+    # binding.pry
     if @user.save
       session[:id] = @user.id
       redirect_to :index
