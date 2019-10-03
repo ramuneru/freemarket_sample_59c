@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  get 'category/index'
   root 'items#index'
   resources :items , only: [:index, :show, :new] do
     collection do
       get 'buy'
     end
   end
-
+  resources :category, only: [:index]
   resources :users , only: [:index] do
     collection do
       get 'profile'
