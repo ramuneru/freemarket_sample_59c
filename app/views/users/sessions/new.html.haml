@@ -11,15 +11,15 @@
       %button#google-login.btn-default.btn-sns.btn-sns-google
         = fa_icon 'google', class:"g-icon"
         Googleでログイン
-    %form{action: "https://www.mercari.com/jp/login/",method: "POST",novalidate: "novalidate"}
+    = form_for @user, url:root_path, method: :get do |f|
       .login-form-inner-ex
         .form-group
-          %input.login-input-text.input-default{name:"email",placeholder:"メールアドレス",type:"email",value:""}
+          = f.text_field :email, placeholder:"メールアドレス", class:".login-input-text input-default"
         .form-group
-          %input.login-input-text.input-default{name:"password",placeholder:"パスワード",type:"password"}
+          = f.text_field :password, placeholder:"パスワード", class:".login-input-text input-default"
         .form-group
           .g-recaptcha.login-captcha{"data-sitekey":"6LfZGCYTAAAAAHoK-s7Lg5OdYg5Fq4susvALmZoc"}
-            %div{:style => "width: 304px; height: 78px;"}
+            %div{style: "width: 304px; height: 78px;"}
               %div
                 %iframe{frameborder: "0", height:"78",name: "a-kmczpmsqdwr8",role: "presentation",sandbox: "allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox",scrolling:"no",src: "https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LfZGCYTAAAAAHoK-s7Lg5OdYg5Fq4susvALmZoc&co=aHR0cHM6Ly93d3cubWVyY2FyaS5jb206NDQz&hl=ja&v=Zy-zVXWdnDW6AUZkKlojAKGe&size=normal&cb=fn0repku40iu",width:"304"}
               %textarea#g-recaptcha-response.g-recaptcha-response{name:"g-recaptcha-response",style:"width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"}
