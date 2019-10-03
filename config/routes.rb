@@ -29,5 +29,6 @@ Rails.application.routes.draw do
     get "address",             to: "users/registrations#address"
     get "credit",              to: "users/registrations#credit"
     get "complete",            to: "users/registrations#complete"
+    post "complete",           to: "users/registzzrations#create"
   end
 end

@@ -19,37 +19,30 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def phone
     render layout: "application.registration"
-    session[:phone] = user_params[:phone]
     session[:email] = user_params[:email]
     session[:encrypted_password] = user_params[:encrypted_password]
-    session[:passwordCheck] = user_params[:passwordCheck]
-    # session[:nickname] = user_profile_params[:nickname]
-    # session[:family_name] = user_profile_params[:family_name]
-    # session[:last_name] = user_profile_params[:last_name]
-    # session[:family_name_kana] = user_profile_params[:family_name_kana]
-    # session[:last_name_kana] = user_profile_params[:last_name_kana]
-    # session[:dateOfbirth] = birthday_join_params(user_profile_params[:dateOfbirth])
-    # session[:birth_year] = birthday_join_params(user_profile_params[:birth_year])
-    # session[:birth_month] = birthday_join_params(user_profile_params[:birth_month])
-    # session[:birth_date] = birthday_join_params(user_profile_params[:birth_date])
-    # session[:birth_year] = birthday_join(user_profile_params[:birth_year])
-    # session[:birth_month] = birthday_join(user_profile_params[:birth_month])
-    # session[:birth_date] = birthday_join(user_profile_params[:birth_date])
-    # @user = User.new
-    # @address = Address.new
-    # @user_profile = UserProfile.new
+    session[:password] = user_params[:password]
+    session[:user_profile_attributes] = user_params[:user_profile_attributes]
+    user_profile_attributes={}
+    user_profile_attributes["birth_year"]=birthday_join_params[:'birth_year(1i)']
+    user_profile_attributes["birth_month"]=birthday_join_params[:'birth_year(2i)']
+    user_profile_attributes["birth_day"]=birthday_join_params[:'birth_year(3i)']
+    session[:birth_day_attributes]=user_profile_attributes
+    session[:user_profile_attributes].merge!(session[:birth_day_attributes])
   end
 
   def phone_authen
-    render layout: "application.registration"  
+    render layout: "application.registration" 
+    session[:phone]=user_params[:phone] 
   end
 
   def address
-    render layout: "application.registration"  
+    render layout: "application.registration" 
   end
 
   def credit
-    render layout: "application.registration"  
+    render layout: "application.registration" 
+    session[:address_attributes] = user_params[:address_attributes]
   end
 
   def complete
@@ -59,73 +52,56 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(
       email: session[:email],
       encrypted_password: session[:encrypted_password],
-      nickname: session[:nickname],
+      password: session[:password],
       phone: session[:phone]
     )
     @user.build_user_profile(session[:user_profile_attributes])
     @user.build_address(session[:address_attributes])
+    binding.pry
+    if @user.save
+      session[:id] = @user.id
+      redirect_to :index
+    else
+      redirect_to :index
+    end
   end
 
   private
-  def set_user
-    @user = User.new
-    @user.build_user_profile
-    @user.build_address
-  end
-
+  
   def user_params
     params.require(:user).permit(
       :email,
       :encrypted_password,
-      :passwordCheck,
+      :password,
       :phone,
-      user_profile_attributes: [:id,:nickname,
-        :family_name,:last_name,
-        :family_name_kana,:last_name_kana,
-        :birth_year,:birth_month,:birth_date],
-      address_attributes: [:id,:postal_code,:region,:city,:building,:phone]
+      user_profile_attributes: [:id,:nickname,:family_name,:last_name,:family_name_kana,:last_name_kana,:birth_year,:birth_month,:birth_date],
+      address_attributes: [:id,:postal_code,:region,:city,:block,:building,:phone]
     ) 
   end
-    # def user_profile_params
-    #   params.require(:user_profile).permit(
-    #     :nickname,
-    #     :family_name, 
-    #     :last_name, 
-    #     :family_name_kana, 
-    #     :last_name_kana,
-    #     :dateOfbirth,
-    #     :birth_year,
-    #     :birth_month,
-    #     :email,
-    #     :birth_date
-    #   )
-    # end
-    # def address_params
-    #   params.require(:address).permit(
-    #     :user,
-    #     :postal_code,
-    #     :region,
-    #     :city,
-    #     :building,
-    #     :phone
-    #   )
-    # end
-    def birthday_join_params
-      # パラメータ取得
-      date = params[:user][:birth_year]
+ 
+  def birthday_join_params
+    # パラメータ取得
+    params.require(:birth_date).permit(:'birth_year(1i)',:'birth_year(2i)',:'birth_year(3i)')
+    #date=params[:birth_date]
+    # エラー回避 未選択だったら何もしない
+    # if date["birth_year(1i)"].empty? && date["birth_year(2i)"].empty? && date["birth_year(3i)"].empty?
+    #    return
+    # else
+      # params[:birth_year] = date["birthday(1i)"]
+      # params[:birth_month] = date["birthday(2i)"]
+      # params[:birth_date] = date["birthday(3i)"]
+      # 年月日別々できたものを結合して新しいDate型変数を作って返す
+      # Date.new date["birthday(1i)"].to_i,date["birthday(2i)"].to_i,date["birthday(3i)"].to_i
+    
+    #end
+  end
 
-      # エラー回避 未選択だったら何もしない
-      if date["birthday(1i)"].empty? && date["birthday(2i)"].empty? && date["birthday(3i)"].empty?
-        return
-      else
-        params[:birth_year] = date["birthday(1i)"]
-        params[:birth_month] = date["birthday(2i)"]
-        params[:birth_date] = date["birthday(3i)"]
-        # 年月日別々できたものを結合して新しいDate型変数を作って返す
-        Date.new date["birthday(1i)"].to_i,date["birthday(2i)"].to_i,date["birthday(3i)"].to_i
+  def set_user
+    @user=User.new
+    @user.build_user_profile
+    @user.build_address
+  end
 
-      end
-    end
   # GET /resource/sign_up
   # def new
   #   super
