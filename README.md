@@ -1,6 +1,6 @@
 # README
 
-[![ER図](https://i.gyazo.com/4671aa333d26cd8df0ae58a4d6b80b97.png)](https://gyazo.com/4671aa333d26cd8df0ae58a4d6b80b97)
+[![ER図](https://i.gyazo.com/70c66febfe02575949ff26bb9fb6978e.png)](https://gyazo.com/70c66febfe02575949ff26bb9fb6978e)
 
 ## users
 
@@ -123,12 +123,12 @@
 |price|integer|null:false|
 |category_id|references|null:false, foreign_key:true|
 |brand_id|references|foreign_key:true|
-|status|integer|null:false, enum|
+|condition|integer|null:false, enum|
 |size_id|references|foreign_key:true|
 |region|integer|null:false|
-|shipping_fee_burden|string|null:false|
-|shipping_method|string|null:false|
-|shipping_duration|string|null:false|
+|shipping_fee_burden|integer|null:false|
+|shipping_method|integer|null:false|
+|shipping_duration|integer|null:false|
 |sold_date|string||
 |seller_id|references|null:false, foreign_key:true|
 |buyer_id|references|foreign_key:true|
