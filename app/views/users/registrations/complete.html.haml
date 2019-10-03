@@ -30,7 +30,7 @@
         %h2.l-chapter-head.registration
           会員登録完了
         .l-single-inner.registration-form
-          = form_for @user, url:root_path, method: :get do |f|
+          = form_for @user, url:user_registration_path, method: :post do |f|
             .l-single-content
               .form-group
               %p ありがとうございます。

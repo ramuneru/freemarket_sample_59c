@@ -29,8 +29,8 @@
       .l-single-container
         %h2.l-chapter-head 発送元・お届け先住所入力
         .l-single-inner.registration-form
-          = form_for @user, url:credit_path, method: :get do |f|
-            = fields_for :user_profile do |g|
+          = form_for @user, url: credit_path, method: :get do |f|
+            = f.fields_for :user_profile do |g|
               %input{name:"__csrf_value",type: "hidden", value: ""}
               .l-single-content
                 .form-group
@@ -43,7 +43,7 @@
                   %span.form-require 必須
                   = g.text_field :family_name_kana, placeholder: "例) ヤマダ", class:"input-default"
                   = g.text_field :last_name_kana, placeholder: "例) アヤ", class:"input-default"
-                = fields_for :address do |h|
+                =f.fields_for :address do |h|
                   .form-group
                     %label{for: "zip_code1"} 郵便番号
                     %span.form-require 必須
@@ -62,7 +62,7 @@
                     %label{for: "address1_label"} 番地
                     %span.form-require 必須
                     %input.input-default{:name => "address1", :placeholder => "例) 青山1−1−1", :type => "text", :value => ""}/
-                    = h.text_field :city, placeholder: "例) 横浜市緑区", class:"input-default" 
+                    = h.text_field :building, placeholder: "例) 横浜市緑区", class:"input-default" 
                   .form-group
                     %label{for: "address2_label"} 建物名
                     %span.form-arbitrary 任意

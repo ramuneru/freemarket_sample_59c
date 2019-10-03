@@ -29,7 +29,7 @@
     .l-single-container
       %h2.l-single-head.registration
         会員情報入力
-      = form_for [@user], url:phone_path, method: :get do |f|
+      = form_for @user, url:phone_path, method: :get do |f|
         = f.fields_for :user_profile do |g|
           .l-single-inner.registration-form
             .l-single-content
@@ -56,7 +56,7 @@
                 %label パスワード (確認)
                 %span.form-require 必須
                 .dateOfbirth
-                = f.password_field :passwordCheck, placeholder: "7文字以上", type: "password", class:"input-default"
+                = f.password_field :password, placeholder: "7文字以上", type: "password", class:"input-default"
 
               .form-group
                 %h3.text-left.l-chapter-sub-head 本人確認
@@ -83,7 +83,7 @@
                 %span.form-require 必須
                 %br
                 .dateOfbirth
-                  != sprintf(g.date_select(:birth_year, prefix:"birthday",with_css_classes:'XXXXX', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+                  != sprintf(g.date_select(:birth_year, prefix:"birth_date",with_css_classes:'XXXXX', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
                 -# %input{name: "dateOfbirth", id:"userBirthDay", value: ""}
 
                 .clearfix
