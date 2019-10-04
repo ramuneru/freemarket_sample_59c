@@ -8,7 +8,6 @@
   height: auto;
   background: #fff;
   margin: 0 auto;
-
   // &__container{
   // }
   h2.item-regi-head{
@@ -24,6 +23,7 @@
   border-top: 1px solid #eee;
 }
 // 画像10枚までのアップロード箇所
+
 .sell-upload-box{
   width: 620px;
   padding: 40px;
@@ -107,6 +107,7 @@
     .form-block{
       width: 400px;
       height: 70px;
+      margin: 40px 0 0;
       .sell-price{
         padding: 0 0 24px;
         display: flex;
@@ -156,11 +157,30 @@
             font-size: 34px;
           }
         }
-       
-
       }
-
-
+      .select-wrap{
+        margin: 8px 0 0;
+        position: relative;
+        .collection_select-default{
+          @include select-default;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          
+        }
+        i{
+          position: absolute;
+          top: 15px;
+          right: 18px;
+          z-index: 2;
+          color: #888;
+          font-size: 18px;
+        }
+      }
+    }
+    // 各selectの先頭selectタグ用
+    .first-child{
+      margin: 0;
     }
   }
 }

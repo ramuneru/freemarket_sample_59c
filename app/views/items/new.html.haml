@@ -5,12 +5,23 @@
         商品の情報を入力
       = form_with model: @item, url: '#', local: true, class: "form-container" do |f|
         .sell-upload-box
-          .sell-upload-box-title
+          .sell-upload-box__title
             .sell-upload-box__title__title
               出品画像
               %span.sell-upload-box__title__required
                 必 須
           %p 最大10枚までアップロードできます
+          .sell-upload-box__image-box
+
+
+
+
+
+
+
+
+
+
         
         .sell-content-box-top
           .sell-content-box-top__title
@@ -29,36 +40,53 @@
           .sell-left-block
             %h3.head-text  商品の詳細
           .sell-form-box
-            .form-block
+            .form-block.first-child
               %label カテゴリー
               %span.required 必須
-              = select_tag "category"
-
-            =fa_icon "chevron-down"
+              .select-wrap
+                %i.fa.fa-chevron-down
+                -# カテゴリーテーブル未実装のため、他のselectタグで代替中
+                = f.collection_select(:condition, Condition.all, :id, :condition, {prompt:"---"},{class:"collection_select-default condition-select"})
             
             .form-block
               %label 商品の状態
               %span.required 必須
+              .select-wrap
+                %i.fa.fa-chevron-down
+                = f.collection_select(:condition, Condition.all, :id, :condition, {prompt:"---"},{class:"collection_select-default condition-select"})
+
 
         .sell-content-box
           .sell-left-block
             %h3.head-text  
               配送について
               =link_to "?", "#", class: "link question"
-          .sell-form-box
-            .form-block
+          .sell-form-box.first-child
+            .form-block.first-child
               %label 配送料の負担
               %span.required 必須
-              -# = f.collection_select 
+              .select-wrap
+                %i.fa.fa-chevron-down
+                = f.collection_select(:shipping_fee_burden, Shipping_fee_burden.all, :id, :burden, {prompt:"---"},{class:"collection_select-default shipping_fee_burden-select"})
 
-
+            .form-block_hidden.shipping-method_hidden
 
             .form-block
               %label 発送元の地域
               %span.required 必須
+              .select-wrap
+                %i.fa.fa-chevron-down
+                -# カテゴリーテーブル未実装のため、他のselectタグで代替中
+                -# = f.collection_select(:region, Prefecture.all, :id, :name, {prompt:"---"},{class:"collection_select-default region-select"})
+                = f.collection_select(:shipping_fee_burden, Shipping_fee_burden.all, :id, :burden, {prompt:"---"},{class:"collection_select-default shipping_fee_burden-select"})
+
             .form-block
               %label 発送までの日数
               %span.required 必須
+              .select-wrap
+                %i.fa.fa-chevron-down
+                = f.collection_select(:shipping_duration, Shipping_duration.all, :id, :duration, {prompt:"---"},{class:"collection_select-default duration-select"})
+
 
         .sell-content-box
           .sell-left-block
