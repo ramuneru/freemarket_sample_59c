@@ -71,7 +71,7 @@ group :test do
   gem 'chromedriver-helper'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem#
 gem 'ancestry'
 gem 'active_hash'
 gem 'carrierwave'
