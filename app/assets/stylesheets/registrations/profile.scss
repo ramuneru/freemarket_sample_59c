@@ -1,0 +1,182 @@
+* {
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  border-style: solid;
+  border-width: 0;
+  font-size: inherit;
+  line-height: inherit;
+  text-decoration: none;
+}
+.progress {
+  padding: 40px 0 0 44px;
+  border: 0;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 0;
+  text-align: center;
+  &-bar {
+    margin: 0;
+    li {
+      margin: 0 40px 0 0;
+      padding: 0;
+      position: relative;
+      z-index: 40;
+      display: inline-block;
+      min-width: 60px;
+      font-size: 12px;
+      color: gray;
+      .progress-status {
+        position: absolute;
+        left: 40%;
+        width: 12px;
+        height: 12px;
+        margin: 8px auto 0;
+        background: gray;
+        border-radius: 50%;
+        z-index: 30;
+      }
+    }
+  }
+}
+.progress-status_bar {
+  position: absolute;
+  left: 50%;
+  top: 25px;
+  bottom: 5px;
+  display: block;
+  width: 130px;
+  height: 2px;
+  background: gray;
+  z-index: 10;
+}
+.end .progress-status_bar {
+  width: 0px;
+}
+.payment .progress-status_bar {
+  width: 100px;
+}
+// プログレスバーカラー変更CSS
+#red{
+  color: #ea352d;
+}
+#active{
+  background: #ea352d;
+}
+
+.single-main {
+  display: block;
+  background-repeat: no-repeat;
+  .l-single-container {
+    width: 700px;
+    margin: 0 auto;
+    background-color:#fff;
+  }
+  .form-group {
+    font-weight: bold;
+    margin-top: 32px;
+    margin: 24px 0 0;
+  }
+  .form-require {
+    background: #ea352d;
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    vertical-align: top;
+  }
+  .form-group .input-default {
+    width: 100%;
+  }
+  .input-default {
+    height: 48px;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+  }
+  .input-default.half:first-of-type {
+    margin-right: 8px;
+  }
+  .input-default.half {
+    width: calc(50% - 6px);
+    display: inline-flex;
+
+  }
+  .l-chapter-sub-head {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .l-single-content p.l-single-text {
+    margin: 8px 0 0;
+    padding: 0; 
+  }
+  .dateOfbirth {
+    margin-top: 5px;
+    .year,.month,.day {
+      width: 76px;
+      display: inline-block;
+      position: relative;
+      z-index: 2;
+      height: 48px;
+      padding: 0 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: 0;
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+  }
+  .form-info-text {
+    color: #ccc;
+  }
+  .single-inner .registration-form .btn-red {
+    margin: 24px 0 0;
+  }
+  .l-single-inner {
+    margin: 10px 0 0;
+  }
+  .btn-red {
+    background: #ea352d;
+    border: 1px solid #ea352d;
+    color: #fff;
+    margin: 20px 0 0;
+  }
+  .btn-default {
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    border: 1px solid transparent;
+    -webkit-transition: all ease-out .3s;
+    transition: all ease-out .3s;
+    cursor: pointer;
+    text-align: center;
+  }
+  .terms_of_use {
+    color: #0099E8;
+  }
+  .l-single-inner.registration-form .form-group:not(:first-of-type), .l-single-inner.registration-form .btn-red {
+    margin-top: 32px;
+  }
+  .l-single-inner.registration-form .form-group:not(:first-of-type), .l-single-inner.registration-form .btn-red {
+    margin: 24px 0 0;
+  }
+  .form-group.text-right{
+    margin: 24px 0 0;
+    display: inline-block;
+    .link_decoration{
+    display: inline-block;
+    color: #0099E8;
+    margin-left: 170px;
+    }
+    .rightIcon{
+      color: #0099E8;
+    }
+  }
+}

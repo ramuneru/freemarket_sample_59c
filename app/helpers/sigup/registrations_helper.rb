@@ -1,0 +1,2 @@
+module Sigup::RegistrationsHelper
+end

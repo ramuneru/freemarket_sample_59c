@@ -1,0 +1,45 @@
+%main.single-main
+  .login-panel
+    .login-no-account
+      %p アカウントをお持ちでない方はこちら
+      %a{:href => "https://www.mercari.com/jp/signup/?after_save_callback=%2Fjp%2F"} 新規会員登録
+    .login-form-inner
+      %button#facebook-login.btn-default.btn-sns.btn-sns-facebook
+        %i.icon-facebook
+        Facebookでログイン
+      %button#google-login.btn-default.btn-sns.btn-sns-google
+        Googleでログイン
+    %form{:action => "https://www.mercari.com/jp/login/", :method => "POST", :novalidate => "novalidate"}
+      .login-form-inner
+        .form-group
+          %input.login-input-text.input-default{:name => "email", :placeholder => "メールアドレス", :type => "email", :value => ""}/
+        .form-group
+          %input.login-input-text.input-default{:name => "password", :placeholder => "パスワード", :type => "password"}/
+        .form-group
+          .g-recaptcha.login-captcha{"data-sitekey" => "6LfZGCYTAAAAAHoK-s7Lg5OdYg5Fq4susvALmZoc"}
+            %div{:style => "width: 304px; height: 78px;"}
+              %div
+                %iframe{:frameborder => "0", :height => "78", :name => "a-kmczpmsqdwr8", :role => "presentation", :sandbox => "allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox", :scrolling => "no", :src => "https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LfZGCYTAAAAAHoK-s7Lg5OdYg5Fq4susvALmZoc&co=aHR0cHM6Ly93d3cubWVyY2FyaS5jb206NDQz&hl=ja&v=Zy-zVXWdnDW6AUZkKlojAKGe&size=normal&cb=fn0repku40iu", :width => "304"}
+              %textarea#g-recaptcha-response.g-recaptcha-response{:name => "g-recaptcha-response", :style => "width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"}
+        %button.login-submit.btn-default.btn-red{:type => "submit"} ログイン
+        %input{:name => "login_callback", :type => "hidden", :value => "/jp/"}/
+        %input{:name => "__csrf_value", :type => "hidden", :value => "e1c1f93e58bd81edbfc8ada7584e2372f3ecbdcd073acc163d88bd3d27f7934d4e073c5ea9afce51b11b4c8411376709480ec476fd05d37de0c5a110009748475"}/
+        %a{:href => "https://www.mercari.com/jp/password/reset/start/"} パスワードをお忘れの方
+  %form#login_form_facebook{:action => "/jp/login/", :method => "POST", :novalidate => "novalidate"}
+    %input{:name => "__csrf_value", :type => "hidden", :value => "e1c1f93e58bd81edbfc8ada7584e2372f3ecbdcd073acc163d88bd3d27f7934d4e073c5ea9afce51b11b4c8411376709480ec476fd05d37de0c5a110009748475"}/
+    %input{:name => "nickname", :type => "hidden", :value => ""}/
+    %input{:name => "email", :type => "hidden", :value => ""}/
+    %input{:name => "facebook_user_id", :type => "hidden", :value => ""}/
+    %input{:name => "facebook_access_token", :type => "hidden", :value => ""}/
+    %input{:name => "login_type", :type => "hidden", :value => "facebook"}/
+    %input{:name => "login_callback", :type => "hidden", :value => "/jp/"}/
+  %form#login_form_google{:action => "/jp/login/", :method => "POST", :novalidate => "novalidate"}
+    %input{:name => "__csrf_value", :type => "hidden", :value => "e1c1f93e58bd81edbfc8ada7584e2372f3ecbdcd073acc163d88bd3d27f7934d4e073c5ea9afce51b11b4c8411376709480ec476fd05d37de0c5a110009748475"}/
+    %input{:name => "nickname", :type => "hidden", :value => ""}/
+    %input{:name => "email", :type => "hidden", :value => ""}/
+    %input{:name => "google_user_id", :type => "hidden", :value => ""}/
+    %input{:name => "google_access_token", :type => "hidden", :value => ""}/
+    %input{:name => "login_type", :type => "hidden", :value => "google"}/
+    %input{:name => "login_callback", :type => "hidden", :value => "/jp/"}/
+  %input#google_client_id{:type => "hidden", :value => "238694260676-l0gp5j3hs9p8l2hjmnt126q0b4iin34r.apps.googleusercontent.com"}/
+  %input#facebook_app_id{:type => "hidden", :value => "466308336793848"}/

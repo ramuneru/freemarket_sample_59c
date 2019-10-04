@@ -1,0 +1,78 @@
+.single-main {
+  display: block;
+  margin-bottom: 0;
+  .login-panel {
+    max-width: none;
+    width: 456px;
+    margin: 0 auto;
+    background: #fff;
+    .login-no-account {
+      padding: 40px 64px;
+      text-align: center;
+    }
+    .sigup-assist-link {
+      display: block;
+      margin: 8px 0 0;
+      border: 1px solid #0099e8;
+      background: #0099e8;
+      color: #fff;
+      line-height: 40px;
+    }
+    .login-form-inner {
+      padding: 32px 64px;
+      border-top: 1px solid #eee;
+    }
+    .login-form-inner-ex {
+      padding: 32px 64px;
+    }
+  }
+  .btn-default {
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    border: 1px solid transparent;
+    -webkit-transition: all ease-out .3s;
+    transition: all ease-out .3s;
+    cursor: pointer;
+    text-align: center;
+  }
+  .btn-sns-facebook:first-child {
+    margin: 0;
+  }
+  .btn-sns-facebook {
+    margin: 16px 0 0;
+    background: #385185;
+    color: #fff;
+  }
+  .btn-sns-google {
+    margin: 16px 0 0;
+    background: #fff url(/jp/assets/img/common/common/google.svg) no-repeat 3px top;
+    border: #979797 solid 1px;
+    color: #333;
+  }
+  .g-icon{
+    font-size: 26px;
+  }
+  .btn-sns {
+    position: relative;
+  }
+  .btn-sns i {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+  }
+  .icon-facebook {
+    font-size: 26px;
+  }
+  .login-panel a {
+    display: block;
+    margin: 40px 0 0;
+  }
+  a {
+    color: #0099e8;
+    text-decoration: none;
+  }
+}
