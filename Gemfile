@@ -83,10 +83,7 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'mini_magick'
-
-
-
-gem 'mechanize'
+# gem 'mechanize'
 gem 'nokogiri'
 gem 'payjp'
 gem 'recaptcha', require: "recaptcha/rails"
