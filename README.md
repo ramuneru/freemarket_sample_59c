@@ -1,6 +1,6 @@
 # README
 
-[![ER図](https://i.gyazo.com/70c66febfe02575949ff26bb9fb6978e.png)](https://gyazo.com/70c66febfe02575949ff26bb9fb6978e)
+[![ER図](https://i.gyazo.com/66d53d685aa12c67e283ce3aac432514.png)](https://gyazo.com/66d53d685aa12c67e283ce3aac432514)
 
 ## users
 
@@ -165,7 +165,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|ancestry|string||
+|path|string|| (gem"ancestry"による自動挿入)
 |size_id|references|foreign_key: true|
 
 ### Association
@@ -178,7 +178,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |size|string|null: false|
-|ancestry|string||
+|path|string|| (ancestryによる自動挿入)
 
 - has_many :categories
 - has_ancestry
@@ -205,7 +205,7 @@
 - belongs_to :user
 
 
-## seller
+## seller(残存or削除検討中)
 
 |Column|Type|Options|
 |------|----|-------|
@@ -216,7 +216,7 @@
 - belongs_to :user
 - has_many :trade_messages
 
-## buyer
+## buyer(残存or削除検討中)
 
 |Column|Type|Options|
 |------|----|-------|
@@ -228,7 +228,7 @@
 - has_many :trade_messages
 
 
-## trade_messages
+## trade_messages(buyer&sellerテーブル次第で内容変更予定)
 |Column|Type|Options|
 |------|----|-------|
 |message|text||
