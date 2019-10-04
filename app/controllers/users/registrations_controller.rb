@@ -55,11 +55,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     )
     @user.build_user_profile(session[:user_profile_attributes])
     @user.build_address(session[:address_attributes])
+    binding.pry
     if @user.save
       session[:id] = @user.id
       redirect_to root_path
     else
-      redirect_to :index
+      
     end
   end
 
@@ -78,7 +79,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
  
   def birthday_join_params
     params.require(:birth_date).permit(:'birth_year(1i)',:'birth_year(2i)',:'birth_year(3i)')
-   
   end
 
   def set_user
