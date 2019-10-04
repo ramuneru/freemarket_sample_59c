@@ -7,5 +7,5 @@ class Address < ApplicationRecord
   validates :region, presence: true
   validates :city, presence: true 
   validates :building, presence: true 
-  validates :phone, uniqueness: true,length: {is:11}
+  #validates :phone, uniqueness: true,length: {is:11}
 end
