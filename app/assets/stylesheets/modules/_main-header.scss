@@ -43,6 +43,7 @@
         }
         .search-btn{
           @include btn-reset;
+          display: none;
           background-color: transparent;
           cursor: pointer;
           height: 40px;
@@ -73,7 +74,6 @@
       justify-content: space-between;
       margin-top: 8px;
       &__left{
-        float: left;
         display: flex;
         margin-left: -3px;
         font-size: 14px;
@@ -107,6 +107,7 @@
 // メインヘッダー 下段右下-未ログイン時
       &__right__block{
         display: flex;
+        height: 44px;
         &__register{
           text-align: center;
           text-decoration: none;

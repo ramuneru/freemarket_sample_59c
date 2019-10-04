@@ -71,7 +71,7 @@ group :test do
   gem 'chromedriver-helper'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem#
 gem 'ancestry'
 gem 'active_hash'
 gem 'carrierwave'
@@ -81,10 +81,11 @@ gem 'fog-aws'
 gem 'font-awesome-rails'
 gem 'haml-rails'
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
 gem 'mini_magick'
-gem 'mechanize'
+# gem 'mechanize'
 gem 'nokogiri'
-gem 'payjp'
-gem 'recaptcha', require: "recaptcha/rails"
+# gem 'payjp'
+# gem 'recaptcha', require: "recaptcha/rails"
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'faker'
