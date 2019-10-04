@@ -1,0 +1,142 @@
+.item-exhibition-main-container
+  %section.sell-item
+    .sell-item__container
+      %h2.item-regi-head
+        商品の情報を入力
+      = form_with model: @item, url: '#', local: true, class: "form-container" do |f|
+        .sell-upload-box
+          .sell-upload-box__title
+            .sell-upload-box__title__title
+              出品画像
+              %span.sell-upload-box__title__required
+                必 須
+          %p 最大10枚までアップロードできます
+          .sell-upload-box__image-box
+
+
+
+
+
+
+
+
+
+
+        
+        .sell-content-box-top
+          .sell-content-box-top__title
+            商品名
+            %span.sell-content-box-top__required
+              必須
+          =f.text_field :content, placeholder:'商品名(必須40文字まで)', class: "text_field"
+          
+          .sell-content-box-top__title.description
+            商品説明
+            %span.sell-content-box-top__required
+              必須
+          =f.text_area :content, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "text_area", rows: "5"
+        
+        .sell-content-box
+          .sell-left-block
+            %h3.head-text  商品の詳細
+          .sell-form-box
+            .form-block.first-child
+              %label カテゴリー
+              %span.required 必須
+              .select-wrap
+                %i.fa.fa-chevron-down
+                -# カテゴリーテーブル未実装のため、他のselectタグで代替中
+                = f.collection_select(:condition, Condition.all, :id, :condition, {prompt:"---"},{class:"collection_select-default condition-select"})
+            
+            .form-block
+              %label 商品の状態
+              %span.required 必須
+              .select-wrap
+                %i.fa.fa-chevron-down
+                = f.collection_select(:condition, Condition.all, :id, :condition, {prompt:"---"},{class:"collection_select-default condition-select"})
+
+
+        .sell-content-box
+          .sell-left-block
+            %h3.head-text  
+              配送について
+              =link_to "?", "#", class: "link question"
+          .sell-form-box.first-child
+            .form-block.first-child
+              %label 配送料の負担
+              %span.required 必須
+              .select-wrap
+                %i.fa.fa-chevron-down
+                = f.collection_select(:shipping_fee_burden, Shipping_fee_burden.all, :id, :burden, {prompt:"---"},{class:"collection_select-default shipping_fee_burden-select"})
+
+            .form-block_hidden.shipping-method_hidden
+
+            .form-block
+              %label 発送元の地域
+              %span.required 必須
+              .select-wrap
+                %i.fa.fa-chevron-down
+                -# カテゴリーテーブル未実装のため、他のselectタグで代替中
+                -# = f.collection_select(:region, Prefecture.all, :id, :name, {prompt:"---"},{class:"collection_select-default region-select"})
+                = f.collection_select(:shipping_fee_burden, Shipping_fee_burden.all, :id, :burden, {prompt:"---"},{class:"collection_select-default shipping_fee_burden-select"})
+
+            .form-block
+              %label 発送までの日数
+              %span.required 必須
+              .select-wrap
+                %i.fa.fa-chevron-down
+                = f.collection_select(:shipping_duration, Shipping_duration.all, :id, :duration, {prompt:"---"},{class:"collection_select-default duration-select"})
+
+
+        .sell-content-box
+          .sell-left-block
+            %h3.head-text 
+              販売価格(300〜9,999,999)
+              =link_to "?", "#", class: "link question"
+          .sell-form-box
+            .form-block
+              %ul
+                %li.sell-price
+                  .price-left
+                    %label 価格
+                    %span.required 必須
+                  .price-right
+                    ¥
+                    =f.text_field :content, value: "", placeholder: "例）300", class: "price-input", required: true
+                %li.sell-fee
+                    
+                %li.margin
+                  販売手数料
+                  .fee -
+
+                %li.profit
+                  %label.bigger 
+                    販売利益
+                  .sales-profit -
+
+        .sell-content-box-bottom
+          .text-tags
+            %p 
+              =link_to "禁止されている出品" , "#", class: "link-blue"
+              、
+              =link_to "行為" , "#", class: "link-blue"
+              を必ずご確認ください。
+            %p  
+              またブランド品でシリアルナンバー等がある場合はご記載ください。
+              =link_to "偽ブランドの販売", "#", class: "link-blue"
+              は犯罪であり処罰される可能性があります。
+            %p  
+              また、出品をもちまして
+              =link_to "加盟店規約", "#", class: "link-blue"
+              に同意したことになります。
+          
+          =link_to "出品する", "#", class:"exhibit-button-bar" 
+          =link_to "もどる", "javascript:history.back()", class:"go-back-button"
+        
+
+          
+
+
+
+
+    

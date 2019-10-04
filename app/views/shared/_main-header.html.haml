@@ -25,29 +25,29 @@
               ブランドから探す
 
 
-      -#  未ログイン時の記述   未実装のためコメントアウト
-      -# .main-header__inner__bottom__right__block
-      -#   .main-header__inner__bottom__right__block__register
-      -#     =link_to registrations_path, class: 'header-btn' do
-      -#       .btn-red 新規会員登録
-      -#   .main-header__inner__bottom__right__block__login
-      -#     =link_to '#', class: 'header-btn'do
-      -#       .btn-blue ログイン
-
-      
-      .main-header__inner__bottom__right__block-logged-in
-        %ul.lists-logged-in
-          %li.list
-            =link_to "#", class: "flex" do
-              .text.liked いいね！一覧
-          %li.list
-            =link_to "#", class: "flex" do
-              -# = image_tag "bell-icon.svg", class: "bell"
-              .text.notification お知らせ
-          %li.list
-            =link_to "#", class: "flex" do
-              .text.todo やることリスト
-          %li.list
-            =link_to "#", class: "flex" do
-              .circle-photo
-              .text マイページ
+      - if user_signed_in?
+        .main-header__inner__bottom__right__block-logged-in
+          %ul.lists-logged-in
+            %li.list
+              =link_to "#", class: "flex" do
+                .text.liked いいね！一覧
+            %li.list
+              =link_to "#", class: "flex" do
+                -# = image_tag "bell-icon.svg", class: "bell"
+                .text.notification お知らせ
+            %li.list
+              =link_to "#", class: "flex" do
+                .text.todo やることリスト
+            %li.list
+              =link_to profile_users_path, class: "flex" do
+                .circle-photo
+                .text マイページ
+    
+      - else
+        .main-header__inner__bottom__right__block
+          .main-header__inner__bottom__right__block__register
+            =link_to new_user_registration_path, class: 'header-btn' do
+              .btn-red 新規会員登録
+          .main-header__inner__bottom__right__block__login
+            =link_to new_user_session_path, class: 'header-btn'do
+              .btn-blue ログイン
