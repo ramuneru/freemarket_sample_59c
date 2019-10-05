@@ -57,9 +57,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @user.save
       session[:id] = @user.id
       sign_in User.find(session[:id]) unless user_signed_in?
+      # session.clear
       redirect_to root_path
     else
-      # redirect_to profile_path行かずにroot_pathいってまう
+      # session.clear
       redirect_to profile_path
     end
   end
