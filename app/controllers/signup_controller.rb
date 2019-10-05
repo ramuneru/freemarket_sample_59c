@@ -52,7 +52,6 @@ class SignupController < ApplicationController
 
   private
     def user_params
-      binding.pry
       params.require(:user).permit(
         :phone,
         :email, 
@@ -99,6 +98,5 @@ class SignupController < ApplicationController
         Date.new date["birthday(1i)"].to_i,date["birthday(2i)"].to_i,date["birthday(3i)"].to_i
 
       end
-      binding.pry
     end
 end

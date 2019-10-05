@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  #開発中はコメントアウト デプロイ前に解除すること
+  # before_action :authenticate_user!, except: :index
   
   layout 'application.users', except: [:index,:show]
 
@@ -7,7 +8,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    render layout: 'application.users'
+  
   end
 
   def create
@@ -15,7 +16,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    render layout: 'application.users'
+   
 
   end
 
