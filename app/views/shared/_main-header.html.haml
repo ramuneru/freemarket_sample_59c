@@ -26,6 +26,7 @@
 
 
       - if user_signed_in?
+        = session[:id]
         .main-header__inner__bottom__right__block-logged-in
           %ul.lists-logged-in
             %li.list

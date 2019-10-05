@@ -11,7 +11,7 @@
       %button#google-login.btn-default.btn-sns.btn-sns-google
         = fa_icon 'google', class:"g-icon"
         Googleでログイン
-    = form_for @user, url:root_path do |f|
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .login-form-inner-ex
         .form-group
           = f.text_field :email, placeholder:"メールアドレス", class:".login-input-text input-default"

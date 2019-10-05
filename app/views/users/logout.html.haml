@@ -3,7 +3,7 @@
   = render "users/side_bar"
 
   .logout-page
-    = link_to  destroy_user_session_path, method: :delete, class: 'logout-page__btn' do
+    = link_to sign_out_path, method: :delete, class: 'logout-page__btn' do
       ログアウト
 
 = render "shared/main-footer"
