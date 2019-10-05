@@ -61,11 +61,11 @@
                   .form-group
                     %label{for: "address1_label"} 番地
                     %span.form-require 必須
-                    %input.input-default{:name => "address1", :placeholder => "例) 青山1−1−1", :type => "text", :value => ""}/
+                    = h.text_field :block, placeholder: "例) 青山1−1−1", class:"input-default"
                   .form-group
                     %label{for: "address2_label"} 建物名
                     %span.form-arbitrary 任意
-                    = h.text_field :block, placeholder: "例) 柳ビル103", class:"input-default"
+                    = h.text_field :building, placeholder: "例) 柳ビル103", class:"input-default"
                   .form-group
                     %label{for: "address2_label"} 電話
                     %span.form-arbitrary 任意
