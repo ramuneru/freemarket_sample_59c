@@ -1,6 +1,6 @@
 # README
 
-[![ER図](https://i.gyazo.com/66d53d685aa12c67e283ce3aac432514.png)](https://gyazo.com/66d53d685aa12c67e283ce3aac432514)
+[![ER図](https://i.gyazo.com/57205f3e026e8a1f8dfbdb928ef2c7b6.png)](https://gyazo.com/57205f3e026e8a1f8dfbdb928ef2c7b6)
 
 ## users
 
@@ -13,14 +13,15 @@
 ### Association
 - has_one :user_profile, dependent: :destroy
 - has_one :address, dependent: :destroy
+<!-- credit cardテーブルは保留 -->
 - has_one :credit_card, dependent: :destroy
-<!-- sellerは要検討 -->
-- has_one :seller
 
 - has_many :items
 - has_many :comments
-<!-- buyersは要検討 -->
-- has_many :buyers
+- has_many :trade_messages
+- has_many :trade_conditions
+
+
 - has_many :likes
 - has_many :sns_credentials, dependent: :destroy
 
@@ -88,8 +89,8 @@
 ### Association
 - belongs_to :item
 
-
-## credit_cards
+<!-- payjp導入時、テーブルの有無を再考 -->
+## credit_cards(payjp導入時、テーブルの有無を再考 )
 |Column|Type|Options|
 |------|----|-------|
 |card_number|string|null:false, unique: true|
@@ -101,7 +102,6 @@
 ### Association
 - belongs_to :user
 
-<!-- payjp導入時、テーブルの有無を再考 -->
 
 ## sns_credentialsテーブル
 |Column|Type|Options|
@@ -123,32 +123,25 @@
 |price|integer|null:false|
 |category_id|references|null:false, foreign_key:true|
 |brand_id|references|foreign_key:true|
-|condition|integer|null:false, enum|
-|size_id|references|foreign_key:true|
+|condition|integer|null:false, active_hashで管理|
 |region|integer|null:false|
 |shipping_fee_burden|integer|null:false|
 |shipping_method|integer|null:false|
 |shipping_duration|integer|null:false|
-|sold_date|string||
-|seller_id|references|null:false, foreign_key:true|
-|buyer_id|references|foreign_key:true|
-|like_id|references|foreign_key: true|
-|comment_id|references|foreign_key:true|
 |user_id|references|null:false, foreign_key: true|
 
 - belongs_to :user
 - belongs_to :category, dependent: :destroy
 
 - has_one :brand, dependent: :destroy
-- has_one :seller
-- has_one :buyer
+- has_one :trade_condition
 
 - has_many :images, dependent: :destroy
 - has_many :likes, dependent: :destroy
 - has_many :comments, dependent: :destroy
 - has_many :trade_messages, dependent: :destroy
+- has_many :reviews
 
-- statusはenumで管理
 
 ## images
 
@@ -205,41 +198,17 @@
 - belongs_to :user
 
 
-## seller(残存or削除検討中)
 
-|Column|Type|Options|
-|------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|item_id|references|null: false, foreign_key: true|
-
-- belongs_to :item
-- belongs_to :user
-- has_many :trade_messages
-
-## buyer(残存or削除検討中)
-
-|Column|Type|Options|
-|------|----|-------|
-|user_id|references|null: false,foreign_key: true|
-|item_id|references|null: false,foreign_key: true|
-
-- belongs_to :item
-- belongs_to :user
-- has_many :trade_messages
-
-
-## trade_messages(buyer&sellerテーブル次第で内容変更予定)
+## trade_messages
 |Column|Type|Options|
 |------|----|-------|
 |message|text||
 |item_id|references|null: false, foreign_key: true|
-|seller_id|references|null: false, foreign_key: true|
-|buyer_id|references|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|(buyerのid)
 
 
 ### Association
 - belongs_to :item
-- belongs_to :seller
-- belongs_to :buyer
+- belongs_to :user
 
 
