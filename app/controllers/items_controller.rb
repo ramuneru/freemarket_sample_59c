@@ -24,6 +24,15 @@ class ItemsController < ApplicationController
   def show
   end
 
+  def pay
+    # Payjp の画面から取得した秘密鍵
+    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    Payjp::Charge.create(
+      amount: 3500, # 決済する値段
+      card: params['payjp-token'],
+      currency: 'jpy'
+    )
+  end
 
   private
   def params_new

@@ -23,7 +23,7 @@
               %div
                 %iframe{frameborder: "0", height:"78",name: "a-kmczpmsqdwr8",role: "presentation",sandbox: "allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox",scrolling:"no",src: "https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LfZGCYTAAAAAHoK-s7Lg5OdYg5Fq4susvALmZoc&co=aHR0cHM6Ly93d3cubWVyY2FyaS5jb206NDQz&hl=ja&v=Zy-zVXWdnDW6AUZkKlojAKGe&size=normal&cb=fn0repku40iu",width:"304"}
               %textarea#g-recaptcha-response.g-recaptcha-response{name:"g-recaptcha-response",style:"width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"}
-        %button.login-submit.btn-default.btn-red{type:"submit"} ログイン
+        = f.submit "ログイン", class:"login-submit btn-default btn-red"
         %input{name: "login_callback",type: "hidden", value: "/jp/"}/
         %input{name: "__csrf_value", type: "hidden", value: "e1c1f93e58bd81edbfc8ada7584e2372f3ecbdcd073acc163d88bd3d27f7934d4e073c5ea9afce51b11b4c8411376709480ec476fd05d37de0c5a110009748475"}/
         = link_to "https://www.mercari.com/jp/password/reset/start/" do
