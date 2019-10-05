@@ -36,7 +36,6 @@
                 .form-group
                   %label{for: "name"} お名前
                   %span.form-require 必須
-                  = session[:id]
                   = g.text_field :family_name, placeholder: "例) 山田", class:"input-default"
                   = g.text_field :last_name, placeholder: "例) 彩", class:"input-default"
                 .form-group
