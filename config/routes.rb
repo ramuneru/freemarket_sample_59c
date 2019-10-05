@@ -23,8 +23,8 @@ Rails.application.routes.draw do
     sessions:      "users/sessions"  
   }
   devise_scope :user do
-    get "sign_in",             to: "users/sessions#new"
-    get "sign_out",            to: "users/sessions#destroy"
+    post "sign_in",             to: "devise/sessions#new"
+    delete "sign_out",            to: "devise/sessions#destroy"
     get "index",               to: "users/registrations#index"
     get "profile",             to: "users/registrations#profile"
     get "phone",               to: "users/registrations#phone"
@@ -32,6 +32,6 @@ Rails.application.routes.draw do
     get "address",             to: "users/registrations#address"
     get "credit",              to: "users/registrations#credit"
     get "complete",            to: "users/registrations#complete"
-    post "complete",           to: "users/registzzrations#create"
+    post "complete",           to: "devise/registrations#create"
   end
 end

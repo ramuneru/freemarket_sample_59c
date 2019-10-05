@@ -1,4 +1,3 @@
-
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :set_user
@@ -57,9 +56,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.build_address(session[:address_attributes])
     if @user.save
       session[:id] = @user.id
+      sign_in User.find(session[:id]) unless user_signed_in?
+      # session.clear
       redirect_to root_path
     else
-      
+      # session.clear
+      redirect_to profile_path
     end
   end
 
