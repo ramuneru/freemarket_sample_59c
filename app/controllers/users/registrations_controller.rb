@@ -44,6 +44,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def complete
+     
   end
 
   def create
@@ -55,11 +56,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     )
     @user.build_user_profile(session[:user_profile_attributes])
     @user.build_address(session[:address_attributes])
+    binding.pry
     if @user.save
       session[:id] = @user.id
+      sign_in User.find(session[:id]) unless user_signed_in?
       redirect_to root_path
     else
-      
+      session[:id] = ""
+      redirect_to root_path
     end
   end
 
