@@ -30,13 +30,13 @@
             商品名
             %span.sell-content-box-top__required
               必須
-          =f.text_field :content, placeholder:'商品名(必須40文字まで)', class: "text_field"
+          =f.text_field :title, placeholder:'商品名(必須40文字まで)', class: "text_field"
           
           .sell-content-box-top__title.description
             商品説明
             %span.sell-content-box-top__required
               必須
-          =f.text_area :content, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "text_area", rows: "5"
+          =f.text_area :description, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "text_area", rows: "5"
         
         .sell-content-box
           .sell-left-block
@@ -112,7 +112,7 @@
                     %span.required 必須
                   .price-right
                     ¥
-                    =f.text_field :content, value: "", placeholder: "例）300", class: "price-input", required: true
+                    =f.text_field :price, value: "", placeholder: "例）300", class: "price-input", required: true
                 %li.sell-fee
                     
                 %li.margin
@@ -140,7 +140,7 @@
               =link_to "加盟店規約", "#", class: "link-blue"
               に同意したことになります。
           
-          =link_to "出品する", "#", class:"exhibit-button-bar" 
+          =f.submit "出品する", class:"exhibit-button-bar" 
           =link_to "もどる", "javascript:history.back()", class:"go-back-button"
         
 

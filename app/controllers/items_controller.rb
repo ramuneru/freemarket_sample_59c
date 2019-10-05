@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
-  #開発中はコメントアウト デプロイ前に解除すること
-  # before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, except: :index
   
   layout 'application.users', except: [:index,:show]
 
