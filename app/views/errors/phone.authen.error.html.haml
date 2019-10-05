@@ -1,0 +1,11 @@
+%main.single-main
+  %section.l-single-container.buy-item-container
+    %h2.l-single-head 電話番号の確認が完了していないため購入できません。
+    .buy-content
+      .l-single-content
+        %p
+          = link_to "電話番号認証", profile_users_path
+        %p
+          = link_to "電話番号の確認が必要な理由", "https://www.mercari.com/jp/help_center/article/244/"
+        %p
+          = link_to "商品画面へ戻る", buy_items_path

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :items , only: [:index, :show, :new, :edit] do
     collection do
       get 'buy'
+      post 'pay'
     end
   end
   resources :category, only: [:index]

@@ -85,7 +85,8 @@ gem 'jquery-turbolinks'
 gem 'mini_magick'
 # gem 'mechanize'
 gem 'nokogiri'
-# gem 'payjp'
+gem 'payjp'
 # gem 'recaptcha', require: "recaptcha/rails"
+gem 'dotenv'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'faker'
