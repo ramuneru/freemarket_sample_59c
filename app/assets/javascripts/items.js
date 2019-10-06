@@ -59,11 +59,6 @@ $(function(){
   })
 
 
-
-
-
-
-
   // プライスから手数料&利益を算出
   $('.price-input').on("keyup", function(){
     
