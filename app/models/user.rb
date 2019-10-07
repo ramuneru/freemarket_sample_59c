@@ -23,7 +23,7 @@ class User < ApplicationRecord
   def self.find_oauth(auth)
     uid = auth.uid
     provider = auth.provider
-    snscredential = SnsCredential.where(uid: uid, provider: provider)
+    snscredential = SnsCredential.find_by(uid: uid, provider: provider)
     pass = Devise.friendly_token[0, 20]
     
 
