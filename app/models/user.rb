@@ -50,8 +50,8 @@ class User < ApplicationRecord
       if user.present? #会員登録 済
         sns = SnsCredential.create(
           uid: uid,
-          provider: provider,
-          user_id: user.id
+          provider: provider
+          
         )
       else #会員登録 未
         user = User.new(
@@ -66,8 +66,7 @@ class User < ApplicationRecord
         # binding.pry
         sns = SnsCredential.create(
           uid: uid,
-          provider: provider,
-          user_id: user.id
+          provider: provider
         )
         # binding.pry 
       end
