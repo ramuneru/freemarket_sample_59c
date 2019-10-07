@@ -1,6 +1,6 @@
 # README
 
-[![ER図](https://i.gyazo.com/57205f3e026e8a1f8dfbdb928ef2c7b6.png)](https://gyazo.com/57205f3e026e8a1f8dfbdb928ef2c7b6)
+[![ER図](https://i.gyazo.com/d7e098a01786e65e81735473ef10725a.png)](https://gyazo.com/d7e098a01786e65e81735473ef10725a)
 
 ## users
 
@@ -164,7 +164,6 @@
 ### Association
 - has_many :items
 - has_ancestry
-
 
 
 ## sizes  (gem 'ancestry'を使用)
