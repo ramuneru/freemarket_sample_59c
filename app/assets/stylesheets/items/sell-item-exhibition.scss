@@ -1,3 +1,4 @@
+// 商品出品ページCSS
 .item-exhibition-main-container{
   font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
   color: #333;
@@ -18,15 +19,16 @@
     text-align: center;
   }
 } 
-
+// 商品情報入力画面
 .form-container{
   border-top: 1px solid #eee;
 }
-// 画像10枚までのアップロード箇所
 
+// 画像アップロードタイトル
 .sell-upload-box{
   width: 620px;
   padding: 40px;
+
   &__title{
     width: 100%;
     &__title{
@@ -43,6 +45,46 @@
     line-height: 1.5;
   }
 }
+// グレーの画像アップロード箇所
+.sell-upload-box__image{
+  width: 620px;
+  margin: 16px auto 0;
+  .image-container{
+    display: inline;
+    // .upload-images{
+
+    // }
+    // .have-image-0{
+
+    // }
+  }
+  .image-dropzone{
+    width: 100%;
+    min-height: 162px;
+    background: #f5f5f5;
+    border: 1px dashed #ccc;
+    font-size: 0;
+    text-align: center;
+    padding: 40px;
+    cursor: pointer;
+    .drop-file{
+      display: none;
+      
+      touch-action: manipulation;
+    }
+    .text{
+      color: #333;
+      text-align: center;
+      font-size: 14px;
+      line-height: 50px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      display: block;
+    }
+  }
+
+}
+
 
 // 商品名〜
 .sell-content-box-top{
@@ -52,6 +94,7 @@
     font-weight: bold;
     font-size: 14px;
   }
+  // 必須文字
   &__required{
     @include required;
   }
@@ -132,8 +175,14 @@
         font-weight: 600;
         display: inline-block;
       }
+      // 必須文字
       .required{
         @include required;
+      }
+        // 任意文字
+      .optional{
+        @include required;
+        background: #ccc;
       }
       ul{
         width: 400px;

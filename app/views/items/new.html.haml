@@ -11,15 +11,17 @@
               %span.sell-upload-box__title__required
                 必 須
           %p 最大10枚までアップロードできます
-          .sell-upload-box__image-box
-
-
-
-
-
-
-
-
+          .sell-upload-box__image
+            .image-container
+              .upload-images.have-image-0
+                %ul
+            = f.label :url, for: "image_file_field" do
+              .image-dropzone    
+                =f.file_field :image, class:"drop-file", id:'image_file_field', multiple: true
+                %pre.text
+                  ドラッグアンドドロップ
+                  またはクリックしてファイルをアップロード
+              
 
 
         
@@ -28,13 +30,13 @@
             商品名
             %span.sell-content-box-top__required
               必須
-          =f.text_field :content, placeholder:'商品名(必須40文字まで)', class: "text_field"
+          =f.text_field :title, placeholder:'商品名(必須40文字まで)', class: "text_field"
           
           .sell-content-box-top__title.description
             商品説明
             %span.sell-content-box-top__required
               必須
-          =f.text_area :content, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "text_area", rows: "5"
+          =f.text_area :description, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "text_area", rows: "5"
         
         .sell-content-box
           .sell-left-block
@@ -45,9 +47,17 @@
               %span.required 必須
               .select-wrap
                 %i.fa.fa-chevron-down
-                -# カテゴリーテーブル未実装のため、他のselectタグで代替中
                 = f.collection_select(:condition, Condition.all, :id, :condition, {prompt:"---"},{class:"collection_select-default condition-select"})
             
+            .form-block
+              %label ブランド
+              %span.optional 任意
+              .select-wrap
+                %i.fa.fa-chevron-down
+                -# ブランドテーブル未実装のため、代替のもの
+                = f.collection_select(:condition, Condition.all, :id, :condition, {prompt:"---"},{class:"collection_select-default condition-select"})
+
+
             .form-block
               %label 商品の状態
               %span.required 必須
@@ -77,8 +87,8 @@
               .select-wrap
                 %i.fa.fa-chevron-down
                 -# カテゴリーテーブル未実装のため、他のselectタグで代替中
-                -# = f.collection_select(:region, Prefecture.all, :id, :name, {prompt:"---"},{class:"collection_select-default region-select"})
-                = f.collection_select(:shipping_fee_burden, Shipping_fee_burden.all, :id, :burden, {prompt:"---"},{class:"collection_select-default shipping_fee_burden-select"})
+                = f.collection_select(:region, Prefecture.all, :id, :name, {prompt:"---"},{class:"collection_select-default region-select"})
+                -# = f.collection_select(:shipping_fee_burden, Shipping_fee_burden.all, :id, :burden, {prompt:"---"},{class:"collection_select-default shipping_fee_burden-select"})
 
             .form-block
               %label 発送までの日数
@@ -102,7 +112,7 @@
                     %span.required 必須
                   .price-right
                     ¥
-                    =f.text_field :content, value: "", placeholder: "例）300", class: "price-input", required: true
+                    =f.text_field :price, value: "", placeholder: "例）300", class: "price-input", required: true
                 %li.sell-fee
                     
                 %li.margin
@@ -130,7 +140,7 @@
               =link_to "加盟店規約", "#", class: "link-blue"
               に同意したことになります。
           
-          =link_to "出品する", "#", class:"exhibit-button-bar" 
+          =f.submit "出品する", class:"exhibit-button-bar" 
           =link_to "もどる", "javascript:history.back()", class:"go-back-button"
         
 
