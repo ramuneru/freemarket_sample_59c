@@ -9,10 +9,14 @@ class User < ApplicationRecord
 
   has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address
+
+  has_many :sns_credentials, dependent: :destroy
   #VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   #validates :email,                   presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   validates :password,                presence: true, length: {minimum: 7, maximum: 128},on: :save_to_session_before_phone
   validates :password_confirmation,   presence: true, length: {minimum: 7, maximum: 128},on: :save_to_session_before_phone
   validates :phone,                   presence: true, uniqueness: true,length: {is:11}    
+
+
 end
