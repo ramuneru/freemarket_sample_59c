@@ -52,6 +52,9 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7.2'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
+  gem 'omniauth'
+  gem 'omniauth-google-oauth2'
+  gem 'omniauth-facebook'
 end
 
 group :development do
@@ -86,6 +89,7 @@ gem 'mini_magick'
 gem 'nokogiri'
 gem 'payjp'
 # gem 'recaptcha', require: "recaptcha/rails"
-gem 'dotenv'
+gem 'dotenv-rails'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'faker'
+
