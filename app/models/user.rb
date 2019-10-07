@@ -50,8 +50,8 @@ class User < ApplicationRecord
       if user.present? #会員登録 済
         sns = SnsCredential.create(
           uid: uid,
-          provider: provider
-          
+          provider: provider,
+          user_id: user.id
         )
       else #会員登録 未
         user = User.new(
@@ -64,7 +64,7 @@ class User < ApplicationRecord
           nickname: auth.info.name
         )
         # binding.pry
-        sns = SnsCredential.create(
+        sns = SnsCredential.new(
           uid: uid,
           provider: provider
         )
@@ -73,6 +73,6 @@ class User < ApplicationRecord
     end
     # binding.pry
     # hashでsnsのidを返り値として保持しておく
-    return { user: user ,user_profile: user_profile, sns_id: sns.id }
+    return { user: user ,user_profile: user_profile, sns_id: sns }
   end
 end
