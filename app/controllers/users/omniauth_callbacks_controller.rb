@@ -1,9 +1,7 @@
-# frozen_string_literal: true
-
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def facebook
-    callback_for(:facebook) #コールバック
+    callback_for(:facebook)
   end
 
   def google_oauth2
@@ -11,17 +9,16 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def callback_for(provider)
-    info = User.find_oauth(request.env["omniauth.auth"]) #usersモデルのメソッド
+    info = User.find_oauth(request.env["omniauth.auth"]) 
     @user = info[:user]
     @user_profile = info[:user_profile]
     sns_id = info[:sns_id]
-    # binding.pry
-    if @user.persisted? #userが存在したら
+    if @user.persisted? 
       sign_in_and_redirect @user, event: :authentication
       set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
-    else #userが存在しなかったら
+    else 
       session["devise.sns_id"] = sns_id 
-      render template: "users/registrations/profile" #redirect_to だと更新してしまうのでrenderで
+      render template: "users/registrations/profile" 
     end
   end
 
