@@ -158,7 +158,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|path|string|| (gem"ancestry"による自動挿入)
+|ancestry|string|| 
 |size_id|references|foreign_key: true|
 
 ### Association
@@ -166,12 +166,13 @@
 - has_ancestry
 
 
+
 ## sizes  (gem 'ancestry'を使用)
 
 |Column|Type|Options|
 |------|----|-------|
 |size|string|null: false|
-|path|string|| (ancestryによる自動挿入)
+|ancestry|string||
 
 - has_many :categories
 - has_ancestry
