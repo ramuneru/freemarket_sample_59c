@@ -25,9 +25,13 @@ class ItemsController < ApplicationController
 
   def pay
     # Payjp の画面から取得した秘密鍵
+<<<<<<< Updated upstream
     Payjp.api_key = ENV['PAY_JP_PRIVATE_KEY']
+=======
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+>>>>>>> Stashed changes
     Payjp::Charge.create(
-      amount: 3500, # 決済する値段
+      amount: 3500, # 決済する値段@item.price
       card: params['payjp-token'],
       currency: 'jpy'
     )
@@ -41,4 +45,12 @@ class ItemsController < ApplicationController
   def buy
     
   end
+
+  # def item_params
+  #   params.require(:item).permit(
+  #     :name,
+  #     :text,
+  #     :price,
+  #   ).merge(user_id: current_user.id)
+  # end
 end

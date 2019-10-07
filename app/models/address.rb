@@ -6,6 +6,6 @@ class Address < ApplicationRecord
   validates :postal_code, presence: true ,format:{with: /\A\d{3}[-]\d{4}\z/, message: 'ハイフン入り７桁で入力してください'}
   validates :region, presence: true
   validates :city, presence: true 
-  validates :building, presence: true 
+  validates :block, presence: true
   #validates :phone, uniqueness: true,length: {is:11}
 end
