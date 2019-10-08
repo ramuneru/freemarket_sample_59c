@@ -21,3 +21,13 @@ crumb :completed do
   parent :mypage
 end
 
+crumb :profile do
+  link "プロフィール", profile_users_path
+  parent :mypage
+end
+
+crumb :logout do
+  link "ログアウト", logout_users_path
+  parent :mypage
+end
+
