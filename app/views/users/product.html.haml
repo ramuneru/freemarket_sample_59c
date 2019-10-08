@@ -1,0 +1,16 @@
+= render "shared/main-header"
+.mypage
+  = render "users/side_bar"
+  %section.main-contents
+    %h2.mypage__trade__head
+      出品した商品
+    %ul.exhibit-list
+      %li
+        .exhibit-list__show
+          出品中
+      %li
+        .exhibit-list__show
+          取引中
+      %li
+        .exhibit-list__show
+          過去の取引

@@ -21,4 +21,16 @@ class UsersController < ApplicationController
   def card_create
     @user = User.new
   end
+
+  def product
+
+  end
+
+  def progress
+
+  end
+
+  def completed
+    
+  end
 end
