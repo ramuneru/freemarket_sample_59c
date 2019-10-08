@@ -2,7 +2,7 @@
   %nav
     %ul.mypage__side-bar__list
       %li
-        = link_to root_path, class: "mypage__side-bar__list-item" do
+        = link_to users_path, class: "mypage__side-bar__list-item" do
           マイページ
           = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
       %li
@@ -14,19 +14,19 @@
           いいね！一覧
           = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
       %li
-        = link_to root_path, class: "mypage__side-bar__list-item" do
+        = link_to new_item_path, class: "mypage__side-bar__list-item" do
           出品する
           = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
       %li
-        = link_to root_path, class: "mypage__side-bar__list-item" do
+        = link_to product_users_path, class: "mypage__side-bar__list-item" do
           出品した商品 - 出品中
           = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
       %li
-        = link_to root_path, class: "mypage__side-bar__list-item" do
+        = link_to progress_users_path, class: "mypage__side-bar__list-item" do
           出品した商品 - 取引中
           = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
       %li
-        = link_to root_path, class: "mypage__side-bar__list-item" do
+        = link_to completed_users_path, class: "mypage__side-bar__list-item" do
           出品した商品 - 売却済み
           = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
       %li
@@ -68,7 +68,7 @@
       設定
     %ul.mypage__side-bar__list
       %li
-        = link_to root_path, class: "mypage__side-bar__list-item" do
+        = link_to profile_users_path, class: "mypage__side-bar__list-item" do
           プロフィール
           = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
       %li
@@ -84,7 +84,7 @@
           メール / パスワード
           = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
       %li
-        = link_to root_path, class: "mypage__side-bar__list-item" do
+        = link_to check_users_path, class: "mypage__side-bar__list-item" do
           本人情報
           = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
       %li

@@ -1,6 +1,6 @@
 # README
 
-[![ER図](https://i.gyazo.com/57205f3e026e8a1f8dfbdb928ef2c7b6.png)](https://gyazo.com/57205f3e026e8a1f8dfbdb928ef2c7b6)
+[![ER図](https://i.gyazo.com/d7e098a01786e65e81735473ef10725a.png)](https://gyazo.com/d7e098a01786e65e81735473ef10725a)
 
 ## users
 
@@ -158,7 +158,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|path|string|| (gem"ancestry"による自動挿入)
+|ancestry|string|| 
 |size_id|references|foreign_key: true|
 
 ### Association
@@ -171,7 +171,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |size|string|null: false|
-|path|string|| (ancestryによる自動挿入)
+|ancestry|string||
 
 - has_many :categories
 - has_ancestry
