@@ -46,11 +46,12 @@ $(function(){
   };
   $(document).on('change', "#category-children_select", function(){
     $('.grandchildren-select').remove();
-    var children_id = $('option:selected').val();
+    var parent_id = $(this).val();
+    
     $.ajax({
-      url:  '/api/category/grandchildren',
+      url:  '/api/category/children',
       type: "GET",
-      data: { children_id: children_id },
+      data: { parent_id: parent_id },
       dataType: 'json'
     })
     .done(function(data){
@@ -59,6 +60,39 @@ $(function(){
     })
   });
 
+    // サイズセレクト
+    // function addHTML(size){
+    //   var option =``
+    //   size.forEach(function(grandchild){
+    //     option += `<option value="${grandchild.size_id}">${grandchild.size}</option>`
+    //   });
+    //   var html = `<label>サイズ</label>
+    //               <span class="required">必須</span>
+    //               <div class="select-wrap">
+    //                 <select class="collection_select-default grandchildren-select", name="category", id="category-grandchildren_select", required>
+    //                 <option value="">---</option>
+    //                 ${option}
+    //                 </select>
+    //                 <i class="fas fa-chevron down></i>
+    //               </div>`
+    //   return html;
+    // };
+    // $(document).on('change', "#category-grandchildren_select", function(){
+    //   // $('.grandchildren-select').remove();
+    //   var size_id = $(this).val();
+    
+    //   $.ajax({
+    //     url:  '/api/category/children',
+    //     type: "GET",
+    //     data: { parent_id: parent_id },
+    //     dataType: 'json'
+    //   })
+    //   .done(function(data){
+    //     var html = addHTML(data);
+    //     $("#size-select").append(html);
+    //   })
+    // });
+  
 
   // 配送方法のjs記述途中
   $('.shipping_fee_burden').on('change',function(){
