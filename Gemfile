@@ -52,9 +52,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7.2'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
-  gem 'omniauth'
-  gem 'omniauth-google-oauth2'
-  gem 'omniauth-facebook'
 end
 
 group :development do
@@ -93,3 +90,6 @@ gem 'dotenv-rails'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'faker'
 
+  gem 'omniauth'
+  gem 'omniauth-google-oauth2'
+  gem 'omniauth-facebook'
