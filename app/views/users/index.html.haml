@@ -1,7 +1,11 @@
+- breadcrumb :mypage
 = render "shared/main-header"
+%nav.breadcrumbs
+  %ul
+    %li
+      = breadcrumbs separator: " &rsaquo; "
 .mypage
   = render "users/side_bar"
-
   .main-contents
     .main-contents__user
       = link_to root_path, class: "main-contents__user__icon" do
