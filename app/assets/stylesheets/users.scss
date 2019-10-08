@@ -347,6 +347,7 @@
 
 
 
+
 .exhibit-list{
   min-height: 80px;
   background-color: #fafafa;
@@ -358,6 +359,10 @@
     width: 33%;
     transition: .3s;
   }
+  & li.active{
+    color: #fff;
+    background: #fb4343;
+  }
   &__show{
     cursor: pointer;
     font-size: 15px;
@@ -365,4 +370,10 @@
     color: #333;
     font-weight: bold;
   }
+}
+
+.main-contents__list__ul li.active {
+  color: #fff;
+  background: #fb4343;
+  cursor: auto;
 }
