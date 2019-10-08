@@ -30,11 +30,15 @@ Rails.application.routes.draw do
       get 'check'
       get 'card'
       get 'card_create'
+      get 'product'
+      get 'progress'
+      get 'completed'
     end
   end
   devise_for :users, controllers: {
     registrations: "users/registrations",
-    sessions:      "users/sessions"  
+    sessions:      "users/sessions",
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
   devise_scope :user do
     post "sign_in",             to: "devise/sessions#new"
