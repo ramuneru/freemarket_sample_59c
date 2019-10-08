@@ -84,12 +84,11 @@ gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'mini_magick'
 gem 'nokogiri'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
 gem 'payjp'
 # gem 'recaptcha', require: "recaptcha/rails"
 gem 'dotenv-rails'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'faker'
-
-  gem 'omniauth'
-  gem 'omniauth-google-oauth2'
-  gem 'omniauth-facebook'
