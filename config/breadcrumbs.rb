@@ -1,8 +1,12 @@
 crumb :root do
-  link "Home", root_path
+  link "メルカリ", root_path
 end
 crumb :mypage do
   link "マイページ", users_path
+end
+crumb :product do
+  link "出品した商品 - 出品中", product_users_path
+  parent :mypage
 end
 
 # crumb :projects do
