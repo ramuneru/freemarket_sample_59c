@@ -17,6 +17,9 @@ Rails.application.routes.draw do
       get 'check'
       get 'card'
       get 'card_create'
+      get 'product'
+      get 'progress'
+      get 'completed'
     end
   end
   devise_for :users, controllers: {
