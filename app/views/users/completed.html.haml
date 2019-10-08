@@ -1,4 +1,9 @@
+- breadcrumb :completed
 = render "shared/main-header"
+%nav.bread-crumbs
+  %ul
+    %li
+      = breadcrumbs separator: " &rsaquo; "
 .mypage
   = render "users/side_bar"
   %section.main-contents
