@@ -1,5 +1,66 @@
 $(function(){
-  
+
+  // 子カテゴリセレクト
+  function buildHTML(children){
+    var option =``
+    children.forEach(function(child){
+      option += `<option value="${child.id}">${child.name}</option>`
+    });
+    var html = `<select class="collection_select-default children-select", name="category", id="category-children_select", required>
+                  <option value="">---</option>
+                  ${option}
+                </select>
+                <i class="fas fa-chevron down></i>`
+    return html;
+  };
+  $(document).on('change', "#category-parent_select", function(){
+    $('.children-select').remove();
+    $('.grandchildren-select').remove();
+    var parent_id = $('option:selected').val();
+
+    $.ajax({
+      url:  '/api/category/children',
+      type: "GET",
+      data: { parent_id: parent_id },
+      dataType: 'json'
+    })
+    .done(function(data){
+      var html = buildHTML(data);
+      $("#second-children").append(html);
+    })
+  });
+
+
+  // 孫カテゴリセレクト
+  function buildHTML2(grandchildren){
+    var option =``
+    grandchildren.forEach(function(grandchild){
+      option += `<option value="${grandchild.id}">${grandchild.name}</option>`
+    });
+    var html = `<select class="collection_select-default grandchildren-select", name="category", id="category-grandchildren_select", required>
+                  <option value="">---</option>
+                  ${option}
+                </select>
+                <i class="fas fa-chevron down></i>`
+    return html;
+  };
+  $(document).on('change', "#category-children_select", function(){
+    $('.grandchildren-select').remove();
+    var children_id = $('option:selected').val();
+    $.ajax({
+      url:  '/api/category/grandchildren',
+      type: "GET",
+      data: { children_id: children_id },
+      dataType: 'json'
+    })
+    .done(function(data){
+      var html = buildHTML2(data);
+      $("#third-children").append(html);
+    })
+  });
+
+
+  // 配送方法のjs記述途中
   $('.shipping_fee_burden').on('change',function(){
 
     let value = $(this).val();
@@ -32,17 +93,11 @@ $(function(){
       return burdenBuyerHTML; 
     }
 
-
-
-
     if( value == 1){
 
     }else if( value == 2){
 
     }
-
-
-
 // = f.collection_select(:shipping_method, Shipping_method.all, :id, :method, {prompt:"---"},{class:"collection_select-default shipping_method-select"})
 
 
@@ -50,13 +105,13 @@ $(function(){
 <option value="1">送料込み(出品者負担)</option>
 <option value="2">着払い(購入者負担)</option></select> */}
 
-
-
     $('.shipping-method_hidden').append(shipping_method_html);
 
-
-
   })
+
+
+
+
 
 
   // プライスから手数料&利益を算出
