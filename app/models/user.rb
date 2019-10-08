@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address
+  has_many :cards
   #VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   #validates :email,                   presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }

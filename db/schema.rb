@@ -9,7 +9,12 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
+<<<<<<< Updated upstream
 ActiveRecord::Schema.define(version: 2019_10_06_080920) do
+=======
+
+ActiveRecord::Schema.define(version: 2019_10_07_035951) do
+>>>>>>> Stashed changes
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -22,6 +27,14 @@ ActiveRecord::Schema.define(version: 2019_10_06_080920) do
     t.datetime "updated_at", null: false
     t.string "block"
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

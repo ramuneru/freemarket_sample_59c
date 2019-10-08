@@ -1,0 +1,44 @@
+= render "shared/main-header"
+.mypage
+  = render "users/side_bar"
+  %section.add-card
+    %h2.add-card__head
+      支払い方法
+    - if @card
+      .add-card__list
+        %section
+          .add-card__list__head
+            %h3 クレジットカード一覧
+          %ul.settings-payment-list
+            %li
+              .l-single-content
+                = form_tag(delete_card_path, method: :post, id: 'charge-form', name: "inputForm") do
+                  %figure
+                    %img{:alt => "master-card", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?2296184308", :width => "34"}
+                  %input{:name => "__csrf_value", :type => "hidden", :value => "5be88e5c94142e1e176b61f537fd0746883ae98d40696089e40b7de5b57c0067a6b525bc549af475be37a09b772a236f52556ef63569aefcce3fd4d03fadef194"}/
+                  %input{:name => "card_sequence_no", :type => "hidden", :value => "Dw8h6ovazuUHPLsRMk8dZNcc"}
+                  .settings-payment-num
+                    -# = "**** **** **** " + @default_card_infomation.last4
+                  .settings-payment-num
+                    -# - exp_month = @default_card_information.exp_month.to_s
+                    -# - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                    -# = exp_month + " / " + exp_year
+                  %input{name:"method", type:"hidden", value:"card"}
+                  %button.settings-payment-remove{type: "submit"}
+                    削除する
+          .settings-not-regist
+            = link_to "支払い方法について", "https://mercari.com/jp/help_center/category/6/"
+    - else
+      .add-card__list
+        %section
+          .add-card__list__head
+            %h3 クレジットカード一覧
+        .add-card__list__btn
+          = link_to  new_card_path, class: 'add-card__list__btn__red' do
+            = fa_icon 'fas fa-credit-card', class: "fas fa-credit-card" 
+            クレジットカードを追加する
+      %p.payment
+        = link_to root_path, class: "payment__go" do
+          支払い方法について
+          = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+= render "shared/main-footer"
