@@ -1,15 +1,12 @@
 class Api::SizeController < ApplicationController
   
   def index
-    category = Category.find(params[:parent_id])
-    @children = parent.children
-
+    category = Category.find(params[:grandchild_id])
     size_id = category.size_id
-    size = Size.find()
-    
-      @size = size.children
+    size = Size.find(size_id)
+    @size = size.children
 
-      return @size
+    return @size
   end
 end
 

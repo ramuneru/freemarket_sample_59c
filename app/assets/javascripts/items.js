@@ -16,6 +16,7 @@ $(function(){
   $(document).on('change', "#category-parent_select", function(){
     $('.children-select').remove();
     $('.grandchildren-select').remove();
+    $('#size-select').empty();
     var parent_id = $('option:selected').val();
 
     $.ajax({
@@ -46,6 +47,7 @@ $(function(){
   };
   $(document).on('change', "#category-children_select", function(){
     $('.grandchildren-select').remove();
+    $('#size-select').empty();
     var parent_id = $(this).val();
     
     $.ajax({
@@ -61,37 +63,40 @@ $(function(){
   });
 
     // サイズセレクト
-    // function addHTML(size){
-    //   var option =``
-    //   size.forEach(function(grandchild){
-    //     option += `<option value="${grandchild.size_id}">${grandchild.size}</option>`
-    //   });
-    //   var html = `<label>サイズ</label>
-    //               <span class="required">必須</span>
-    //               <div class="select-wrap">
-    //                 <select class="collection_select-default grandchildren-select", name="category", id="category-grandchildren_select", required>
-    //                 <option value="">---</option>
-    //                 ${option}
-    //                 </select>
-    //                 <i class="fas fa-chevron down></i>
-    //               </div>`
-    //   return html;
-    // };
-    // $(document).on('change', "#category-grandchildren_select", function(){
-    //   // $('.grandchildren-select').remove();
-    //   var size_id = $(this).val();
+    function addHTML(size){
+      var option =``
+      size.forEach(function(grandchild){
+        option += `<option value="${grandchild.size_id}">${grandchild.size}</option>`
+      });
+      var html = `<label>サイズ</label>
+                  <span class="required">必須</span>
+                  <div class="select-wrap">
+                    <select class="collection_select-default size-select", name="size", required>
+                    <option value="">---</option>
+                    ${option}
+                    </select>
+                    <i class="fas fa-chevron down></i>
+                  </div>`
+      return html;
+    };
+    $(document).on('change', "#category-grandchildren_select", function(){
+      $('#size-select').empty();
+      var grandchild_id = $(this).val();
     
-    //   $.ajax({
-    //     url:  '/api/category/children',
-    //     type: "GET",
-    //     data: { parent_id: parent_id },
-    //     dataType: 'json'
-    //   })
-    //   .done(function(data){
-    //     var html = addHTML(data);
-    //     $("#size-select").append(html);
-    //   })
-    // });
+      // if (!size == ""){}
+        $.ajax({
+          url:  '/api/size',
+          type: "GET",
+          data: { grandchild_id: grandchild_id},
+          dataType: 'json'
+        })
+        .done(function(data){
+          console.log(data)
+          var html = addHTML(data);
+          $("#size-select").append(html);
+        })
+      
+    });
   
 
   // 配送方法のjs記述途中
