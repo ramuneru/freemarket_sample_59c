@@ -1,0 +1,40 @@
+= render "shared/main-header"
+.mypage
+  = render "users/side_bar"
+  %section.add-card
+    %h2.add-card__head
+      支払い方法
+    - if @card
+      .add-card__list
+        %section
+          .add-card__list__head
+            %h3 クレジットカード一覧
+          %ul.settings-payment-list
+            %li
+              .l-single-content
+                = form_tag(delete_card_index_path, method: :post, id: 'charge-form', name: "inputForm") do
+                  .settings-payment-num
+                    = "**** **** **** " + "#{@default_card_information.last4}"
+                  .settings-payment-num
+                    - exp_month = "#{@default_card_information.exp_month.to_s}"
+                    - exp_year = "#{@default_card_information.exp_year.to_s.slice(2,3)}"
+                    = exp_month + " / " + "#{exp_year}"
+                  %input{name:"method", type:"hidden", value:"card"}
+                  %button.settings-payment-remove{type: "submit"}
+                    削除する
+          .settings-not-regist
+            = link_to "支払い方法について", "https://mercari.com/jp/help_center/category/6/"
+    - else
+      .add-card__list
+        %section
+          .add-card__list__head
+            %h3 クレジットカード一覧
+        .add-card__list__btn
+          = link_to  new_card_path, class: 'add-card__list__btn__red' do
+            = fa_icon 'fas fa-credit-card', class: "fas fa-credit-card" 
+            クレジットカードを追加する
+      %p.payment
+        = link_to root_path, class: "payment__go" do
+          支払い方法について
+          = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+= render "shared/main-footer"
