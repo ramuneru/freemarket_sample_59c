@@ -7,7 +7,8 @@ class ItemsController < ApplicationController
   end
 
   def new
-  
+    @category_parent = Category.where(ancestry: nil)
+
   end
 
   def create
@@ -15,7 +16,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-   
 
   end
 

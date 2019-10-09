@@ -6,8 +6,25 @@ Rails.application.routes.draw do
       get 'buy'
       post 'pay'
     end
+
   end
+
   resources :category, only: [:index]
+  
+  namespace :api do
+    resources :category, only: :index, defaults: { format: 'json' } do
+      collection do 
+        get 'children'
+        get 'grandchildren'
+      end
+    end
+  end
+
+  namespace :api do
+    resources :size, only: :index, defaults: { format: 'json' } 
+  end
+
+  
 
   resources :users , only: [:index] do
     collection do
