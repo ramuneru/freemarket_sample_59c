@@ -44,8 +44,8 @@
               %label カテゴリー
               %span.required 必須
               .select-wrap
-                %i.fa.fa-chevron-down
                 = f.collection_select(:category, @category_parent, :id, :name, {prompt:"---"}, class:"collection_select-default", id: "category-parent_select")
+                %i.fa.fa-chevron-down
               .select-wrap#second-children
 
               .select-wrap#third-children
@@ -65,8 +65,8 @@
               %label 商品の状態
               %span.required 必須
               .select-wrap
-                %i.fa.fa-chevron-down
                 = f.collection_select(:condition, Condition.all, :id, :condition, {prompt:"---"},{class:"collection_select-default condition-select"})
+                %i.fa.fa-chevron-down
 
 
         .sell-content-box
@@ -79,32 +79,29 @@
               %label 配送料の負担
               %span.required 必須
               .select-wrap
-                %i.fa.fa-chevron-down
                 = f.collection_select(:shipping_fee_burden, Shipping_fee_burden.all, :id, :burden, {prompt:"---"},{class:"collection_select-default shipping_fee_burden-select"})
+                %i.fa.fa-chevron-down
 
             .form-block.shipping-method_hidden
               %label 配送の方法
               %span.required 必須
               .select-wrap
-                %i.fa.fa-chevron-down
                 = f.collection_select(:shipping_method, Shipping_method.all, :id, :name, {prompt:"---"},{class:"collection_select-default shipping_method"})
-                
+                %i.fa.fa-chevron-down
 
             .form-block
               %label 発送元の地域
               %span.required 必須
               .select-wrap
-                %i.fa.fa-chevron-down
                 = f.collection_select(:region, Prefecture.all, :id, :name, {prompt:"---"},{class:"collection_select-default region-select"})
-
+                %i.fa.fa-chevron-down
 
             .form-block
               %label 発送までの日数
               %span.required 必須
               .select-wrap
-                %i.fa.fa-chevron-down
                 = f.collection_select(:shipping_duration, Shipping_duration.all, :id, :duration, {prompt:"---"},{class:"collection_select-default duration-select"})
-
+                %i.fa.fa-chevron-down
 
         .sell-content-box
           .sell-left-block
