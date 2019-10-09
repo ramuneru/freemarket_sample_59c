@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'category/index'
   root 'items#index'
 
-  resources :items , only: [:index, :show, :new, :edit] do
+  resources :items , only: [:index, :show, :new, :create, :edit] do
     collection do
       get 'buy'
       post 'pay'
