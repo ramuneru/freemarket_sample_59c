@@ -9,10 +9,10 @@
             = fa_icon 'envelope', class:"m-icon"
             %p メールアドレスで登録する
         .button-default.blue
-          = link_to "https://www.facebook.com/", class: "blue" do
+          = link_to user_facebook_omniauth_authorize_path, class: "blue" do
             = fa_icon 'facebook-square', class:"f-icon"
             %p Facebookで登録する
         .button-default.white
-          = link_to "https://accounts.google.com/", class:"g-link" do
+          = link_to user_google_oauth2_omniauth_authorize_path, class:"g-link" do
             = fa_icon 'google', class:"g-icon"
             %p Googleで登録する

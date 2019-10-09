@@ -8,29 +8,13 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @item.user_id=current_user.id
     @item.images.build
-    @categories = Category.where(ancestry: nil, size_id: nil).order("id ASC") #テーブルからカテゴリーを取得
-    session[:user_id]=current_user.id #出品するユーザーID情報を取得
-    binding.pry
+    @category_parent = Category.where(ancestry: nil)
   end
 
   def create
-    # @item = Item.new(
-    #   title: params_new[:title],
-    #   description: params_new[:description],
-    #   price: params_new[:price],
-    #   category_id: params_new[:category_id],
-    #   brand_id: params_new[:brand_id],
-    #   condition: params_new[:condition],
-    #   region: params_new[:region],
-    #   shipping_fee_burden: params_new[:shipping_fee_burden],
-    #   shipping_method: params_new[:shipping_method],
-    #   shipping_duration: params_new[:shipping_duration],
-    #   user_id: session[:user_id]
-    # )
     @item = Item.new(params_new)
-    @item.images.build(params_new[images_attributes: [:image,:id]])
+    @item.images.build
     if @item.save
       redirect_to root_path
     else
@@ -39,6 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+
   end
 
 
@@ -69,12 +54,10 @@ class ItemsController < ApplicationController
       :shipping_fee_burden, 
       :shipping_method, 
       :shipping_duration, 
-      :price, 
-      :user_id,
+      :price,
       images_attributes: [:id,:image]
-    )
-    
-  end
+    ).merge(user_id: current_user.id)
+  end 
 
   def buy
     

@@ -30,7 +30,7 @@
       %h2.l-single-head.registration
         会員情報入力
       = form_for @user, url:phone_path, method: :get do |f|
-        = f.fields_for :user_profile do |g|
+        = f.fields_for :user_profile_attributes, @user_profile do |g|
           .l-single-inner.registration-form
             .l-single-content
               .form-group
@@ -50,13 +50,13 @@
                 %label パスワード
                 %span.form-require 必須
                 .dateOfbirth
-                = f.password_field :encrypted_password, placeholder: '7文字以上', type:"password", class:"input-default"
+                = f.text_field :encrypted_password, placeholder: '7文字以上', type:"password", class:"input-default"
 
               .form-group
                 %label パスワード (確認)
                 %span.form-require 必須
                 .dateOfbirth
-                = f.password_field :password, placeholder: "7文字以上", type: "password", class:"input-default"
+                = f.text_field :password, placeholder: "7文字以上", type: "password", class:"input-default"
 
               .form-group
                 %h3.text-left.l-chapter-sub-head 本人確認
@@ -108,4 +108,4 @@
                 %p
                   = link_to "本人情報の登録について", "https://www.mercari.com/jp/help_center/", target:"_blank", class:"link_decoration"
                   = fa_icon "chevron-right", class:"rightIcon"
-    = render "footer"
+    -# = render "footer"

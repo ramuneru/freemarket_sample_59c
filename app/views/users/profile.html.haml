@@ -1,4 +1,9 @@
+- breadcrumb :profile
 = render "shared/main-header"
+%nav.bread-crumbs
+  %ul
+    %li
+      = breadcrumbs separator: " &rsaquo; "
 .mypage
   = render "users/side_bar"
   .profile-change

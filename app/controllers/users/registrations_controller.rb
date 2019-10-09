@@ -52,9 +52,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       password: session[:password],
       phone: session[:phone]
     )
-    @user.build_user_profile(session[:user_profile_attributes])
+    @user.build_user_profile(session[:quser_profile_attributes])
     @user.build_address(session[:address_attributes])
-  
     if @user.save
       session[:id] = @user.id
       sign_in User.find(session[:id]) unless user_signed_in?

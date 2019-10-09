@@ -1,0 +1,21 @@
+- breadcrumb :progress
+= render "shared/main-header"
+%nav.bread-crumbs
+  %ul
+    %li
+      = breadcrumbs separator: " &rsaquo; "
+.mypage
+  = render "users/side_bar"
+  %section.main-contents
+    %h2.mypage__trade__head
+      出品した商品
+    %ul.exhibit-list
+      = link_to product_users_path, class: "exhibit-list__show" do
+        %li
+          出品中
+      = link_to progress_users_path, class: "exhibit-list__show" do
+        %li.active
+          取引中
+      = link_to completed_users_path, class: "exhibit-list__show" do
+        %li
+          過去の取引
