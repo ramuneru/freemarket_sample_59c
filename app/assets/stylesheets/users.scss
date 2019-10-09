@@ -315,11 +315,49 @@
     }
   }
 }
+
+.card-content {
+  max-width: 320px;
+  margin: 0 auto;
+}
+.set-paymentdetail {
+  margin: 8px 0 0;
+  font-size: 16px;
+}
+.set-payment {
+  margin: 8px 0 0;
+  font-size: 16px;
+}
+.payment-list li {
+  padding: 24px 0;
+}
+.payment-remove {
+  position: absolute;
+  top: 270px;
+  right: 240px;
+  padding: 4px 6px;
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #ea352d;
+  font-size: 14px;
+  color: #ea352d;
+}
+h3 {
+  font-weight: bold;
+}
+.add-card__list__btn-ex {
+  display: block;
+  margin: 40px 0 0;
+  text-align: right;
+}
+a {
+  color: #0099e8;
+  text-decoration: none;
+}
+
 .fa-credit-card{
   margin: 0 5px;
 }
-
-
 .payment{
   text-align: right;
   padding: 10px;

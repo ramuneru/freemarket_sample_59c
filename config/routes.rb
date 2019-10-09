@@ -8,6 +8,19 @@ Rails.application.routes.draw do
     end
   end
   resources :category, only: [:index]
+  
+  namespace :api do
+    resources :category, only: :index, defaults: { format: 'json' } do
+      collection do 
+        get 'children'
+        get 'grandchildren'
+      end
+    end
+  end
+
+  namespace :api do
+    resources :size, only: :index, defaults: { format: 'json' } 
+  end
 
   resources :users , only: [:index] do
     collection do
@@ -21,6 +34,7 @@ Rails.application.routes.draw do
       get 'completed'
     end
   end
+
   resources :card, only: [:new,:show] do
     collection do
       post 'show',      to: 'card#show'
@@ -28,6 +42,7 @@ Rails.application.routes.draw do
       post 'delete',    to: 'card#delete'
     end
   end
+
   devise_for :users, controllers: {
     registrations: "users/registrations",
     sessions:      "users/sessions",
