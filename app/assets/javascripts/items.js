@@ -10,7 +10,7 @@ $(function(){
                   <option value="">---</option>
                   ${option}
                 </select>
-                <i class="fas fa-chevron down></i>`
+                <i class="fa fa-chevron-down"></i>`
     return html;
   };
   $(document).on('change', "#category-parent_select", function(){
@@ -42,7 +42,7 @@ $(function(){
                   <option value="">---</option>
                   ${option}
                 </select>
-                <i class="fas fa-chevron down></i>`
+                <i class="fa fa-chevron-down"></i>`
     return html;
   };
   $(document).on('change', "#category-children_select", function(){
@@ -75,7 +75,7 @@ $(function(){
                     <option value="">---</option>
                     ${option}
                     </select>
-                    <i class="fas fa-chevron down></i>
+                    <i class="fa fa-chevron-down"></i>
                   </div>`
       return html;
     };
