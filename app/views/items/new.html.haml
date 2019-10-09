@@ -57,8 +57,12 @@
               %label ブランド
               %span.optional 任意
               .select-wrap
+                -# ブランドテーブル未実装のため、現在は保留
+                -# = f.collection_select(:, @, :id, :name, {prompt:"---"}, class:"collection_select-default", id: "")
+                -# = f.collection_select(プロパティ名, オブジェクトの配列, value属性の項目, テキストの項目 [, オプション])
                 -# %i.fa.fa-chevron-down
-                -# ブランドテーブル未実装のため、代替のもの
+                
+                
                 
 
             .form-block
