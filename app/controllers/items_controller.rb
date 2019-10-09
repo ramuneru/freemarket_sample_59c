@@ -1,18 +1,25 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: :index
-  
   layout 'application.users', except: [:index,:show]
 
   def index
+    
   end
 
   def new
+    @item = Item.new
+    @item.images.build
     @category_parent = Category.where(ancestry: nil)
-
   end
 
   def create
     @item = Item.new(params_new)
+    @item.images.build
+    if @item.save
+      redirect_to root_path
+    else
+      redirect_to new_item_path
+    end
   end
 
   def edit
@@ -33,20 +40,27 @@ class ItemsController < ApplicationController
     )
   end
 
+  
   private
+  
   def params_new
-    params.require(:item).permit(:title, :description, :category_id, :brand_id, :status, :size_id, :region, :shipping_fee_burden, :shipping_method, :shipping_duration, :price, images_attributes: [:image])
-  end
+    params.require(:item).permit(
+      :title, 
+      :description, 
+      :category_id, 
+      :brand, 
+      :condition, 
+      :region, 
+      :shipping_fee_burden, 
+      :shipping_method, 
+      :shipping_duration, 
+      :price,
+      images_attributes: [:id,:image]
+    ).merge(user_id: current_user.id)
+  end 
 
   def buy
     
   end
 
-  # def item_params
-  #   params.require(:item).permit(
-  #     :name,
-  #     :text,
-  #     :price,
-  #   ).merge(user_id: current_user.id)
-  # end
 end

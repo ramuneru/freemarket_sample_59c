@@ -1,11 +1,14 @@
+
 require 'csv'
 
+# category_table
 # CSV.foreach('db/category.csv',headers: true) do |row|
 #   Category.create(name: row['name'],
 #                   ancestry: row['ancestry'],
 #                   size_id: row['size_id'])
 # end
 
+# size_table
 # CSV.foreach('db/size.csv', headers: true) do |row|
 #   Size.create(size: row['size'],
 #               ancestry: row['ancestry'])
@@ -29,4 +32,6 @@ require 'csv'
 # brand_table interior
 # CSV.foreach('db/interior_brand.csv', headers: true) do |row|
 #   Brand.create(name: row['name'])
+
 # end
+

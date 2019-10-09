@@ -4,25 +4,26 @@
       %h2.item-regi-head
         商品の情報を入力
       = form_with model: @item, local: true, class: "form-container" do |f|
-        .sell-upload-box
-          .sell-upload-box__title
-            .sell-upload-box__title__title
-              出品画像
-              %span.sell-upload-box__title__required
-                必 須
-          %p 最大10枚までアップロードできます
-          .sell-upload-box__image
-            .image-container
-              .upload-images.have-image-0
-                %ul
-            = f.label :url, for: "image_file_field" do
-              .image-dropzone    
-                =f.file_field :image, class:"drop-file", id:'image_file_field', multiple: true
-                %pre.text
-                  ドラッグアンドドロップ
-                  またはクリックしてファイルをアップロード
+        = f.fields_for :images do |img|  
+          .sell-upload-box
+            .sell-upload-box__title
+              .sell-upload-box__title__title
+                出品画像
+                %span.sell-upload-box__title__required
+                  必 須
+            %p 最大10枚までアップロードできます
+            .sell-upload-box__image
+              .image-container
+                .upload-images.have-image-0
+                  %ul
+              = img.label :url, for: "image_file_field" do
+                .image-dropzone    
+                  =img.file_field :image, class:"drop-file", id:'image_file_field', multiple: true
+                  %pre.text
+                    ドラッグアンドドロップ
+                    またはクリックしてファイルをアップロード
               
-        
+
         .sell-content-box-top
           .sell-content-box-top__title
             商品名
@@ -44,7 +45,8 @@
               %label カテゴリー
               %span.required 必須
               .select-wrap
-                = f.collection_select(:category, @category_parent, :id, :name, {prompt:"---"}, class:"collection_select-default", id: "category-parent_select")
+                = f.collection_select(:category_id, @category_parent, :id, :name, {prompt:"---"}, class:"collection_select-default", id: "category-parent_select")
+
                 %i.fa.fa-chevron-down
               .select-wrap#second-children
 
@@ -150,7 +152,7 @@
               に同意したことになります。
           
           =f.submit "出品する", class:"exhibit-button-bar" 
-          =link_to "もどる", "javascript:history.back()", class:"go-back-button"
+          =link_to "もどる", "javascript:history.back();", class:"go-back-button"
         
 
           
