@@ -23,6 +23,7 @@
                     ドラッグアンドドロップ
                     またはクリックしてファイルをアップロード
               
+
         .sell-content-box-top
           .sell-content-box-top__title
             商品名
@@ -45,6 +46,7 @@
               %span.required 必須
               .select-wrap
                 = f.collection_select(:category_id, @category_parent, :id, :name, {prompt:"---"}, class:"collection_select-default", id: "category-parent_select")
+
                 %i.fa.fa-chevron-down
               .select-wrap#second-children
 

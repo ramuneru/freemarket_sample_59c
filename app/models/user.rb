@@ -12,8 +12,6 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :address
   
   has_many :items
-
-
   has_many :cards
 
   has_many :sns_credentials, dependent: :destroy
