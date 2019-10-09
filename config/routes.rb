@@ -14,8 +14,11 @@ Rails.application.routes.draw do
       get 'profile'
       get 'logout'
       get 'check'
-      # get 'card'
-      # get 'card_create'
+      get 'card'
+      get 'card_create'
+      get 'product'
+      get 'progress'
+      get 'completed'
     end
   end
   resources :card, only: [:new,:show] do
@@ -23,11 +26,6 @@ Rails.application.routes.draw do
       post 'show',      to: 'card#show'
       post 'pay',       to: 'card#pay'
       post 'delete',    to: 'card#delete'
-      get 'card'
-      get 'card_create'
-      get 'product'
-      get 'progress'
-      get 'completed'
     end
   end
   devise_for :users, controllers: {
