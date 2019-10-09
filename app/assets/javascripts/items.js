@@ -91,7 +91,6 @@ $(function(){
         dataType: 'json'
       })
       .done(function(data){
-        console.log(data)
         var html = addHTML(data);
         $("#size-select").append(html);
       })
