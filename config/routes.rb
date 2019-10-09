@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   root 'items#index'
 
-  resources :items , only: [:index, :show, :new, :edit] do
+  resources :items , only: [:index, :show, :new,:create, :edit] do
     member do
       get 'buy'
       post 'pay'
     end
+
   end
+
   resources :category, only: [:index]
   
   namespace :api do

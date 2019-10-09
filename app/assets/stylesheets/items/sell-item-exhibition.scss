@@ -149,7 +149,7 @@
     display: block;
     .form-block{
       width: 400px;
-      height: 70px;
+      height: auto;
       margin: 40px 0 0;
       .sell-price{
         padding: 0 0 24px;
@@ -221,14 +221,16 @@
           position: absolute;
           top: 15px;
           right: 18px;
-          z-index: 2;
           color: #888;
           font-size: 18px;
         }
       }
     }
     // 各selectの先頭selectタグ用
-    .first-child{
+    #first-child{
+      margin: 0;
+    }
+    #second-child{
       margin: 0;
     }
   }

@@ -88,6 +88,7 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem 'payjp'
+gem "gretel"
 # gem 'recaptcha', require: "recaptcha/rails"
 gem 'dotenv-rails'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

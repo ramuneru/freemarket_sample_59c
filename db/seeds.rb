@@ -1,6 +1,4 @@
-#CSVでSeedをつくる
-#Sizeもカテゴリー同様にCSV作成
-#カテゴリーテーブルにSize_Idという外部キーを紐づけておく
+
 require 'csv'
 
 # category_table
@@ -34,7 +32,6 @@ require 'csv'
 # brand_table interior
 # CSV.foreach('db/interior_brand.csv', headers: true) do |row|
 #   Brand.create(name: row['name'])
+
 # end
 
-# 実行コマンド
-# bundle exec rake db:seed

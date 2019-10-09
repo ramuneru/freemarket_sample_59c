@@ -3,28 +3,27 @@
     .sell-item__container
       %h2.item-regi-head
         商品の情報を入力
-      = form_with model: @item, url: '#', local: true, class: "form-container" do |f|
-        .sell-upload-box
-          .sell-upload-box__title
-            .sell-upload-box__title__title
-              出品画像
-              %span.sell-upload-box__title__required
-                必 須
-          %p 最大10枚までアップロードできます
-          .sell-upload-box__image
-            .image-container
-              .upload-images.have-image-0
-                %ul
-            = f.label :url, for: "image_file_field" do
-              .image-dropzone    
-                =f.file_field :image, class:"drop-file", id:'image_file_field', multiple: true
-                %pre.text
-                  ドラッグアンドドロップ
-                  またはクリックしてファイルをアップロード
+      = form_with model: @item, local: true, class: "form-container" do |f|
+        = f.fields_for :images do |img|  
+          .sell-upload-box
+            .sell-upload-box__title
+              .sell-upload-box__title__title
+                出品画像
+                %span.sell-upload-box__title__required
+                  必 須
+            %p 最大10枚までアップロードできます
+            .sell-upload-box__image
+              .image-container
+                .upload-images.have-image-0
+                  %ul
+              = img.label :url, for: "image_file_field" do
+                .image-dropzone    
+                  =img.file_field :image, class:"drop-file", id:'image_file_field', multiple: true
+                  %pre.text
+                    ドラッグアンドドロップ
+                    またはクリックしてファイルをアップロード
               
 
-
-        
         .sell-content-box-top
           .sell-content-box-top__title
             商品名
@@ -42,28 +41,38 @@
           .sell-left-block
             %h3.head-text  商品の詳細
           .sell-form-box
-            .form-block.first-child
+            .form-block#first-child
               %label カテゴリー
               %span.required 必須
               .select-wrap
+                = f.collection_select(:category_id, @category_parent, :id, :name, {prompt:"---"}, class:"collection_select-default", id: "category-parent_select")
+
                 %i.fa.fa-chevron-down
-                = f.collection_select(:condition, Condition.all, :id, :condition, {prompt:"---"},{class:"collection_select-default condition-select"})
+              .select-wrap#second-children
+
+              .select-wrap#third-children
+
+            .form-block#size-select
             
+
             .form-block
               %label ブランド
               %span.optional 任意
               .select-wrap
-                %i.fa.fa-chevron-down
-                -# ブランドテーブル未実装のため、代替のもの
-                = f.collection_select(:condition, Condition.all, :id, :condition, {prompt:"---"},{class:"collection_select-default condition-select"})
-
+                -# ブランドテーブル未実装のため、現在は保留
+                -# = f.collection_select(:, @, :id, :name, {prompt:"---"}, class:"collection_select-default", id: "")
+                -# = f.collection_select(プロパティ名, オブジェクトの配列, value属性の項目, テキストの項目 [, オプション])
+                -# %i.fa.fa-chevron-down
+                
+                
+                
 
             .form-block
               %label 商品の状態
               %span.required 必須
               .select-wrap
-                %i.fa.fa-chevron-down
                 = f.collection_select(:condition, Condition.all, :id, :condition, {prompt:"---"},{class:"collection_select-default condition-select"})
+                %i.fa.fa-chevron-down
 
 
         .sell-content-box
@@ -76,27 +85,29 @@
               %label 配送料の負担
               %span.required 必須
               .select-wrap
-                %i.fa.fa-chevron-down
                 = f.collection_select(:shipping_fee_burden, Shipping_fee_burden.all, :id, :burden, {prompt:"---"},{class:"collection_select-default shipping_fee_burden-select"})
+                %i.fa.fa-chevron-down
 
-            .form-block_hidden.shipping-method_hidden
+            .form-block.shipping-method_hidden
+              %label 配送の方法
+              %span.required 必須
+              .select-wrap
+                = f.collection_select(:shipping_method, Shipping_method.all, :id, :name, {prompt:"---"},{class:"collection_select-default shipping_method"})
+                %i.fa.fa-chevron-down
 
             .form-block
               %label 発送元の地域
               %span.required 必須
               .select-wrap
-                %i.fa.fa-chevron-down
-                -# カテゴリーテーブル未実装のため、他のselectタグで代替中
                 = f.collection_select(:region, Prefecture.all, :id, :name, {prompt:"---"},{class:"collection_select-default region-select"})
-                -# = f.collection_select(:shipping_fee_burden, Shipping_fee_burden.all, :id, :burden, {prompt:"---"},{class:"collection_select-default shipping_fee_burden-select"})
+                %i.fa.fa-chevron-down
 
             .form-block
               %label 発送までの日数
               %span.required 必須
               .select-wrap
-                %i.fa.fa-chevron-down
                 = f.collection_select(:shipping_duration, Shipping_duration.all, :id, :duration, {prompt:"---"},{class:"collection_select-default duration-select"})
-
+                %i.fa.fa-chevron-down
 
         .sell-content-box
           .sell-left-block
@@ -141,7 +152,7 @@
               に同意したことになります。
           
           =f.submit "出品する", class:"exhibit-button-bar" 
-          =link_to "もどる", "javascript:history.back()", class:"go-back-button"
+          =link_to "もどる", "javascript:history.back();", class:"go-back-button"
         
 
           
