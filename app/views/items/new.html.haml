@@ -15,12 +15,13 @@
             .image-container
               .upload-images.have-image-0
                 %ul
-            = f.label :url, for: "image_file_field" do
+            = f.label :image, for: "image_file_field" do
               .image-dropzone    
                 =f.file_field :image, class:"drop-file", id:'image_file_field', multiple: true
                 %pre.text
                   ドラッグアンドドロップ
                   またはクリックしてファイルをアップロード
+
               
         
         .sell-content-box-top

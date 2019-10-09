@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'items#index'
 
-  resources :items , only: [:index, :show, :new, :edit] do
+  resources :items , only: [:index, :show, :new, :create, :edit] do
     member do
       get 'buy'
       post 'pay'
@@ -24,7 +24,6 @@ Rails.application.routes.draw do
     resources :size, only: :index, defaults: { format: 'json' } 
   end
 
-  
 
   resources :users , only: [:index] do
     collection do
