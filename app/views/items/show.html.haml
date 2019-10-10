@@ -21,6 +21,7 @@
             %th 出品者
             %td 
               = @item.user.user_profile.nickname
+
           %tr
             %th カテゴリー
             %td 
@@ -37,6 +38,7 @@
             %th 商品の状態
             %td 
               = @item.condition.condition
+
           %tr
             %th 配送料の負担
             %td
@@ -48,7 +50,9 @@
           %tr
             %th 配送元地域
             %td 
+
               = @item.prefecture.name
+
           %tr
             %th 発送日の目安
             %td 
@@ -56,18 +60,22 @@
 
       .price-section
         %span.item-price 
+
           = "￥" + @item.price.to_s(:delimited)
+
         %span.item-tax (税込)
         %span.item-shipping 
           = @item.shipping_fee_burden.burden
       
-      =link_to "#" do
-        .purchase-button
-          購入画面に進む
+      -if @item.user_id == current_user.id
+        =link_to buy_item_path do
+          .purchase-button
+            購入画面に進む
 
       .item-description
         %p.item-text  
           = @item.description
+
       .item-button-container
         .item-button-container__left-block
           .item-button-container__left-block__like.item-button
@@ -85,6 +93,10 @@
             =fa_icon "lock"
             %span あんしん・あんぜんへの取り組み
 
+  -# item showページ 出品アイテムの編集、出品停止ボタン
+  -if @item.user_id == current_user.id
+    = render "show_item_status_buttons" 
+
 
   .comment-box
     .comment-box__container
@@ -94,8 +106,6 @@
           = form.text_area :comment, class: "comment-form" 
         %button.comment-submit-button
           コメントする
-
-
 
 
   .prev-next-link-bar.clearfix
