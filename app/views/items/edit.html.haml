@@ -1,10 +1,10 @@
--# 新規出品用ページ
+-# 商品編集用ページ
 .item-exhibition-main-container
   %section.sell-item
     .sell-item__container
       %h2.item-regi-head
         商品の情報を入力
-      = form_with model: @item, local: true, class: "form-container" do |f|
+      = form_with model: @item, local: true, class: "form-container",url: item_path(@item.id), action: "patch"  do |f|
         = f.fields_for :images do |img|  
           .sell-upload-box
             .sell-upload-box__title
@@ -70,7 +70,7 @@
               %label 商品の状態
               %span.required 必須
               .select-wrap
-                = f.collection_select(:condition_id, Condition.all, :id, :condition, {prompt:"---"},{class:"collection_select-default condition-select"})
+                = f.collection_select(:condition, Condition.all, :id, :condition, {prompt:"---"},{class:"collection_select-default condition-select"})
                 %i.fa.fa-chevron-down
 
 
@@ -84,28 +84,28 @@
               %label 配送料の負担
               %span.required 必須
               .select-wrap
-                = f.collection_select(:shipping_fee_burden_id, ShippingFeeBurden.all, :id, :burden, {prompt:"---"},{class:"collection_select-default shipping_fee_burden-select"})
+                = f.collection_select(:shipping_fee_burden, Shipping_fee_burden.all, :id, :burden, {prompt:"---"},{class:"collection_select-default shipping_fee_burden-select"})
                 %i.fa.fa-chevron-down
 
             .form-block.shipping-method_hidden
               %label 配送の方法
               %span.required 必須
               .select-wrap
-                = f.collection_select(:shipping_method_id, ShippingMethod.all, :id, :name, {prompt:"---"},{class:"collection_select-default shipping_method"})
+                = f.collection_select(:shipping_method, Shipping_method.all, :id, :name, {prompt:"---"},{class:"collection_select-default shipping_method"})
                 %i.fa.fa-chevron-down
 
             .form-block
               %label 発送元の地域
               %span.required 必須
               .select-wrap
-                = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt:"---"},{class:"collection_select-default region-select"})
+                = f.collection_select(:region, Prefecture.all, :id, :name, {prompt:"---"},{class:"collection_select-default region-select"})
                 %i.fa.fa-chevron-down
 
             .form-block
               %label 発送までの日数
               %span.required 必須
               .select-wrap
-                = f.collection_select(:shipping_duration_id, ShippingDuration.all, :id, :duration, {prompt:"---"},{class:"collection_select-default duration-select"})
+                = f.collection_select(:shipping_duration, Shipping_duration.all, :id, :duration, {prompt:"---"},{class:"collection_select-default duration-select"})
                 %i.fa.fa-chevron-down
 
         .sell-content-box
@@ -150,7 +150,7 @@
               =link_to "加盟店規約", "#", class: "link-blue"
               に同意したことになります。
           
-          =f.submit "出品する", class:"exhibit-button-bar" 
+          =f.submit "変更する", class:"exhibit-button-bar" 
           =link_to "もどる", "javascript:history.back();", class:"go-back-button"
         
 

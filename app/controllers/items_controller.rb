@@ -4,7 +4,8 @@ class ItemsController < ApplicationController
   layout 'application.users', except: [:index,:show]
 
   def index
-    @items = Item.where()
+    @ladies_items = Item.where(category_id: 1).order("created_at DESC").limit(10)
+    @mens_items = Item.where(category_id: 200).order("created_at DESC").limit(10)
     
   end
 
@@ -25,16 +26,25 @@ class ItemsController < ApplicationController
   end
 
   def edit
-
   end
 
+  # 削除
+  def destroy
+    @item = Item.find(2)
+    @item.destroy
+    redirect_to profile_users_path
+  end
 
   def show
     
   end
 
   def buy
-    
+
+    @item = Item.find(2)
+    @condition = Condition.find(@item.condition).condition
+    @region = Prefecture.find(@item.region).name
+
   end
 
   def pay
