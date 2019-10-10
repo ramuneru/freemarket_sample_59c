@@ -75,6 +75,9 @@
             =fa_icon "lock"
             %span あんしん・あんぜんへの取り組み
 
+  -if @item.user_id == current_user.id
+    = render "show_item_status_buttons" 
+
 
   .comment-box
     .comment-box__container
@@ -84,8 +87,6 @@
           = form.text_area :comment, class: "comment-form" 
         %button.comment-submit-button
           コメントする
-
-
 
 
   .prev-next-link-bar.clearfix
