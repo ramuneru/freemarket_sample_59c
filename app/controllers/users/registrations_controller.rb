@@ -52,7 +52,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       password: session[:password],
       phone: session[:phone]
     )
-    @user.build_user_profile(session[:quser_profile_attributes])
+    @user.build_user_profile(session[:user_profile_attributes])
     @user.build_address(session[:address_attributes])
     if @user.save
       session[:id] = @user.id
@@ -88,10 +88,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.build_address
   end
 
- 
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  end
-
-  
+  end  
 end

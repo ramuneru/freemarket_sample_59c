@@ -6,7 +6,7 @@
       .l-single-container
         %h2.l-chapter-head クレジットカード登録
         #add-card-form.l-single-inner.registration-form
-          = form_tag(pay_card_index_path, method: :post, id: 'charge-form', name: "inputForm") do
+          = form_tag(pay_cards_path, method: :post, id: 'charge-form', name: "inputForm") do
             %input{name: "__csrf_value", type: "hidden", value: ""}
             .l-single-content
               .form-group

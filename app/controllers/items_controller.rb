@@ -23,9 +23,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
-
   end
 
+  # 削除
+  def destroy
+  end
 
   def show
   end
