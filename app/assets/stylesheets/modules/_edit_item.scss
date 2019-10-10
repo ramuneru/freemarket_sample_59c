@@ -1,0 +1,26 @@
+.status-button-box{
+
+  .status-change-buttons{
+    text-align: center;
+    width: 700px;
+    height: auto;
+    margin: 24px auto 24px;
+    background: #fff;
+    padding: 8px 16px 8px 16px;
+    .button_bar{
+      @include button-default;
+      color: #fff;
+      margin: 16px 0;
+    }
+    .red{
+      background: #EA352D;
+    }
+    .gray{
+      background: #aaa;
+      margin-bottom: 5px;
+    }
+    .data-modal{
+      @include button-default;
+    }
+  }
+}

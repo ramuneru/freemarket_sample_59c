@@ -3,7 +3,8 @@ class ItemsController < ApplicationController
   layout 'application.users', except: [:index,:show]
 
   def index
-    @items = Item.where()
+    @ladies_items = Item.where(category_id: 1).order("created_at DESC").limit(10)
+    @mens_items = Item.where(category_id: 200).order("created_at DESC").limit(10)
     
   end
 
