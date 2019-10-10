@@ -33,7 +33,6 @@
           %tr
             %th 商品の状態
             %td 
-              = @condition
           %tr
             %th 配送料の負担
             %td 出品者
@@ -43,24 +42,23 @@
           %tr
             %th 配送元地域
             %td 
-              =link_to @region, item_path, method: :delete, class: "link-blue"
+              =link_to "#", class: "link-blue"
           %tr
             %th 発送日の目安
             %td 1~2日で発送
 
       .price-section
         %span.item-price 
-          = @item.price
         %span.item-tax (税込)
         %span.item-shipping 送料込み
       
+      -# - if !@item.user_id == current_user.id
       =link_to buy_item_path do
         .purchase-button
           購入画面に進む
 
       .item-description
         %p.item-text  
-          = @item.description
 
       .item-button-container
         .item-button-container__left-block

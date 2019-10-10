@@ -2,11 +2,12 @@ Rails.application.routes.draw do
   root 'items#index'
 
   resources :items , only: [:index, :show, :new, :create, :edit, :destroy] do
-    member do
-      get 'buy'
-      post 'pay'
+    collection do
+      get 'buy', to: 'items#buy'
+      get 'index', to: 'items#index'
+      post 'pay', to: 'items#pay'
+      get 'complete', to: 'items#complete'
     end
-
   end
 
   resources :category, only: [:index]
