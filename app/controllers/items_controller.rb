@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   require 'payjp'
   before_action :authenticate_user!, except: :index
+  before_action :set_item, only: [:show, :destroy]
   layout 'application.users', except: [:index,:show]
   def index
     @ladies_items = Item.where(category_id: 1).order("created_at DESC").limit(10)
@@ -46,14 +47,12 @@ class ItemsController < ApplicationController
 
   # 削除
   def destroy
-    @item = Item.find(params[:id])
-    # if @item.user_id == current_user.id
-      @item.destroy
-    # end
+    @item.destroy
     redirect_to profile_users_path
   end
 
   def show
+    
   end
 
   def pay
@@ -76,13 +75,18 @@ class ItemsController < ApplicationController
       :description, 
       :category_id, 
       :brand, 
-      :condition, 
-      :region, 
-      :shipping_fee_burden, 
-      :shipping_method, 
-      :shipping_duration, 
+      :condition_id, 
+      :prefecture_id, 
+      :shipping_fee_burden_id, 
+      :shipping_method_id, 
+      :shipping_duration_id, 
       :price,
       images_attributes: [:id,:image]
     ).merge(user_id: current_user.id)
   end 
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
 end
