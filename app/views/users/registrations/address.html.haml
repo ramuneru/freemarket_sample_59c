@@ -53,7 +53,7 @@
                     %span.form-require 必須
                     .select-wrap
                       %i.icon-arrow-bottom
-                      = h.collection_select(:region, Prefecture.all, :id, :name, {prompt:"--"},{class:"select-default"})
+                      = h.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt:"--"},{class:"select-default"})
                   .form-group
                     %label{for: "city"} 市区町村
                     %span.form-require 必須

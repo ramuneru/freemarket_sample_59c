@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: :index
+  before_action :set_item, only: [:show, :destroy]
   layout 'application.users', except: [:index,:show]
 
   def index
@@ -30,15 +31,19 @@ class ItemsController < ApplicationController
 
   # 削除
   def destroy
-    @item = Item.find(2)
     @item.destroy
     redirect_to profile_users_path
   end
 
   def show
-    @item = Item.find(2)
+    
+  end
+
+  def buy
+
     @condition = Condition.find(@item.condition).condition
     @region = Prefecture.find(@item.region).name
+
   end
 
   def pay
@@ -60,18 +65,18 @@ class ItemsController < ApplicationController
       :description, 
       :category_id, 
       :brand, 
-      :condition, 
-      :region, 
-      :shipping_fee_burden, 
-      :shipping_method, 
-      :shipping_duration, 
+      :condition_id, 
+      :prefecture_id, 
+      :shipping_fee_burden_id, 
+      :shipping_method_id, 
+      :shipping_duration_id, 
       :price,
       images_attributes: [:id,:image]
     ).merge(user_id: current_user.id)
   end 
 
-  def buy
-    
+  def set_item
+    @item = Item.find(params[:id])
   end
 
 end
