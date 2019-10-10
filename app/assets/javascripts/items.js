@@ -14,8 +14,8 @@ $(function(){
     return html;
   };
   $(document).on('change', "#category-parent_select", function(){
-    $('.children-select').remove();
-    $('.grandchildren-select').remove();
+    $('.children-select').empty();
+    $('.grandchildren-select').empty();
     $('#size-select').empty();
     var parent_id = $('option:selected').val();
 
