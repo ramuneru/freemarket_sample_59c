@@ -10,11 +10,12 @@
 
     .main-box__category__content
       .main-box__category__content__grid
-        =link_to "#" do
+        =link_to item_path(@item.id) do
           .box
             .price ¥2,000
             =image_tag "nori.jpg", class: "image-box"
-            .title-text ケース
+            .title-text
+
         =link_to "#" do
           .box
             .price ¥2,000
