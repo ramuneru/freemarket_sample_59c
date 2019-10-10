@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
   def buy
     
   end
-  
+
   def pay
     # Payjp の画面から取得した秘密鍵
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
@@ -55,11 +55,11 @@ class ItemsController < ApplicationController
       :description, 
       :category_id, 
       :brand, 
-      :condition, 
-      :region, 
-      :shipping_fee_burden, 
-      :shipping_method, 
-      :shipping_duration, 
+      :condition_id, 
+      :prefecture_id, 
+      :shipping_fee_burden_id, 
+      :shipping_method_id, 
+      :shipping_duration_id, 
       :price,
       images_attributes: [:id,:image]
     ).merge(user_id: current_user.id)
