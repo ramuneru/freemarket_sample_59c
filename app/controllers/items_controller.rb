@@ -28,9 +28,15 @@ class ItemsController < ApplicationController
 
   # 削除
   def destroy
+    @item = Item.find(2)
+    @item.destroy
+    redirect_to profile_users_path
   end
 
   def show
+    @item = Item.find(2)
+    @condition = Condition.find(@item.condition).condition
+    @region = Prefecture.find(@item.region).name
   end
 
   def pay
