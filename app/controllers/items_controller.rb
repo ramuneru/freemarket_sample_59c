@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   layout 'application.users', except: [:index,:show]
 
   def index
+    @items = Item.where()
     
   end
 
