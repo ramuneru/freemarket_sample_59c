@@ -41,7 +41,6 @@ class ItemsController < ApplicationController
 
   def buy
 
-    @item = Item.find(2)
     @condition = Condition.find(@item.condition).condition
     @region = Prefecture.find(@item.region).name
 
