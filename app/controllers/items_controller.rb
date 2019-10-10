@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: :index
-  before_action :set_item, only: [:show]
+  before_action :set_item, only: [:show, :destroy]
   layout 'application.users', except: [:index,:show]
 
   def index
@@ -30,7 +30,6 @@ class ItemsController < ApplicationController
 
   # 削除
   def destroy
-    @item = Item.find(2)
     @item.destroy
     redirect_to profile_users_path
   end
