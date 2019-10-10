@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.build
-    @category_parent = Category.where(ancestry: nil)
+    @category_parent = Category.where(id: maximum)
   end
 
   def create
