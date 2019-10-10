@@ -14,8 +14,8 @@ $(function(){
     return html;
   };
   $(document).on('change', "#category-parent_select", function(){
-    $('.children-select').empty();
-    $('.grandchildren-select').empty();
+    $('.children-select').remove();
+    $('.grandchildren-select').remove();
     $('#size-select').empty();
     var parent_id = $('option:selected').val();
 
@@ -74,8 +74,7 @@ $(function(){
                     <select class="collection_select-default size-select", name="size", required>
                     <option value="">---</option>
                     ${option}
-                    </select>
-                    <i class="fa fa-chevron-down"></i>
+                    </select><i class="fa fa-chevron-down"></i>
                   </div>`
       return html;
     };
