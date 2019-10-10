@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: :index
+  before_action :set_item
   layout 'application.users', except: [:index,:show]
 
   def index
@@ -29,7 +30,7 @@ class ItemsController < ApplicationController
 
 
   def show
-    @item = Item.find(params[:id])
+    
   end
 
   def buy
@@ -65,6 +66,8 @@ class ItemsController < ApplicationController
     ).merge(user_id: current_user.id)
   end 
 
-  
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
 end
