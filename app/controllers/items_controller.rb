@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: :index
-  before_action :set_item
+  before_action :set_item, only: [:show]
   layout 'application.users', except: [:index,:show]
 
   def index
