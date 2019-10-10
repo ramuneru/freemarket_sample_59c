@@ -32,6 +32,10 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def buy
+    
+  end
+  
   def pay
     # Payjp の画面から取得した秘密鍵
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
@@ -61,8 +65,6 @@ class ItemsController < ApplicationController
     ).merge(user_id: current_user.id)
   end 
 
-  def buy
-    
-  end
+  
 
 end

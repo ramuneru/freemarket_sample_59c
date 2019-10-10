@@ -35,26 +35,31 @@
             %td 
           %tr
             %th 商品の状態
-            %td 新品未使用
+            %td 
+              = @item.condition.condition
           %tr
             %th 配送料の負担
-            %td 出品者
+            %td
+              = @item.shipping_fee_burden.burden
           %tr
             %th 配送の方法
-            %td らくらくメルカリ便
+            %td 
+              = @item.shipping_method.name
           %tr
             %th 配送元地域
             %td 
-              =link_to "北海道", "#", class: "link-blue"
+              = @item.prefecture.name
           %tr
             %th 発送日の目安
-            %td 1~2日で発送
+            %td 
+              = @item.shipping_duration.duration
 
       .price-section
         %span.item-price 
           = "￥" + @item.price.to_s(:delimited)
         %span.item-tax (税込)
-        %span.item-shipping 送料込み
+        %span.item-shipping 
+          = @item.shipping_fee_burden.burden
       
       =link_to "#" do
         .purchase-button
