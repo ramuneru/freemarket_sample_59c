@@ -2,7 +2,7 @@
 .item-detail-page
   .item-detail-page__container
     %h1.item-detail-page__container__title
-      商品タイトル
+      = @item.title
     .item-detail-page__container__clearfix
       .photo-box
         .photo-box__higher
@@ -19,13 +19,17 @@
         %tbody
           %tr
             %th 出品者
-            %td user_name
+            %td 
+              = @item.user.user_profile.nickname
           %tr
             %th カテゴリー
             %td 
-              %p 大カテゴリー
-              %p 中カテゴリー
-              %p 小カテゴリー
+              %p 
+                = @item.category.root.name
+              %p 
+                = @item.category.parent.name
+              %p
+                = @item.category.name
           %tr
             %th ブランド
             %td 
@@ -47,7 +51,8 @@
             %td 1~2日で発送
 
       .price-section
-        %span.item-price ¥2,500
+        %span.item-price 
+          = "￥" + @item.price.to_s(:delimited)
         %span.item-tax (税込)
         %span.item-shipping 送料込み
       
@@ -56,8 +61,8 @@
           購入画面に進む
 
       .item-description
-        %p.item-text  お気に入りのケースですが機種変更をしたため、不要となりました出品いたします。お値下げもいたしますので気軽にご連絡くださいませ。比較的美品と思いますが、一箇所明るいベージュ部分に他の部分の糸が混ざっている？のか少し濃くなっているところがあります。(画像１枚目)傷とかではないのですが、高いもののため自分であまりつつきたくないのでそのままにしています。
-
+        %p.item-text  
+          = @item.description
       .item-button-container
         .item-button-container__left-block
           .item-button-container__left-block__like.item-button
