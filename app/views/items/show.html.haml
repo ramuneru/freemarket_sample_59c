@@ -54,9 +54,10 @@
         %span.item-tax (税込)
         %span.item-shipping 送料込み
       
-      =link_to buy_item_path do
-        .purchase-button
-          購入画面に進む
+      -if @item.user_id == current_user.id
+        =link_to buy_item_path do
+          .purchase-button
+            購入画面に進む
 
       .item-description
         %p.item-text  
@@ -79,6 +80,7 @@
             =fa_icon "lock"
             %span あんしん・あんぜんへの取り組み
 
+  -# item showページ 出品アイテムの編集、出品停止ボタン
   -if @item.user_id == current_user.id
     = render "show_item_status_buttons" 
 
