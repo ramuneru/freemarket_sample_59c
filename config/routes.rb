@@ -24,7 +24,6 @@ Rails.application.routes.draw do
     resources :size, only: :index, defaults: { format: 'json' } 
   end
 
-
   resources :users , only: [:index] do
     collection do
       get 'profile'
@@ -37,6 +36,7 @@ Rails.application.routes.draw do
       get 'completed'
     end
   end
+
   resources :card, only: [:new,:show] do
     collection do
       post 'show',      to: 'card#show'
@@ -44,6 +44,7 @@ Rails.application.routes.draw do
       post 'delete',    to: 'card#delete'
     end
   end
+
   devise_for :users, controllers: {
     registrations: "users/registrations",
     sessions:      "users/sessions",

@@ -9,21 +9,24 @@
         %section
           .add-card__list__head
             %h3 クレジットカード一覧
-          %ul.settings-payment-list
-            %li
-              .l-single-content
+          %ul.set-paymentdetail
+            %li.payment-list
+              .card-content
                 = form_tag(delete_card_index_path, method: :post, id: 'charge-form', name: "inputForm") do
-                  .settings-payment-num
+                  .set-payment
                     = "**** **** **** " + "#{@default_card_information.last4}"
-                  .settings-payment-num
+                  .set-payment
                     - exp_month = "#{@default_card_information.exp_month.to_s}"
                     - exp_year = "#{@default_card_information.exp_year.to_s.slice(2,3)}"
                     = exp_month + " / " + "#{exp_year}"
                   %input{name:"method", type:"hidden", value:"card"}
-                  %button.settings-payment-remove{type: "submit"}
+                  %button.payment-remove{type: "submit"}
                     削除する
-          .settings-not-regist
-            = link_to "支払い方法について", "https://mercari.com/jp/help_center/category/6/"
+          .add-card__list__btn
+          .add-card__list__btn-ex
+            = link_to "https://mercari.com/jp/help_center/category/6/" do
+              支払い方法について
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
     - else
       .add-card__list
         %section
