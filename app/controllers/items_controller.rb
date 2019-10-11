@@ -7,6 +7,10 @@ class ItemsController < ApplicationController
     @ladies_items = Item.where(category_id: 1).order("created_at DESC").limit(10)
     @mens_items = Item.where(category_id: 200).order("created_at DESC").limit(10)
     @item = Item.find(1)    
+    #@item = Item.find(1)
+    # @ladies_items = Item.where(category_id: 1).order("created_at DESC").limit(10)
+    # @mens_items = Item.where(category_id: 200).order("created_at DESC").limit(10)
+    
   end
 
   def new
@@ -34,7 +38,6 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(params_new)
-    @item.images.build
     if @item.save
       redirect_to root_path
     else
@@ -82,7 +85,7 @@ class ItemsController < ApplicationController
       :shipping_duration_id, 
       :price,
       images_attributes: [:id,:image]
-    ).merge(user_id: current_user.id)
+    ).merge(user_id: current_user.id,category_id: params[:category])
   end 
 
   def set_item
