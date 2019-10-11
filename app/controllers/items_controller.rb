@@ -1,9 +1,12 @@
 class ItemsController < ApplicationController
+  require 'payjp'
   before_action :authenticate_user!, except: :index
   before_action :set_item, only: [:show, :destroy]
   layout 'application.users', except: [:index,:show]
-
   def index
+    @ladies_items = Item.where(category_id: 1).order("created_at DESC").limit(10)
+    @mens_items = Item.where(category_id: 200).order("created_at DESC").limit(10)
+    @item = Item.find(1)    
     #@item = Item.find(1)
     # @ladies_items = Item.where(category_id: 1).order("created_at DESC").limit(10)
     # @mens_items = Item.where(category_id: 200).order("created_at DESC").limit(10)
@@ -15,6 +18,23 @@ class ItemsController < ApplicationController
     @item.images.build
     @category_parent = Category.where(ancestry: nil)
   end
+
+  def buy
+
+    @card = Card.where(user_id: current_user.id).first
+    if @card.present?
+      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+      #保管した顧客IDでpayjpから情報取得
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
+      @default_card_information = customer.cards.retrieve(@card.card_id)
+    else
+      #登録された情報がない場合にカード登録画面に移動
+      redirect_to controller: "card", action: "show"
+    end
+  end
+
+
 
   def create
     @item = Item.new(params_new)
@@ -38,24 +58,18 @@ class ItemsController < ApplicationController
     
   end
 
-  def buy
-
-    @condition = Condition.find(@item.condition).condition
-    @region = Prefecture.find(@item.region).name
-
-  end
-
   def pay
-    # Payjp の画面から取得した秘密鍵
+    @item = Item.find(2)
+    card = Card.where(user_id: current_user.id).first
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
     Payjp::Charge.create(
-      amount: 3500, # 決済する値段@item.price
-      card: params['payjp-token'],
-      currency: 'jpy'
-    )
+    amount: @item.price,
+    customer: card.customer_id,
+    currency: 'jpy',
+  )
+  redirect_to action: 'complete' #完了画面に移動
   end
 
-  
   private
   
   def params_new
