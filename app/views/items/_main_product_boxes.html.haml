@@ -10,57 +10,58 @@
 
     .main-box__category__content
       .main-box__category__content__grid
-        =link_to item_path(@item.id) do
-          .box
-            .price ¥2,000
-            =image_tag "nori.jpg", class: "image-box"
-            .title-text
+        - @items.each do |item|
+          =link_to item_path(item.id) do
+            .box
+              .price ¥ #{item.price}
+              =image_tag "nori.jpg", class: "image-box"
+              .title-text #{item.description}
 
-        =link_to "#" do
-          .box
-            .price ¥2,000
-            =image_tag "nori.jpg", class: "image-box"
-            .title-text ケース
-        =link_to "#" do
-          .box
-            .price ¥2,000
-            =image_tag "nori.jpg", class: "image-box"
-            .title-text ケース
-        =link_to "#" do
-          .box
-            .price ¥2,000
-            =image_tag "nori.jpg", class: "image-box"
-            .title-text ケース
-        =link_to "#" do
-          .box
-            .price ¥2,000
-            =image_tag "nori.jpg", class: "image-box"
-            .title-text ケース
-        =link_to "#" do
-          .box
-            .price ¥2,000
-            =image_tag "nori.jpg", class: "image-box"
-            .title-text ケース
-        =link_to "#" do
-          .box
-            .price ¥2,000
-            =image_tag "nori.jpg", class: "image-box"
-            .title-text ケース
-        =link_to "#" do
-          .box
-            .price ¥2,000
-            =image_tag "nori.jpg", class: "image-box"
-            .title-text ケース
-        =link_to "#" do
-          .box
-            .price ¥2,000
-            =image_tag "nori.jpg", class: "image-box"
-            .title-text ケース
-        =link_to "#" do
-          .box
-            .price ¥2,000
-            =image_tag "nori.jpg", class: "image-box"
-            .title-text ケース
+        -# =link_to "#" do
+        -#   .box
+        -#     .price ¥2,000
+        -#     =image_tag "nori.jpg", class: "image-box"
+        -#     .title-text ケース
+        -# =link_to "#" do
+        -#   .box
+        -#     .price ¥2,000
+        -#     =image_tag "nori.jpg", class: "image-box"
+        -#     .title-text ケース
+        -# =link_to "#" do
+        -#   .box
+        -#     .price ¥2,000
+        -#     =image_tag "nori.jpg", class: "image-box"
+        -#     .title-text ケース
+        -# =link_to "#" do
+        -#   .box
+        -#     .price ¥2,000
+        -#     =image_tag "nori.jpg", class: "image-box"
+        -#     .title-text ケース
+        -# =link_to "#" do
+        -#   .box
+        -#     .price ¥2,000
+        -#     =image_tag "nori.jpg", class: "image-box"
+        -#     .title-text ケース
+        -# =link_to "#" do
+        -#   .box
+        -#     .price ¥2,000
+        -#     =image_tag "nori.jpg", class: "image-box"
+        -#     .title-text ケース
+        -# =link_to "#" do
+        -#   .box
+        -#     .price ¥2,000
+        -#     =image_tag "nori.jpg", class: "image-box"
+        -#     .title-text ケース
+        -# =link_to "#" do
+        -#   .box
+        -#     .price ¥2,000
+        -#     =image_tag "nori.jpg", class: "image-box"
+        -#     .title-text ケース
+        -# =link_to "#" do
+        -#   .box
+        -#     .price ¥2,000
+        -#     =image_tag "nori.jpg", class: "image-box"
+        -#     .title-text ケース
 
   .main-box__category
     .main-box__category__bar
