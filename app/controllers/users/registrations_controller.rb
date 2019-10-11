@@ -74,7 +74,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :password,
       :phone,
       user_profile_attributes: [:id,:nickname,:family_name,:last_name,:family_name_kana,:last_name_kana,:birth_year,:birth_month,:birth_date],
-      address_attributes: [:id,:postal_code,:region,:city,:block,:building,:phone]
+      address_attributes: [:id,:postal_code,:prefecture_id,:city,:block,:building,:phone]
     ) 
   end
  
