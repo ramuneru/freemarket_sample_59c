@@ -5,6 +5,11 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.order("created_at DESC").limit(10)
+    @images = Image.where("item_id")
+    binding.pry
+    
+    # @images = Image.order("created_at DESC").limit(10)
+
     #@item = Item.find(1)
     # @ladies_items = Item.where(category_id: 1).order("created_at DESC").limit(10)
     # @mens_items = Item.where(category_id: 200).order("created_at DESC").limit(10)

@@ -15,7 +15,8 @@ $(function(){
   };
   $(document).on('change', "#category-parent_select", function(){
     $('.children-select').remove();
-    $('.grandchildren-select').remove();
+    // $('.grandchildren-select').remove();
+    $('#third-children').empty();
     $('#size-select').empty();
     var parent_id = $('option:selected').val();
 
@@ -81,8 +82,7 @@ $(function(){
     $(document).on('change', "#category-grandchildren_select", function(){
       $('#size-select').empty();
       var grandchild_id = $(this).val();
-    
-      // if (!size == ""){} 分岐導入検討中
+      
       $.ajax({
         url:  '/api/size',
         type: "GET",
@@ -93,6 +93,7 @@ $(function(){
         var html = addHTML(data);
         $("#size-select").append(html);
       })
+      
     });
   
 
