@@ -16,6 +16,7 @@ $(function(){
   $(document).on('change', "#category-parent_select", function(){
     $('.children-select').remove();
     $('.grandchildren-select').remove();
+    $("#third-children").empty();
     $('#size-select').empty();
     var parent_id = $('option:selected').val();
 
