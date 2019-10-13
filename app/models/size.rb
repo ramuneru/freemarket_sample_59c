@@ -1,5 +1,5 @@
 class Size < ApplicationRecord
-  # アソシエーションはhas_manyではなくbelongs_toだった
-  belongs_to :category
+  has_many :categories
+  # has_many :items
   has_ancestry
 end

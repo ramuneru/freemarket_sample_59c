@@ -1,6 +1,6 @@
 # README
 
-[![ER図](https://i.gyazo.com/d7e098a01786e65e81735473ef10725a.png)](https://gyazo.com/d7e098a01786e65e81735473ef10725a)
+[![ER図](https://i.gyazo.com/0fb7318157adedd3097c94b8148fcbe3.png)](https://gyazo.com/0fb7318157adedd3097c94b8148fcbe3)
 
 ## users
 
@@ -129,9 +129,13 @@
 |shipping_method|integer|null:false|
 |shipping_duration|integer|null:false|
 |user_id|references|null:false, foreign_key: true|
+|size_id|references|foreign_key: true|
+
 
 - belongs_to :user
-- belongs_to :category, dependent: :destroy
+- belongs_to :category
+<!-- item詳細欄に表示させるためsize_idを追加 -->
+- belongs_to :size
 
 - has_one :brand, dependent: :destroy
 - has_one :trade_condition
@@ -163,6 +167,7 @@
 
 ### Association
 - has_many :items
+- belongs_to :size
 - has_ancestry
 
 
@@ -174,6 +179,7 @@
 |ancestry|string||
 
 - has_many :categories
+- has_many :items
 - has_ancestry
 
 
