@@ -74,7 +74,7 @@
           = @item.shipping_fee_burden.burden
       
       -if @item.user_id == current_user.id
-        =link_to "buy/#{@item.id}" do
+        =link_to buy_item_path do
           .purchase-button
             購入画面に進む
 

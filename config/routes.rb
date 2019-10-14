@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   resources :items , only: [:index, :show, :new, :create, :edit, :destroy] do
     member do
       get 'index', to: 'items#index'
+      get 'buy', to: 'items#buy'
     end
     collection do
-      get 'buy/:id', to: 'items#buy'
       post 'pay/:id', to: 'items#pay'
       get 'complete', to: 'items#complete'
     end

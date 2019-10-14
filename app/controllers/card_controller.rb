@@ -1,9 +1,9 @@
 class CardController < ApplicationController
   require "payjp"
-  
+  before_action :set_card , only: [:new, :show, :delete]
+
   def new
-    @card = Card.where(user_id: current_user.id)
-    redirect_to action: "show" if @card.exists?
+    redirect_to action: "show" if @card.present?
   end
 
   def pay 
@@ -26,7 +26,6 @@ class CardController < ApplicationController
   end
 
   def delete
-    @card = Card.where(user_id: current_user.id).first
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
     customer = Payjp::Customer.retrieve(@card.customer_id)
 
@@ -40,7 +39,6 @@ class CardController < ApplicationController
   end
 
   def show
-    @card = Card.where(user_id: current_user.id).first
     if @card.present?
       Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
       customer = Payjp::Customer.retrieve(@card.customer_id)
@@ -64,5 +62,10 @@ class CardController < ApplicationController
         @card_src = "discover.svg"
       end
     end
+  end
+
+  private
+  def set_card
+    @card = current_user.card
   end
 end

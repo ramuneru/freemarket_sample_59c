@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   require 'payjp'
   before_action :authenticate_user!, except: :index
   before_action :set_item, only: [:show, :destroy, :buy, :pay]
+  before_action :set_user_detail, only: [:buy, :pay]
   layout 'application.users', except: [:index,:show]
   def index
     @items = Item.order("created_at DESC").limit(10)
@@ -82,6 +83,7 @@ class ItemsController < ApplicationController
   end
 
   def pay
+
     card = Card.where(user_id: current_user.id).first
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
     Payjp::Charge.create(
@@ -117,6 +119,9 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_user_detail
     @address = Address.find(current_user.id)
     @user_profile = UserProfile.find(current_user.id)
   end
