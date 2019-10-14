@@ -28,6 +28,24 @@ class ItemsController < ApplicationController
       customer = Payjp::Customer.retrieve(@card.customer_id)
       #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
       @default_card_information = customer.cards.retrieve(@card.card_id)
+      @card_information = customer.cards.retrieve(@card.card_id)
+
+      # 登録しているカード会社のブランドアイコンを表示する
+      @card_brand = @card_information.brand      
+      case @card_brand
+      when "Visa"
+        @card_src = "visa.svg"
+      when "JCB"
+        @card_src = "jcb.svg"
+      when "MasterCard"
+        @card_src = "master-card.svg"
+      when "American Express"
+        @card_src = "american_express.svg"
+      when "Diners Club"
+        @card_src = "dinersclub.svg"
+      when "Discover"
+        @card_src = "discover.svg"
+      end
     else
       #登録された情報がない場合にカード登録画面に移動
       redirect_to controller: "card", action: "show"
@@ -70,6 +88,9 @@ class ItemsController < ApplicationController
   redirect_to action: 'complete' #完了画面に移動
   end
 
+  def complete
+  end
+
   private
   
   def params_new
@@ -91,5 +112,4 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-
 end
