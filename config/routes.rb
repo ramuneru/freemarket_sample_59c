@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'items#index'
 
-  resources :items , only: [:index, :show, :new, :create, :edit, :destroy] do
+  resources :items do
     member do
       get 'buy', to: 'items#buy'
       get 'index', to: 'items#index'

@@ -55,6 +55,12 @@ class ItemsController < ApplicationController
     redirect_to profile_users_path
   end
 
+  def update
+    # binding.pry
+    item = Item.find(id_params[:id])
+    item.update(params_new) if item.user_id == current_user.id
+  end
+
   def show
     
   end
@@ -88,6 +94,22 @@ class ItemsController < ApplicationController
       images_attributes: [:id,:image]
     ).merge(user_id: current_user.id,category_id: params[:category])
   end 
+
+  # def item_params
+  #   params.require(:item).permit(
+  #     :title, 
+  #     :description, 
+  #     :category_id, 
+  #     :brand, 
+  #     :condition_id, 
+  #     :prefecture_id, 
+  #     :shipping_fee_burden_id, 
+  #     :shipping_method_id, 
+  #     :shipping_duration_id, 
+  #     :price,
+  #     images_attributes: [:id,:image]
+  #   )
+  # end
 
   def set_item
     @item = Item.find(params[:id])
