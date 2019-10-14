@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   layout 'application.users', except: [:index,:show]
   def index
     @items = Item.order("created_at DESC").limit(10)
+  
     # @images = Image.includes(:item).where("item_id")
 
     # binding.pry
@@ -20,6 +21,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.images.build
     @category_parent = Category.where(ancestry: nil)
+
   end
 
   def buy
@@ -41,6 +43,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(params_new)
+    # binding.pry
     if @item.save
       redirect_to root_path
     else
@@ -87,6 +90,7 @@ class ItemsController < ApplicationController
       :shipping_method_id, 
       :shipping_duration_id, 
       :price,
+      :size_id,
       images_attributes: [:id,:image]
     ).merge(user_id: current_user.id,category_id: params[:category])
   end 

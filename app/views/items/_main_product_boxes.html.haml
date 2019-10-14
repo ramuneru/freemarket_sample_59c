@@ -11,7 +11,7 @@
     .main-box__category__content
       .main-box__category__content__grid
         - @items.each do |item|
-          =link_to item_path(item.id) do
+          =link_to "/items/#{item.id}" do
             .box
               .price ¥ #{item.price}
               -# - @images.each do |image|

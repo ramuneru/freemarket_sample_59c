@@ -64,15 +64,15 @@ $(function(){
   });
 
     // サイズセレクト
-    function addHTML(size){
+    function addHTML(sizes){
       var option =``
-      size.forEach(function(grandchild){
-        option += `<option value="${grandchild.size_id}">${grandchild.size}</option>`
+      sizes.forEach(function(size){
+        option += `<option value="${size.id}">${size.size}</option>`
       });
       var html = `<label>サイズ</label>
                   <span class="required">必須</span>
                   <div class="select-wrap">
-                    <select class="collection_select-default size-select", name="size", required>
+                    <select class="collection_select-default size-select", name="item[size_id]", required>
                     <option value="">---</option>
                     ${option}
                     </select><i class="fa fa-chevron-down"></i>
@@ -82,7 +82,7 @@ $(function(){
     $(document).on('change', "#category-grandchildren_select", function(){
       $('#size-select').empty();
       var grandchild_id = $(this).val();
-      
+
       $.ajax({
         url:  '/api/size',
         type: "GET",
@@ -93,7 +93,6 @@ $(function(){
         var html = addHTML(data);
         $("#size-select").append(html);
       })
-      
     });
   
 

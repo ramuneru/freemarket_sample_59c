@@ -11,7 +11,6 @@ class Api::SizeController < ApplicationController
     # size = Size.find(size_id)
     # .childrenメソッド(ancestryのヘルパーメソッド)で親idの持つ、子要素を全て取得
     @size = size.children
-
     return @size
   end
 end
