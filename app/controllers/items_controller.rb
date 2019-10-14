@@ -4,9 +4,13 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :destroy]
   layout 'application.users', except: [:index,:show]
   def index
-    @ladies_items = Item.where(category_id: 1).order("created_at DESC").limit(10)
-    @mens_items = Item.where(category_id: 200).order("created_at DESC").limit(10)
-    @item = Item.find(1)    
+    @items = Item.order("created_at DESC").limit(10)
+  
+    # @images = Image.includes(:item).where("item_id")
+
+    # binding.pry
+    # @images = Image.order("created_at DESC").limit(10)
+
     #@item = Item.find(1)
     # @ladies_items = Item.where(category_id: 1).order("created_at DESC").limit(10)
     # @mens_items = Item.where(category_id: 200).order("created_at DESC").limit(10)
@@ -17,6 +21,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.images.build
     @category_parent = Category.where(ancestry: nil)
+
   end
 
   def buy
@@ -56,6 +61,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(params_new)
+    # binding.pry
     if @item.save
       redirect_to root_path
     else
@@ -105,6 +111,7 @@ class ItemsController < ApplicationController
       :shipping_method_id, 
       :shipping_duration_id, 
       :price,
+      :size_id,
       images_attributes: [:id,:image]
     ).merge(user_id: current_user.id,category_id: params[:category])
   end 

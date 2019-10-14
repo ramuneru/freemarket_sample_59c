@@ -4,17 +4,9 @@ Rails.application.routes.draw do
   resources :items , only: [:index, :show, :new, :create, :edit, :destroy] do
     collection do
       get 'buy', to: 'items#buy'
-<<<<<<< Updated upstream
       get 'index', to: 'items#index'
-      post 'pay', to: 'items#pay'
-=======
- 
-    end
-    collection do
-      post 'pay', to: 'items#pay'
-      get 'index', to: 'items#index'
->>>>>>> Stashed changes
       get 'complete', to: 'items#complete'
+      post 'pay', to: 'items#pay'
     end
   end
 
