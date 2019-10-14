@@ -5,9 +5,9 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.order("created_at DESC").limit(10)
-    @images = Image.where("item_id")
-    binding.pry
-    
+    # @images = Image.includes(:item).where("item_id")
+
+    # binding.pry
     # @images = Image.order("created_at DESC").limit(10)
 
     #@item = Item.find(1)
