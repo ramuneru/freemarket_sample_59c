@@ -19,7 +19,7 @@
                   %ul
               = img.label :url, for: "image_file_field" do
                 .image-dropzone    
-                  =img.file_field :image, class:"drop-file", id:'image_file_field', multiple: true
+                  =img.file_field :image, class:"drop-file", id:'image_file_field'
                   %pre.text
                     ドラッグアンドドロップ
                     またはクリックしてファイルをアップロード
@@ -84,14 +84,14 @@
               %label 配送料の負担
               %span.required 必須
               .select-wrap
-                = f.collection_select(:shipping_fee_burden, Shipping_fee_burden.all, :id, :burden, {prompt:"---"},{class:"collection_select-default shipping_fee_burden-select"})
+                = f.collection_select(:shipping_fee_burden, ShippingFeeBurden.all, :id, :burden, {prompt:"---"},{class:"collection_select-default shipping_fee_burden-select"})
                 %i.fa.fa-chevron-down
 
             .form-block.shipping-method_hidden
               %label 配送の方法
               %span.required 必須
               .select-wrap
-                = f.collection_select(:shipping_method, Shipping_method.all, :id, :name, {prompt:"---"},{class:"collection_select-default shipping_method"})
+                = f.collection_select(:shipping_method, ShippingMethod.all, :id, :name, {prompt:"---"},{class:"collection_select-default shipping_method"})
                 %i.fa.fa-chevron-down
 
             .form-block
@@ -105,7 +105,7 @@
               %label 発送までの日数
               %span.required 必須
               .select-wrap
-                = f.collection_select(:shipping_duration, Shipping_duration.all, :id, :duration, {prompt:"---"},{class:"collection_select-default duration-select"})
+                = f.collection_select(:shipping_duration, ShippingDuration.all, :id, :duration, {prompt:"---"},{class:"collection_select-default duration-select"})
                 %i.fa.fa-chevron-down
 
         .sell-content-box

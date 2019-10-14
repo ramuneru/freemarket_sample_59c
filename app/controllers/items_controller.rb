@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   require 'payjp'
   before_action :authenticate_user!, except: :index
-  before_action :set_item, only: [:show, :destroy]
+  before_action :set_item, only: [:show, :destroy, :edit]
   layout 'application.users', except: [:index,:show]
   def index
     # @ladies_items = Item.where(category_id: 1).order("created_at DESC").limit(10)
@@ -45,6 +45,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(id_params[:id])
+    @item.images.build
+    @category_parent = Category.where(ancestry: nil)
   end
 
   # 削除
@@ -91,4 +94,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def id_params
+    params.permit(:id)
+  end
 end
