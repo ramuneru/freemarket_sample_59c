@@ -2,11 +2,13 @@ Rails.application.routes.draw do
   root 'items#index'
 
   resources :items , only: [:index, :show, :new, :create, :edit, :destroy] do
-    collection do
-      get 'buy', to: 'items#buy'
+    member do
       get 'index', to: 'items#index'
+    end
+    collection do
+      get 'buy/:id', to: 'items#buy'
+      post 'pay/:id', to: 'items#pay'
       get 'complete', to: 'items#complete'
-      post 'pay', to: 'items#pay'
     end
   end
 
