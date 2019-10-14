@@ -46,7 +46,6 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(id_params[:id])
-    @item.images.build
     @category_parent = Category.where(ancestry: nil)
   end
 
