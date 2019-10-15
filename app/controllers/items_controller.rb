@@ -3,7 +3,6 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :set_item, only: [:show, :destroy, :buy, :pay]
   before_action :set_user_detail, only: [:buy, :pay]
-
   layout 'application.users', except: [:index,:show]
   def index
     @items = Item.order("created_at DESC").limit(10)
