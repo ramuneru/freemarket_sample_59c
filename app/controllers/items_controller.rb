@@ -9,7 +9,6 @@ class ItemsController < ApplicationController
   
     @ladies_items = Item.where(category_id: 1..199).order("created_at DESC").limit(10)
     @mens_items = Item.where(category_id: 200..344).order("created_at DESC").limit(10)
-    
     # 未実装
     # @images = Image.includes(:item).where("item_id")
 
