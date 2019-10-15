@@ -19,6 +19,8 @@ $(function(){
     $("#third-children").empty();
     $('#size-select').empty();
     var parent_id = $('option:selected').val();
+    console.log(parent_id);
+    parent_id.selected = true; 
 
     $.ajax({
       url:  '/api/category/children',
@@ -50,6 +52,7 @@ $(function(){
     $('.grandchildren-select').remove();
     $('#size-select').empty();
     var parent_id = $(this).val();
+    parent_id.selected = true; 
     
     $.ajax({
       url:  '/api/category/children',
@@ -164,3 +167,5 @@ $(function(){
     }
   });
 });
+
+

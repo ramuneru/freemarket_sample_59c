@@ -4,7 +4,7 @@
     .sell-item__container
       %h2.item-regi-head
         商品の情報を入力
-      = form_with model: @item, local: true, class: "form-container" do |f|
+      = form_with model: @item, local: true, data: { persist: 'garlic' }, class: "form-container" do |f|
         = f.fields_for :images do |img|  
           .sell-upload-box
             .sell-upload-box__title
