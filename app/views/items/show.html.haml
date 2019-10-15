@@ -6,14 +6,19 @@
     .item-detail-page__container__clearfix
       .photo-box
         .photo-box__higher
-          =image_tag "nori.jpg", class: "upper-photo"
+          =image_tag @item.images[0].image.url, class: "upper-photo"
         .thumbnails-box
-          =image_tag "nori.jpg", class: "thumbnail"
-          =image_tag "nori.jpg", class: "thumbnail"
-          =image_tag "nori.jpg", class: "thumbnail"
-          =image_tag "nori.jpg", class: "thumbnail"
-          =image_tag "nori.jpg", class: "thumbnail"
-          =image_tag "nori.jpg", class: "thumbnail"
+          =image_tag @item.images[0].image.url, class: "thumbnail"
+          =image_tag @item.images[0].image.url, class: "thumbnail"
+          =image_tag @item.images[0].image.url, class: "thumbnail"
+          =image_tag @item.images[0].image.url, class: "thumbnail"
+          =image_tag @item.images[0].image.url, class: "thumbnail"
+          =image_tag @item.images[0].image.url, class: "thumbnail"
+          =image_tag @item.images[0].image.url, class: "thumbnail"
+          =image_tag @item.images[0].image.url, class: "thumbnail"
+          =image_tag @item.images[0].image.url, class: "thumbnail"
+          =image_tag @item.images[0].image.url, class: "thumbnail"
+
 
       %table.detail-table
         %tbody
@@ -79,7 +84,8 @@
             購入画面に進む
 
       .item-description
-        %p.item-text  
+        %p.item-text 
+          = @item.description
 
       .item-button-container
         .item-button-container__left-block
