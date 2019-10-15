@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   layout 'application.users', except: [:index,:show]
   def index
     @items = Item.order("created_at DESC").limit(10)
-  
+
     # 未実装
     # @images = Image.includes(:item).where("item_id")
 
@@ -77,6 +77,7 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     redirect_to profile_users_path
+    
   end
 
   def show    
