@@ -44,9 +44,17 @@ class ItemsController < ApplicationController
     end
   end
 
+
   def edit
-    @item = Item.find(id_params[:id])
-    @category_parent = Category.where(ancestry: nil)
+    @items = Item.find(id_params[:id])
+    
+    @category = @items.category.parent.parent.siblings
+    p = @item.category.ancestry
+    @category_child = @items.category.parent.parent.children
+    @category_grandchild = @items.category.parent.children
+    # @category_children = Category.where()
+    @price = (@item.price * 0.1).floor
+    @ppp = (@item.price - @price).to_s
   end
 
   # 削除
