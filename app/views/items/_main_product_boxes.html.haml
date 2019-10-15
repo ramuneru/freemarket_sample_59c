@@ -13,9 +13,9 @@
         - @items.each do |item|
           =link_to "/items/#{item.id}" do
             .box
-              .price ¥ #{item.price}
-      
-              = image_tag item.images[0].image.url, class: "image-box"
+              .price ¥ #{item.price.to_s(:delimited)}
+              -# - @images.each do |image|
+              =image_tag item.images[0].image.url, class: "image-box"
               -# =image_tag "/uploads/image/image/5/img_4340.jpg", class: "image-box"
               
               .title-text #{item.description}
