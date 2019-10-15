@@ -46,12 +46,15 @@
               %label カテゴリー
               %span.required 必須
               .select-wrap
-                = f.collection_select(:category_id, @category_parent, :id, :name, {prompt:"---"}, class:"collection_select-default", id: "category-parent_select")
-
+                = select_tag(:category_id, options_for_select(@category_parent, selected: @item.category.parent.parent.id), :id, :name, {prompt:"---"}, class:"collection_select-default", id: "category-parent_select")
+                -# = select_tag "category", options_for_select(@category_parent, selected:@item.category_id.parent.parent.id), class:"collection_select-default", id: "category-parent_select"
                 %i.fa.fa-chevron-down
               .select-wrap#second-children
-
+                -# = f.collection_select(:category_id, @category_child, selected: @item.category.parent.id, :id, :name, {prompt:"---"}, class:"collection_select-default", id: "category-parent_select")
+                -# %i.fa.fa-chevron-down
               .select-wrap#third-children
+                -# = select_tag "category", options_for_select(@category_g_child, selected:@item.category.id), id: "sell-parent-category", class: "sell-select-default", include_blank: '---', required: true
+                -# %i.fa.fa-chevron-down
 
             .form-block#size-select
             

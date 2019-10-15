@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   require 'payjp'
   before_action :authenticate_user!, except: :index
-  before_action :set_item, only: [:show, :destroy]
+  before_action :set_item, only: [:edit, :show, :destroy]
   layout 'application.users', except: [:index,:show]
   def index
     @items = Item.order("created_at DESC").limit(10)
@@ -52,6 +52,14 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
+    
+    category_parents = Category.roots
+    @category_parents = category_parents.map{|parent| [parent.name]}
+    # category_children = Category.find_by(name: @product.category.parent.parent.name).children
+    # @category_children = category_children.map{|children| [children.name, children.id]}
+    # category_grand_children = Category.find_by(id: @product.category.parent.id).children
+    # @category_grand_children = category_grand_children.map{|grand_children| [grand_children.name, grand_children.id]}
   end
 
   # 削除
