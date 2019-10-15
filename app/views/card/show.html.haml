@@ -13,6 +13,8 @@
             %li.payment-list
               .card-content
                 = form_tag(delete_card_index_path, method: :post, id: 'charge-form', name: "inputForm") do
+                  %figure
+                    = image_tag "#{@card_src}", width: '26', height: '20', alt: @card_brand, id: "card_image"
                   .set-payment
                     = "**** **** **** " + "#{@default_card_information.last4}"
                   .set-payment
