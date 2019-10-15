@@ -67,13 +67,12 @@ class ItemsController < ApplicationController
       @item =Item.new
       redirect_to root_path
     else
-      @item = Item.new(params_new)
       redirect_to new_item_path
     end
   end
 
   def edit
-    @category_parent = Category.where())
+    @category_parent = Category.where(
   end
 
   # 削除
