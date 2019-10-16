@@ -93,7 +93,6 @@ class ItemsController < ApplicationController
   end
 
   def complete
-    
   end
 
   private
