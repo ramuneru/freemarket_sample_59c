@@ -25,8 +25,14 @@
                   -# 送料の表記をする
           %p.has-error-text
             配送方法と支払い方法を入力してください
-          #submit-button
-            = submit_tag "購入する", class:"btn-default submit-btn-red"
+          - if @item.listing?
+            #submit-button
+              = submit_tag "購入する", class:"btn-default submit-btn-red"
+          - else
+            %ul.buy-form__point
+              %li
+                .buy-form__point__none
+                  売約済み
             
     .buy-confirmation__borders
       %section.user-address

@@ -5,6 +5,10 @@
       = @item.title
     .item-detail-page__container__clearfix
       .photo-box
+        - unless @item.listing?
+          .item-sold-badge
+          .soldtext
+            SOLD
         .photo-box__higher
           =image_tag @item.images[0].image.url, class: "upper-photo"
         .thumbnails-box
@@ -18,7 +22,6 @@
           =image_tag @item.images[0].image.url, class: "thumbnail"
           =image_tag @item.images[0].image.url, class: "thumbnail"
           =image_tag @item.images[0].image.url, class: "thumbnail"
-
 
       %table.detail-table
         %tbody
@@ -78,10 +81,13 @@
         %span.item-shipping 
           = @item.shipping_fee_burden.burden
       
-      -if @item.user_id == current_user.id
+      -if @item.user_id != current_user.id && @item.listing?
         =link_to buy_item_path do
           .purchase-button
             購入画面に進む
+      -unless @item.listing?
+        .purchase-button2
+          売約済み
 
       .item-description
         %p.item-text 

@@ -2,25 +2,19 @@ class ItemsController < ApplicationController
   require 'payjp'
   before_action :authenticate_user!, except: :index
   before_action :set_item, only: [:show, :destroy, :buy, :pay]
+  before_action :set_item_detail, only: [:pay]
   before_action :set_user_detail, only: [:buy, :pay]
-  layout 'application.users', except: [:index,:show]
+  layout 'application.users', except: [:index, :show]
   def index
-    @items = Item.order("created_at DESC").limit(10)
-  
+
     @ladies_items = Item.where(category_id: 1..199).order("created_at DESC").limit(10)
     @mens_items = Item.where(category_id: 200..344).order("created_at DESC").limit(10)
-    # 未実装
-    # @images = Image.includes(:item).where("item_id")
-
-    # 未実装
-    # @images = Image.order("created_at DESC").limit(10)
   end
 
   def new
     @item = Item.new
     @item.images.build
-    @category_parent = Category.where(ancestry: nil)
-
+    @category_parent = Category.roots
   end
 
   def buy
@@ -88,7 +82,8 @@ class ItemsController < ApplicationController
     customer: card.customer_id,
     currency: 'jpy',
   )
-    #完了画面に移動
+    # ここで商品状態の更新
+    @item.update(status: 1)
     redirect_to action: 'complete'
   end
 
@@ -116,6 +111,13 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_item_detail
+    if !@item.listing?
+      # 出品状態であるか否や
+      redirect_to buy_item_path
+    end
   end
 
   def set_user_detail

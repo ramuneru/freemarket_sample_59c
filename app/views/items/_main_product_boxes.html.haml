@@ -3,25 +3,24 @@
     .main-box__category__bar
       .main-box__category__bar__title
         レディース新着アイテム
-      .main-box__category__bar__link      
+      .main-box__category__bar__link
         =link_to "#", class: "more-detail-link" do
           もっと見る
           %i.fa.fa-chevron-right
 
     .main-box__category__content
       .main-box__category__content__grid
-        - @ladies_items.each do |ladiesItem|
-          =link_to "/items/#{ladiesItem.id}" do
+        - @ladies_items.each do |ladies_item|
+          =link_to "items/#{ladies_item.id}" do
             .box
-              .price ¥ #{ladiesItem.price.to_s(:delimited)}
-              =image_tag ladiesItem.images[0].image.url, class: "image-box"
+              - unless ladies_item.listing?
+                .item-sold-badge
+                .soldtext
+                  SOLD
+              .price ¥ #{ladies_item.price.to_s(:delimited)}
+              =image_tag ladies_item.images[0].image.url, class: "image-box"
               
-              .title-text #{ladiesItem.description}
-        -# =link_to "#" do
-        -#   .box
-        -#     .price ¥2,000
-        -#     =image_tag "nori.jpg", class: "image-box"
-        -#     .title-text
+              .title-text #{ladies_item.description}
 
   .main-box__category
     .main-box__category__bar
@@ -34,18 +33,14 @@
           
     .main-box__category__content
       .main-box__category__content__grid
-        - @mens_items.each do |mensItem|
-          =link_to "/items/#{mensItem.id}" do
+        - @mens_items.each do |mens_item|
+          =link_to "/items/#{mens_item.id}" do
             .box
-              .price ¥ #{mensItem.price.to_s(:delimited)}
-              =image_tag mensItem.images[0].image.url, class: "image-box"
+              - unless mens_item.listing?
+                .item-sold-badge
+                .soldtext
+                  SOLD
+              .price ¥ #{mens_item.price.to_s(:delimited)}
+              =image_tag mens_item.images[0].image.url, class: "image-box"
               
-              .title-text #{mensItem.description}
-
-    -# .main-box__category__content
-    -#   .main-box__category__content__grid
-    -#     =link_to "#"do
-    -#       .box
-    -#         .price ¥2,000
-    -#         =image_tag "nori.jpg", class: "image-box"
-    -#         .title-text ケース
+              .title-text #{mens_item.description}
