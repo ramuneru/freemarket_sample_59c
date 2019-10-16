@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
   before_action :set_user_detail, only: [:buy, :pay]
   layout 'application.users', except: [:index, :show]
   def index
-
     @ladies_items = Item.where(category_id: 1..199).order("created_at DESC").limit(10)
     @mens_items = Item.where(category_id: 200..344).order("created_at DESC").limit(10)
   end
@@ -66,8 +65,12 @@ class ItemsController < ApplicationController
 
   # 削除
   def destroy
-    @item.destroy
-    redirect_to profile_users_path
+    if @item.destroy
+       redirect_to users_path
+    else
+       render action: :show
+    end
+
   end
 
   def show    

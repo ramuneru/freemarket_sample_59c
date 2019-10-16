@@ -7,6 +7,9 @@
     =form_with do |f|
       -# ルートがまだないため、リンク類は仮置きです
       = f.submit "出品を一旦停止する", class: "button_bar gray"
-      = f.submit "この商品を削除する",  class: "button_bar gray"
+    
+      =link_to "この商品を削除する", @itme, method: :delete, class: "button_bar gray"
+      
+      -# = f.submit "この商品を削除する",  class: "button_bar gray"
 
 
