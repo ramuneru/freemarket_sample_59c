@@ -11,7 +11,6 @@
     .main-box__category__content
       .main-box__category__content__grid
         - @ladies_items.each do |ladies_item|
-          -# =link_to "/items/#{ladiesItem.id}" do
           =link_to "items/#{ladies_item.id}" do
             .box
               - unless ladies_item.listing?
@@ -22,11 +21,6 @@
               =image_tag ladies_item.images[0].image.url, class: "image-box"
               
               .title-text #{ladies_item.description}
-        -# =link_to "#" do
-        -#   .box
-        -#     .price ¥2,000
-        -#     =image_tag "nori.jpg", class: "image-box"
-        -#     .title-text
 
   .main-box__category
     .main-box__category__bar
@@ -50,11 +44,3 @@
               =image_tag mens_item.images[0].image.url, class: "image-box"
               
               .title-text #{mens_item.description}
-
-    -# .main-box__category__content
-    -#   .main-box__category__content__grid
-    -#     =link_to "#"do
-    -#       .box
-    -#         .price ¥2,000
-    -#         =image_tag "nori.jpg", class: "image-box"
-    -#         .title-text ケース
