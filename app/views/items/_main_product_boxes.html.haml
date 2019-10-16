@@ -20,7 +20,7 @@
               .price ¥ #{ladies_item.price.to_s(:delimited)}
               =image_tag ladies_item.images[0].image.url, class: "image-box"
               
-              .title-text #{ladies_item.description}
+              .title-text #{ladies_item.title}
 
   .main-box__category
     .main-box__category__bar
@@ -43,4 +43,4 @@
               .price ¥ #{mens_item.price.to_s(:delimited)}
               =image_tag mens_item.images[0].image.url, class: "image-box"
               
-              .title-text #{mens_item.description}
+              .title-text #{mens_item.title}
