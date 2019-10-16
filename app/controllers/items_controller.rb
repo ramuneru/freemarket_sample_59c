@@ -6,14 +6,12 @@ class ItemsController < ApplicationController
   before_action :set_user_detail, only: [:buy, :pay]
   layout 'application.users', except: [:index, :show]
   def index
-    @items = Item.order("created_at DESC").limit(10)
-  
-    @ladies_items = Item.where(category_id: Category.find_by(name: 'レディース').indirect_ids).order("created_at DESC").limit(10)
+    # @ladies_items = Item.where(category_id: Category.find_by(name: 'レディース').indirect_ids).order("created_at DESC").limit(10)
     # @ladies_items = Category.find(1).indirects.map{|category| category.items}.flatten!.order("created_at DESC").limit(10)
+    @ladies_items = Item.where(category_id: 1..199).order("created_at DESC").limit(10)
     @mens_items = Item.where(category_id: 200..344).order("created_at DESC").limit(10)
     # 未実装
     # @images = Image.includes(:item).where("item_id")
-
     # 未実装
     # @images = Image.order("created_at DESC").limit(10)
   end
@@ -95,6 +93,7 @@ class ItemsController < ApplicationController
   end
 
   def complete
+    
   end
 
   private
