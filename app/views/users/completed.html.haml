@@ -23,7 +23,7 @@
       .product
         %ul.product__ul
           %li
-          - unless list.listing?
+          - if list.complete?
             = link_to item_path(list.id), class: "product__link" do
               %figure
                 = image_tag list.images[0].image.url, size: "40x40", class: "product__img"
