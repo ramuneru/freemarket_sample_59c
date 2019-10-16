@@ -89,7 +89,7 @@ class ItemsController < ApplicationController
     customer: card.customer_id,
     currency: 'jpy',
   )
-    # ここで分岐商品状態の更新
+    # ここで商品状態の更新
     @item.update(status: 1)
     redirect_to action: 'complete'
   end
