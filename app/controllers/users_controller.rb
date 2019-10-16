@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  require "payjp"
+  before_action :set_user , only: [:index,:profile]
+  before_action :set_item_list, only: [:index, :product, :completed, :progress]
 
   def index
   end
@@ -7,74 +8,22 @@ class UsersController < ApplicationController
   def profile  
   end
 
-  def logout
+  def product
   end
 
-  def check
+  def progress
   end
 
-  def card
+  def completed
   end
 
-  def card_create
-    @user = User.new
-  end
-  
-  def new
-    card = Card.where(user_id: current_user.id)
-    redirect_to action: "show" if card.exists?
+  private
+  def set_user
+    @address = Address.find(current_user.id)
+    @user_profile = UserProfile.find(current_user.id)
   end
 
-  #payjpとCardのデータベース作成を実施します。
-  def pay 
-    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
-    if params['payjp-token'].blank?
-      redirect_to action: "new"
-    else
-      customer = Payjp::Customer.create(
-
-      #無しでもOK
-      description: '登録テスト', 
-
-      #無しでもOK
-      email: current_user.email, 
-      card: params['payjp-token'],
-
-      #念の為metadataにuser_idを入れたがなくてもOK
-      metadata: {user_id: current_user.id}
-      ) 
-      
-      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
-      if @card.save
-        redirect_to action: "show"
-      else
-        redirect_to action: "pay"
-      end
-    end
-  end
-
-  #PayjpとCardデータベースを削除します
-  def delete 
-    card = Card.where(user_id: current_user.id).first
-    if card.blank?
-    else
-      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      customer.delete
-      card.delete
-    end
-      redirect_to action: "new"
-  end
-
-  #Cardのデータpayjpに送り情報を取り出します
-  def show 
-    card = Card.where(user_id: current_user.id).first
-    if card.blank?
-      redirect_to action: "new" 
-    else
-      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @default_card_information = customer.cards.retrieve(card.card_id)
-    end
+  def set_item_list
+    @user_item_list = Item.where(user_id: current_user.id)
   end
 end
