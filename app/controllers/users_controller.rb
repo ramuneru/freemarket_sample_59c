@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user , only: [:index,:profile]
-  before_action :set_item_list, only: [:product, :completed]
+  before_action :set_item_list, only: [:index, :product, :completed, :progress]
 
   def index
   end
@@ -9,6 +9,9 @@ class UsersController < ApplicationController
   end
 
   def product
+  end
+
+  def progress
   end
 
   def completed

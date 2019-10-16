@@ -83,7 +83,7 @@ class ItemsController < ApplicationController
     currency: 'jpy',
   )
     # ここで商品状態の更新
-    @item.update(status: 1)
+    @item.update(status: 2)
     redirect_to action: 'complete'
   end
 

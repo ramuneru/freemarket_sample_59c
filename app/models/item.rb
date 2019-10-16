@@ -11,5 +11,5 @@ class Item < ApplicationRecord
   belongs_to :size, optional: true
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images
-  enum status: [:listing, :complete]
+  enum status: [:listing, :progress, :complete]
 end
