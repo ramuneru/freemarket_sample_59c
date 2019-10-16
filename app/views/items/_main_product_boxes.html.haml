@@ -11,7 +11,8 @@
     .main-box__category__content
       .main-box__category__content__grid
         - @ladies_items.each do |ladiesItem|
-          =link_to "/items/#{ladiesItem.id}" do
+          -# =link_to "/items/#{ladiesItem.id}" do
+          =link_to item_path(ladiesItem) do
             .box
               .price ¥ #{ladiesItem.price.to_s(:delimited)}
               =image_tag ladiesItem.images[0].image.url, class: "image-box"
