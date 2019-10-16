@@ -39,7 +39,7 @@ $(function(){
     grandchildren.forEach(function(grandchild){
       option += `<option value="${grandchild.id}">${grandchild.name}</option>`
     });
-    var html = `<select class="collection_select-default grandchildren-select", name="category", id="category-grandchildren_select", required>
+    var html = `<select class="collection_select-default grandchildren-select", name="item[category_id]", id="category-grandchildren_select", required>
                   <option value="">---</option>
                   ${option}
                 </select>

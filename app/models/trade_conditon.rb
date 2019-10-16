@@ -1,0 +1,2 @@
+class TradeConditon < ApplicationRecord
+end
