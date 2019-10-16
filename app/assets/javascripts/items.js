@@ -39,7 +39,7 @@ $(function(){
     grandchildren.forEach(function(grandchild){
       option += `<option value="${grandchild.id}">${grandchild.name}</option>`
     });
-    var html = `<select class="collection_select-default grandchildren-select", name="category", id="category-grandchildren_select", required>
+    var html = `<select class="collection_select-default grandchildren-select", name="item[category_id]", id="category-grandchildren_select", required>
                   <option value="">---</option>
                   ${option}
                 </select>
@@ -64,27 +64,25 @@ $(function(){
   });
 
     // サイズセレクト
-    function addHTML(size){
+    function addHTML(sizes){
       var option =``
-      size.forEach(function(grandchild){
-        option += `<option value="${grandchild.size_id}">${grandchild.size}</option>`
+      sizes.forEach(function(size){
+        option += `<option value="${size.id}">${size.size}</option>`
       });
       var html = `<label>サイズ</label>
                   <span class="required">必須</span>
                   <div class="select-wrap">
-                    <select class="collection_select-default size-select", name="size", required>
+                    <select class="collection_select-default size-select", name="item[size_id]", required>
                     <option value="">---</option>
                     ${option}
-                    </select>
-                    <i class="fa fa-chevron-down"></i>
+                    </select><i class="fa fa-chevron-down"></i>
                   </div>`
       return html;
     };
     $(document).on('change', "#category-grandchildren_select", function(){
       $('#size-select').empty();
       var grandchild_id = $(this).val();
-    
-      // if (!size == ""){} 分岐導入検討中
+
       $.ajax({
         url:  '/api/size',
         type: "GET",

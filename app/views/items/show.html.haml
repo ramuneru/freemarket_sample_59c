@@ -5,15 +5,23 @@
       = @item.title
     .item-detail-page__container__clearfix
       .photo-box
+        - unless @item.listing?
+          .item-sold-badge
+          .soldtext
+            SOLD
         .photo-box__higher
-          =image_tag "nori.jpg", class: "upper-photo"
+          =image_tag @item.images[0].image.url, class: "upper-photo"
         .thumbnails-box
-          =image_tag "nori.jpg", class: "thumbnail"
-          =image_tag "nori.jpg", class: "thumbnail"
-          =image_tag "nori.jpg", class: "thumbnail"
-          =image_tag "nori.jpg", class: "thumbnail"
-          =image_tag "nori.jpg", class: "thumbnail"
-          =image_tag "nori.jpg", class: "thumbnail"
+          =image_tag @item.images[0].image.url, class: "thumbnail"
+          =image_tag @item.images[0].image.url, class: "thumbnail"
+          =image_tag @item.images[0].image.url, class: "thumbnail"
+          =image_tag @item.images[0].image.url, class: "thumbnail"
+          =image_tag @item.images[0].image.url, class: "thumbnail"
+          =image_tag @item.images[0].image.url, class: "thumbnail"
+          =image_tag @item.images[0].image.url, class: "thumbnail"
+          =image_tag @item.images[0].image.url, class: "thumbnail"
+          =image_tag @item.images[0].image.url, class: "thumbnail"
+          =image_tag @item.images[0].image.url, class: "thumbnail"
 
       %table.detail-table
         %tbody
@@ -38,6 +46,7 @@
           %tr
             %th 商品のサイズ
             %td
+              = @item.size.size
           -# =@size
           %tr
             %th 商品の状態
@@ -72,13 +81,17 @@
         %span.item-shipping 
           = @item.shipping_fee_burden.burden
       
-      -if @item.user_id == current_user.id
+      -if @item.user_id != current_user.id && @item.listing?
         =link_to buy_item_path do
           .purchase-button
             購入画面に進む
+      -unless @item.listing?
+        .purchase-button2
+          売約済み
 
       .item-description
-        %p.item-text  
+        %p.item-text 
+          = @item.description
 
       .item-button-container
         .item-button-container__left-block

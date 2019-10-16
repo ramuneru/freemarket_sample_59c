@@ -107,6 +107,37 @@
   text-align: center;
   font-weight: 600;
 }
+.purchase-button2{
+  font-size: 24px;
+  line-height: 60px;
+  display: block;
+  margin-top: 16px;
+  background: #aaa;
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+}
+
+.item-sold-badge{
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 100px 100px 0 0;
+  border-color: #ea352d transparent transparent transparent;
+  z-index: 2;
+  position: absolute;
+}
+.soldtext{
+  color:white;
+  font-weight: bold;
+  font-size: 20px;
+  top: 28px;
+  left: 8px;
+  transform: rotate(-45deg);
+  z-index: 3;
+  position: absolute;
+}
+
 
 .item-description{
   padding: 32px 0 0;

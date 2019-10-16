@@ -107,9 +107,11 @@
         box-sizing: border-box;
         color: #222;
         line-height: 1.4em;
-        padding: 0 12px;
-        white-space: normal;
+        padding: 5px 12px;
+        white-space: wrap;
         word-break: break-word;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .price{
         align-items: center;

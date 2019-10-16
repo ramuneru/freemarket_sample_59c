@@ -108,3 +108,8 @@
   height: 53px;
   background-color: #ea352d;
 }
+
+.submit-btn-red{
+  @include btn-red;
+  width: 100%;
+}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_10_110402) do
+ActiveRecord::Schema.define(version: 2019_10_15_112346) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -71,8 +71,11 @@ ActiveRecord::Schema.define(version: 2019_10_10_110402) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "size_id"
+    t.integer "status", default: 0, null: false
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["size_id"], name: "index_items_on_size_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -88,6 +91,12 @@ ActiveRecord::Schema.define(version: 2019_10_10_110402) do
     t.string "uid"
     t.string "provider"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trade_conditons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -126,5 +135,6 @@ ActiveRecord::Schema.define(version: 2019_10_10_110402) do
   add_foreign_key "addresses", "users"
   add_foreign_key "categories", "sizes"
   add_foreign_key "images", "items"
+  add_foreign_key "items", "sizes"
   add_foreign_key "user_profiles", "users"
 end
