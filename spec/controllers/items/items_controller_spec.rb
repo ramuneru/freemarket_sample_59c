@@ -8,7 +8,6 @@ describe ItemsController do
     end
     it 'delete_the_item' do
       item = create(:item)
-      binding.pry
       expect{delete :destroy, params: {id: item}}.to change(Item, :count).by(-1)
     end
   end
