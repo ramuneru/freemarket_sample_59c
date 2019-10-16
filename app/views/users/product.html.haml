@@ -20,41 +20,26 @@
         %li
           売却済み
     -# ここはitemサーバーサイド完成したらeach文使います！
-    .product
-      %ul.product__ul
-        %li
-          = link_to root_path, class: "product__link" do
-            %figure
-              = image_tag "member_photo_noimage_thumb.png", size: "40x40", class: "product__img"
-            .product-list
-              .product-list__text
-                コンピュータはなぜ動くのか
-              .product-list__status
-                %span.content-count
-                  = fa_icon 'far fa-heart', class: "far fa-heart"
-                  %span 0
-                %span.content-count
-                  = fa_icon 'far fa-comments', class: "far fa-comments"
-                  %span 0
-                .product-list__status__icon
-                  出品中
-            = fa_icon 'fas fa-angle-right', class: "fa-angle-right right-allow fa-pull-right"
-        %li
-          = link_to root_path, class: "product__link" do
-            %figure
-              = image_tag "member_photo_noimage_thumb.png", size: "40x40", class: "product__img"
-            .product-list
-              .product-list__text
-                コンピュータはなぜ動くのか
-              .product-list__status
-                %span.content-count
-                  = fa_icon 'far fa-heart', class: "far fa-heart"
-                  %span 0
-                %span.content-count
-                  = fa_icon 'far fa-comments', class: "far fa-comments"
-                  %span 0
-                .product-list__status__icon
-                  出品中
-            = fa_icon 'fas fa-angle-right', class: "fa-angle-right right-allow fa-pull-right"
+    - @user_item_list.each do |list|
+      .product
+        %ul.product__ul
+          %li
+          - if list.listing?
+            = link_to item_path(list.id), class: "product__link" do
+              %figure
+                = image_tag list.images[0].image.url, size: "40x40", class: "product__img"
+              .product-list
+                .product-list__text
+                  = list.title
+                .product-list__status
+                  %span.content-count
+                    = fa_icon 'far fa-heart', class: "far fa-heart"
+                    %span 0
+                  %span.content-count
+                    = fa_icon 'far fa-comments', class: "far fa-comments"
+                    %span 0
+                  .product-list__status__icon
+                    出品中
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right right-allow fa-pull-right"
 
 -# paginate入れます！

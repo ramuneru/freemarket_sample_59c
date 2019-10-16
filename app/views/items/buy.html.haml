@@ -5,7 +5,7 @@
     %section.buy-confirmation__item
       .buy-confirmation__item__inner
         %h3
-          = image_tag 'nori.jpg', size: '60x60', class: ''
+          =image_tag @item.images[0].image.url, size: '60×60'
         %p.buy-confirmation__item__inner__name 
           = @item.title
         = form_tag(action: :pay, method: :post, class:"buy-form") do
@@ -25,10 +25,10 @@
                   -# 送料の表記をする
           %p.has-error-text
             配送方法と支払い方法を入力してください
-          - if @item.listing?
+          -if @item.user_id != current_user.id && @item.listing?
             #submit-button
               = submit_tag "購入する", class:"btn-default submit-btn-red"
-          - else
+          - unless @item.listing?
             %ul.buy-form__point
               %li
                 .buy-form__point__none

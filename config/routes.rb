@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   root 'items#index'
 
-  resources :items , only: [:index, :show, :new, :create, :edit, :destroy] do
+  resources :items do
     member do
-      get 'index', to: 'items#index'
       get 'buy', to: 'items#buy'
     end
     collection do

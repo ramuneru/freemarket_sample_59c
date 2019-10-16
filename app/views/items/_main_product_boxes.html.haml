@@ -11,7 +11,7 @@
     .main-box__category__content
       .main-box__category__content__grid
         - @ladies_items.each do |ladies_item|
-          =link_to "items/#{ladies_item.id}" do
+          =link_to item_path(ladies_item.id) do
             .box
               - unless ladies_item.listing?
                 .item-sold-badge
@@ -34,7 +34,7 @@
     .main-box__category__content
       .main-box__category__content__grid
         - @mens_items.each do |mens_item|
-          =link_to "/items/#{mens_item.id}" do
+          =link_to item_path(mens_item.id) do
             .box
               - unless mens_item.listing?
                 .item-sold-badge

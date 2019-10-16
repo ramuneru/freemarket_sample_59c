@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   require 'payjp'
   before_action :authenticate_user!, except: :index
   before_action :set_item, only: [:show, :destroy, :buy, :pay]
-  before_action :set_item_detail, only: [:pay]
+  before_action :set_item_detail, only: [:buy]
   before_action :set_user_detail, only: [:buy, :pay]
   layout 'application.users', except: [:index, :show]
   def index
@@ -114,9 +114,9 @@ class ItemsController < ApplicationController
   end
 
   def set_item_detail
-    if !@item.listing?
+    if current_user.id == @item.user_id
       # 出品状態であるか否や
-      redirect_to buy_item_path
+      redirect_to root_path
     end
   end
 
