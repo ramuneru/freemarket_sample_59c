@@ -18,7 +18,7 @@
                 .soldtext
                   SOLD
               .price ¥ #{ladies_item.price.to_s(:delimited)}
-              =image_tag ladies_item.images[0].image.url, class: "image-box"
+              = image_tag ladies_item.images[0].image.url, class: "image-box"
               
               .title-text #{ladies_item.title}
 
