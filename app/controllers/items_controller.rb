@@ -65,7 +65,6 @@ class ItemsController < ApplicationController
 
   # 削除
   def destroy
-    binding.pry
     if @item.destroy
        redirect_to users_path
     else
