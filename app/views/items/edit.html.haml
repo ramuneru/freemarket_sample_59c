@@ -46,7 +46,7 @@
               %label カテゴリー
               %span.required 必須
               .select-wrap
-                = f.collection_select(:category_id, @category, :id, :name, {prompt: "---"}, class:"collection_select-default", id: "category-parent_select")
+                = f.collection_select(:category_id, @category, :id, :name, {prompt: "---"}, class:"collection_select-default", id: "category-parent_select", selected: @item.category.root.name) 
                 = f.collection_select(:category_id, @category_child, :id, :name, {prompt:"---"}, class:"collection_select-default children-select", id: "category-children_select")
                 = f.collection_select(:category_id, @category_grandchild, :id, :name, {prompt:"---"}, class:"collection_select-default grandchildren-select", id: "category-grandchildren_select")
                 
