@@ -17,6 +17,50 @@ class ItemsController < ApplicationController
     @category_parent = Category.roots
   end
 
+  # 出品
+  def create
+    @item = Item.new(params_new)
+    if @item.save
+      redirect_to root_path
+    else
+      redirect_to new_item_path
+    end
+  end
+
+  # 編集ページ
+  def edit
+    @items = Item.find(id_params[:id])
+    @category = @items.category.root.siblings
+    p = @item.category.ancestry
+    @category_child = @items.category.parent.siblings
+    @category_grandchild = @items.category.siblings
+    @category_children = Category.where()
+    @price = (@item.price * 0.1).floor
+    @ppp = (@item.price - @price).to_s
+  end
+
+  # 削除
+  def destroy
+    if @item.destroy
+      redirect_to users_path
+    else
+      render action: :show
+    end
+  end
+
+  # 更新
+  def update
+    @item = Item.find(id_params[:id])
+    if @item.user_id == current_user.id
+      @item.update(params_new)
+      redirect_to root_path
+    end
+  end    
+  
+  def show    
+  end
+  
+  # 購入ページ
   def buy
     @card = Card.where(user_id: current_user.id).first
     if @card.present?
@@ -52,46 +96,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def create
-    @item = Item.new(params_new)
-    if @item.save
-      redirect_to root_path
-    else
-      redirect_to new_item_path
-    end
-  end
-
-
-  def edit
-    @items = Item.find(id_params[:id])
-    
-    @category = @items.category.root.siblings
-    p = @item.category.ancestry
-    @category_child = @items.category.parent.siblings
-    @category_grandchild = @items.category.siblings
-    @category_children = Category.where()
-    @price = (@item.price * 0.1).floor
-    @ppp = (@item.price - @price).to_s
-  end
-
-  # 削除
-  def destroy
-    if @item.destroy
-       redirect_to users_path
-    else
-       render action: :show
-    end
-
-  end
-
-  def update
-    item = Item.find(id_params[:id])
-    item.update(params_new) if item.user_id == current_user.id
-  end    
-  
-  def show    
-  end
-
+  # 購入
   def pay
 
     card = Card.where(user_id: current_user.id).first
@@ -125,24 +130,8 @@ class ItemsController < ApplicationController
       :price,
       :size_id,
       images_attributes: [:id,:image]
-    ).merge(user_id: current_user.id,category_id: params[:category])
+    ).merge(user_id: current_user.id)
   end 
-
-  # def item_params
-  #   params.require(:item).permit(
-  #     :title, 
-  #     :description, 
-  #     :category_id, 
-  #     :brand, 
-  #     :condition_id, 
-  #     :prefecture_id, 
-  #     :shipping_fee_burden_id, 
-  #     :shipping_method_id, 
-  #     :shipping_duration_id, 
-  #     :price,
-  #     images_attributes: [:id,:image]
-  #   )
-  # end
 
   def set_item
     @item = Item.find(params[:id])

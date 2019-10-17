@@ -29,7 +29,7 @@
       .l-single-container
         %h2.l-chapter-head 発送元・お届け先住所入力
         .l-single-inner.registration-form
-          = form_for @user, url: credit_path, method: :get do |f|
+          = form_for @user, url: complete_path, method: :get do |f|
             = f.fields_for :user_profile do |g|
               %input{name:"__csrf_value",type: "hidden", value: ""}
               .l-single-content

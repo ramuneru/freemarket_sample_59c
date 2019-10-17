@@ -37,12 +37,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     render layout: "application.registration" 
   end
 
-  def credit
-    render layout: "application.registration" 
-    session[:address_attributes] = user_params[:address_attributes]
-  end
+  # 新規登録時のクレカと登録未実装の為
+  # def credit
+    # render layout: "application.registration" 
+    # session[:address_attributes] = user_params[:address_attributes]
+  # end
 
+  # creditアクション内のsessionを完了画面に変更
   def complete
+    session[:address_attributes] = user_params[:address_attributes]
   end
 
   def create
@@ -54,6 +57,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     )
     @user.build_user_profile(session[:user_profile_attributes])
     @user.build_address(session[:address_attributes])
+    
     if @user.save
       session[:id] = @user.id
       sign_in User.find(session[:id]) unless user_signed_in?
