@@ -32,13 +32,12 @@
                 = @item.category.name
           %tr
             %th ブランド
-            %td 
-          -# -if @size.present?
-          %tr
-            %th 商品のサイズ
             %td
-              = @item.size.size
-          -# =@size
+          - if @item.size.present?
+            %tr
+              %th 商品のサイズ
+              %td
+                = @item.size.size
           %tr
             %th 商品の状態
             %td 
