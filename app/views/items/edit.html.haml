@@ -4,7 +4,7 @@
     .sell-item__container
       %h2.item-regi-head
         商品の情報を入力
-      = form_with model: @item, local: true, class: "form-container",url: item_path(@item.id), action: "patch"  do |f|
+      = form_with model: @item, local: true, class: "form-container",url: "/items/#{@item.id}", method: "patch"  do |f|
         = f.fields_for :images do |img|  
           .sell-upload-box
             .sell-upload-box__title
@@ -19,7 +19,7 @@
                   %ul
               = img.label :url, for: "image_file_field" do
                 .image-dropzone    
-                  =img.file_field :image, class:"drop-file", id:'image_file_field', multiple: true
+                  =img.file_field :image, class:"drop-file", id:'image_file_field'
                   %pre.text
                     ドラッグアンドドロップ
                     またはクリックしてファイルをアップロード
@@ -46,7 +46,10 @@
               %label カテゴリー
               %span.required 必須
               .select-wrap
-                = f.collection_select(:category_id, @category_parent, :id, :name, {prompt:"---"}, class:"collection_select-default", id: "category-parent_select")
+                = f.collection_select(:category_id, @category, :id, :name, {prompt: "---"}, class:"collection_select-default", id: "category-parent_select", selected: @item.category.root.name) 
+                = f.collection_select(:category_id, @category_child, :id, :name, {prompt:"---"}, class:"collection_select-default children-select", id: "category-children_select")
+                = f.collection_select(:category_id, @category_grandchild, :id, :name, {prompt:"---"}, class:"collection_select-default grandchildren-select", id: "category-grandchildren_select")
+                
 
                 %i.fa.fa-chevron-down
               .select-wrap#second-children
@@ -70,7 +73,7 @@
               %label 商品の状態
               %span.required 必須
               .select-wrap
-                = f.collection_select(:condition, Condition.all, :id, :condition, {prompt:"---"},{class:"collection_select-default condition-select"})
+                = f.collection_select(:condition_id, Condition.all, :id, :condition, {prompt:"---"},{class:"collection_select-default condition-select"})
                 %i.fa.fa-chevron-down
 
 
@@ -84,28 +87,28 @@
               %label 配送料の負担
               %span.required 必須
               .select-wrap
-                = f.collection_select(:shipping_fee_burden, Shipping_fee_burden.all, :id, :burden, {prompt:"---"},{class:"collection_select-default shipping_fee_burden-select"})
+                = f.collection_select(:shipping_fee_burden_id, ShippingFeeBurden.all, :id, :burden, {prompt:"---"},{class:"collection_select-default shipping_fee_burden-select"})
                 %i.fa.fa-chevron-down
 
             .form-block.shipping-method_hidden
               %label 配送の方法
               %span.required 必須
               .select-wrap
-                = f.collection_select(:shipping_method, Shipping_method.all, :id, :name, {prompt:"---"},{class:"collection_select-default shipping_method"})
+                = f.collection_select(:shipping_method_id, ShippingMethod.all, :id, :name, {prompt:"---"},{class:"collection_select-default shipping_method"})
                 %i.fa.fa-chevron-down
 
             .form-block
               %label 発送元の地域
               %span.required 必須
               .select-wrap
-                = f.collection_select(:region, Prefecture.all, :id, :name, {prompt:"---"},{class:"collection_select-default region-select"})
+                = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt:"---"},{class:"collection_select-default region-select"})
                 %i.fa.fa-chevron-down
 
             .form-block
               %label 発送までの日数
               %span.required 必須
               .select-wrap
-                = f.collection_select(:shipping_duration, Shipping_duration.all, :id, :duration, {prompt:"---"},{class:"collection_select-default duration-select"})
+                = f.collection_select(:shipping_duration_id, ShippingDuration.all, :id, :duration, {prompt:"---"},{class:"collection_select-default duration-select"})
                 %i.fa.fa-chevron-down
 
         .sell-content-box
@@ -122,17 +125,19 @@
                     %span.required 必須
                   .price-right
                     ¥
-                    =f.text_field :price, value: "", placeholder: "例）300", class: "price-input", required: true
+                    =f.text_field :price, placeholder: "例）300", class: "price-input", required: true
                 %li.sell-fee
                     
                 %li.margin
                   販売手数料
-                  .fee -
+                  .fee 
+                    = "¥" + @price.to_s
 
                 %li.profit
                   %label.bigger 
                     販売利益
-                  .sales-profit -
+                  .sales-profit 
+                    = "¥" + @ppp
 
         .sell-content-box-bottom
           .text-tags

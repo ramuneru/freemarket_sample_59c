@@ -1,10 +1,11 @@
 class ItemsController < ApplicationController
   require 'payjp'
   before_action :authenticate_user!, except: :index
-  before_action :set_item, only: [:show, :destroy, :buy, :pay]
+  before_action :set_item, only: [:show, :destroy, :buy, :pay, :edit]
   before_action :set_item_detail, only: [:buy]
   before_action :set_user_detail, only: [:buy, :pay]
   layout 'application.users', except: [:index, :show]
+  
   def index
     @ladies_items = Item.where(category_id: 1..199).order("created_at DESC").limit(10)
     @mens_items = Item.where(category_id: 200..344).order("created_at DESC").limit(10)
@@ -60,7 +61,17 @@ class ItemsController < ApplicationController
     end
   end
 
+
   def edit
+    @items = Item.find(id_params[:id])
+    
+    @category = @items.category.root.siblings
+    p = @item.category.ancestry
+    @category_child = @items.category.parent.siblings
+    @category_grandchild = @items.category.siblings
+    @category_children = Category.where()
+    @price = (@item.price * 0.1).floor
+    @ppp = (@item.price - @price).to_s
   end
 
   # 削除
@@ -73,6 +84,11 @@ class ItemsController < ApplicationController
 
   end
 
+  def update
+    item = Item.find(id_params[:id])
+    item.update(params_new) if item.user_id == current_user.id
+  end    
+  
   def show    
   end
 
@@ -112,10 +128,30 @@ class ItemsController < ApplicationController
     ).merge(user_id: current_user.id,category_id: params[:category])
   end 
 
+  # def item_params
+  #   params.require(:item).permit(
+  #     :title, 
+  #     :description, 
+  #     :category_id, 
+  #     :brand, 
+  #     :condition_id, 
+  #     :prefecture_id, 
+  #     :shipping_fee_burden_id, 
+  #     :shipping_method_id, 
+  #     :shipping_duration_id, 
+  #     :price,
+  #     images_attributes: [:id,:image]
+  #   )
+  # end
+
   def set_item
     @item = Item.find(params[:id])
   end
 
+  def id_params
+    params.permit(:id)
+  end
+  
   def set_item_detail
     if current_user.id == @item.user_id
       # 出品状態であるか否や
