@@ -98,7 +98,7 @@
 - belongs_to :user
 
 
-## sns_credentialsテーブル
+## sns_credentials
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
