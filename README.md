@@ -1,6 +1,6 @@
 # README
 
-[![ER図](https://i.gyazo.com/0fb7318157adedd3097c94b8148fcbe3.png)](https://gyazo.com/0fb7318157adedd3097c94b8148fcbe3)
+[![ER図](https://i.gyazo.com/98156e48ba6dd19d256c10b995789c44.png)](https://gyazo.com/98156e48ba6dd19d256c10b995789c44)
 
 ## users
 
@@ -13,14 +13,12 @@
 ### Association
 - has_one :user_profile, dependent: :destroy
 - has_one :address, dependent: :destroy
-<!-- credit cardテーブルは保留 -->
 - has_one :credit_card, dependent: :destroy
 
 - has_many :items
 - has_many :comments
 - has_many :trade_messages
 - has_many :trade_conditions
-
 
 - has_many :likes
 - has_many :sns_credentials, dependent: :destroy
@@ -89,15 +87,12 @@
 ### Association
 - belongs_to :item
 
-<!-- payjp導入時、テーブルの有無を再考 -->
-## credit_cards(payjp導入時、テーブルの有無を再考 )
+## credit_cards
 |Column|Type|Options|
 |------|----|-------|
-|card_number|string|null:false, unique: true|
-|valid_month|integer|null:false|
-|valid_year|integer|null:false|
-|security_code|integer|null:false|
-|user_id|integer|null: false, foreign_key:true|
+|user_id|references|null: false, foreign_key:true|
+|customer_id|string|null:false, unique: true, (payjpのカスタマーID)|
+|card_id|string|null:false, unique: true, (payjpのカード番号に紐づくID)|
 
 ### Association
 - belongs_to :user
@@ -134,7 +129,6 @@
 
 - belongs_to :user
 - belongs_to :category
-<!-- item詳細欄に表示させるためsize_idを追加 -->
 - belongs_to :size
 
 - has_one :brand, dependent: :destroy
