@@ -12,7 +12,7 @@
         %figure
           = image_tag "member_photo_noimage_thumb.png", size: "60x60", class: "user-icon"
         %h2.user-name
-          名前
+          = @user_profile.nickname
         %ul.user-info
           %li.user-info__display
             評価
@@ -21,7 +21,7 @@
           %li.user-info__display
             出品数
             %span
-              0
+              = @user_item_list.length
     .main-contents__list
       %ul.main-contents__list__ul
         %li.active

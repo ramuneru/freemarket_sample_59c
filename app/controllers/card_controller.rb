@@ -1,9 +1,9 @@
 class CardController < ApplicationController
   require "payjp"
-  
+  before_action :set_card , only: [:new, :show, :delete]
+
   def new
-    @card = Card.where(user_id: current_user.id)
-    redirect_to action: "show" if @card.exists?
+    redirect_to action: "show" if @card.present?
   end
 
   def pay 
@@ -26,20 +26,46 @@ class CardController < ApplicationController
   end
 
   def delete
-    card = Card.where(user_id: current_user.id).first
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
-    customer = Payjp::Customer.retrieve(card.customer_id)
-    customer.delete
-    card.delete
-    redirect_to action: "show"
+    customer = Payjp::Customer.retrieve(@card.customer_id)
+
+    #削除に成功した時にポップアップを表示します。
+    if @card.destroy 
+      customer.delete
+      redirect_to action: "show", notice: "削除しました"
+    else #削除に失敗した時にアラートを表示します。
+      redirect_to action: "show", alert: "削除できませんでした"
+    end
   end
 
   def show
-    @card = Card.where(user_id: current_user.id).first
     if @card.present?
       Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @default_card_information = customer.cards.retrieve(@card.card_id)
+      @card_information = customer.cards.retrieve(@card.card_id)
+
+      # 登録しているカード会社のブランドアイコンを表示する
+      @card_brand = @card_information.brand      
+      case @card_brand
+      when "Visa"
+        @card_src = "visa.svg"
+      when "JCB"
+        @card_src = "jcb.svg"
+      when "MasterCard"
+        @card_src = "master-card.svg"
+      when "American Express"
+        @card_src = "american_express.svg"
+      when "Diners Club"
+        @card_src = "dinersclub.svg"
+      when "Discover"
+        @card_src = "discover.svg"
+      end
     end
+  end
+
+  private
+  def set_card
+    @card = current_user.card
   end
 end

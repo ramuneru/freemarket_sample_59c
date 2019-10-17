@@ -4,11 +4,10 @@ Rails.application.routes.draw do
   resources :items do
     member do
       get 'buy', to: 'items#buy'
-      get 'index', to: 'items#index'
-      get 'complete', to: 'items#complete'
     end
     collection do
-      post 'pay', to: 'items#pay'
+      post 'pay/:id', to: 'items#pay'
+      get 'complete', to: 'items#complete'
     end
   end
 
