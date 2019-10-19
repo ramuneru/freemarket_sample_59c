@@ -2,11 +2,11 @@
 require 'csv'
 
 # category_table
-CSV.foreach('db/category.csv',headers: true) do |row|
-  Category.create(name: row['name'],
-                  ancestry: row['ancestry'],
-                  size_id: row['size_id'])
-end
+# CSV.foreach('db/category.csv',headers: true) do |row|
+#   Category.create(name: row['name'],
+#                   ancestry: row['ancestry'],
+#                   size_id: row['size_id'])
+# end
 
 # size_table
 # CSV.foreach('db/size.csv', headers: true) do |row|
