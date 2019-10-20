@@ -89,6 +89,7 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem 'payjp'
+gem 'rails-i18n'
 gem "gretel"
 # gem 'recaptcha', require: "recaptcha/rails"
 gem 'dotenv-rails'

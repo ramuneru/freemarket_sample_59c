@@ -13,7 +13,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.build
-    @category_parent = Category.roots
   end
 
   # 出品

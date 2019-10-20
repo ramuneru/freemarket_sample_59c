@@ -46,7 +46,7 @@
               %label カテゴリー
               %span.required 必須
               .select-wrap
-                = f.collection_select(:category_id, @category_parent, :id, :name, {prompt:"---"}, class:"collection_select-default", id: "category-parent_select")
+                = f.collection_select(:category_id, Category.roots, :id, :name, {prompt:"---"}, class:"collection_select-default", id: "category-parent_select")
                 %i.fa.fa-chevron-down
               .select-wrap#second-children
 
@@ -121,7 +121,7 @@
                     %span.required 必須
                   .price-right
                     ¥
-                    =f.text_field :price, value: "", placeholder: "例）300", class: "price-input", required: true
+                    =f.text_field :price, value: "", placeholder: "例）300", class: "price-input"
                 %li.sell-fee
                     
                 %li.margin
