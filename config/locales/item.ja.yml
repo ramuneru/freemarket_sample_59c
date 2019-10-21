@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    attributes:
+      item:
+        images: 画像
+        title: 商品タイトル
+        description: 商品説明
+        price: 価格
+        category: カテゴリー
+        brand: ブランド
+        condition: 商品状態
+        prefecture: 発送地域
+        shipping_fee_burden: 配送料負担
+        shipping_method: 配送方法
+        shipping_duration: 発送までにかかる日数
+        size: サイズ

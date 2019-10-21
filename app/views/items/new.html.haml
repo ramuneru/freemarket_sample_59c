@@ -23,6 +23,7 @@
                   %pre.text
                     ドラッグアンドドロップ
                     またはクリックしてファイルをアップロード
+            = render "shared/error_message", column: "images"
               
 
         .sell-content-box-top
@@ -31,13 +32,14 @@
             %span.sell-content-box-top__required
               必須
           =f.text_field :title, placeholder:'商品名(必須40文字まで)', class: "text_field"
+          = render "shared/error_message", column: "title"
           
           .sell-content-box-top__title.description
             商品説明
             %span.sell-content-box-top__required
               必須
           =f.text_area :description, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "text_area", rows: "5"
-        
+          = render "shared/error_message", column: "description"
         .sell-content-box
           .sell-left-block
             %h3.head-text  商品の詳細
@@ -51,9 +53,9 @@
               .select-wrap#second-children
 
               .select-wrap#third-children
+            = render "shared/error_message", column: "category"
 
-            .form-block#size-select
-            
+            .form-block#size-select 
 
             .form-block
               %label ブランド
@@ -71,6 +73,8 @@
               .select-wrap
                 = f.collection_select(:condition_id, Condition.all, :id, :condition, {prompt:"---"},{class:"collection_select-default condition-select"})
                 %i.fa.fa-chevron-down
+            = render "shared/error_message", column: "condition"
+              
 
 
         .sell-content-box
@@ -85,6 +89,8 @@
               .select-wrap
                 = f.collection_select(:shipping_fee_burden_id, ShippingFeeBurden.all, :id, :burden, {prompt:"---"},{class:"collection_select-default shipping_fee_burden-select"})
                 %i.fa.fa-chevron-down
+            = render "shared/error_message", column: "shipping_fee_burden"
+            
 
             .form-block.shipping-method_hidden
               %label 配送の方法
@@ -92,6 +98,8 @@
               .select-wrap
                 = f.collection_select(:shipping_method_id, ShippingMethod.all, :id, :name, {prompt:"---"},{class:"collection_select-default shipping_method"})
                 %i.fa.fa-chevron-down
+            = render "shared/error_message", column: "shipping_method"
+              
 
             .form-block
               %label 発送元の地域
@@ -99,6 +107,8 @@
               .select-wrap
                 = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt:"---"},{class:"collection_select-default region-select"})
                 %i.fa.fa-chevron-down
+            = render "shared/error_message", column: "prefecture"
+              
 
             .form-block
               %label 発送までの日数
@@ -106,6 +116,8 @@
               .select-wrap
                 = f.collection_select(:shipping_duration_id, ShippingDuration.all, :id, :duration, {prompt:"---"},{class:"collection_select-default duration-select"})
                 %i.fa.fa-chevron-down
+            = render "shared/error_message", column: "shipping_duration"
+              
 
         .sell-content-box
           .sell-left-block
@@ -114,15 +126,15 @@
               =link_to "?", "#", class: "link question"
           .sell-form-box
             .form-block
-              %ul
+              %ul.price-block
                 %li.sell-price
                   .price-left
                     %label 価格
                     %span.required 必須
                   .price-right
                     ¥
-                    =f.text_field :price, value: "", placeholder: "例）300", class: "price-input"
-                %li.sell-fee
+                    =f.text_field :price, placeholder: "例）300", class: "price-input" 
+                = render "shared/error_message", column: "price"
                     
                 %li.margin
                   販売手数料

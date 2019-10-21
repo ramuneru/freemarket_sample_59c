@@ -184,7 +184,7 @@
         @include required;
         background: #ccc;
       }
-      ul{
+      .price-block{
         width: 400px;
         height: 218px;
         list-style: none;
@@ -236,7 +236,6 @@
   }
 }
 
-
 .sell-content-box-bottom{
   padding: 40px;
   border-top: 1px solid #eee;
@@ -257,4 +256,9 @@
     width: 45%;
     margin: 24px auto 0;
   }
+}
+
+#error_explanation{
+  color: red;
+  margin: 8px 0 8px;
 }
