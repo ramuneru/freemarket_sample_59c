@@ -10,7 +10,16 @@ class Item < ApplicationRecord
   belongs_to     :category, dependent: :destroy
   belongs_to     :size, optional: true
   has_many       :images, dependent: :destroy
-  validates      :images, presence: true
+
+  validates_presence_of  :images, message: "を登録してください"
+  validates_presence_of  :title, :description
+  # validates_presence_of  :description, message: "商品説明文を入力してください"
+
+  validates_presence_of  :category, :condition, :prefecture
+  validates_presence_of  :shipping_fee_burden, :shipping_method, :shipping_duration
+  validates      :title, length:{ maximum: 40, message: 'を40文字以内で入力してください'} 
+  validates      :price, presence: true, numericality: { only_integer: true, greater_than: 300, less_than: 10000000, message: "を300円以上、9,999,999円以下で半角入力してください"}
+
 
   accepts_nested_attributes_for :images
   enum status: [:listing, :progress, :complete]

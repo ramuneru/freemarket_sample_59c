@@ -6,7 +6,7 @@ $(function(){
     children.forEach(function(child){
       option += `<option value="${child.id}">${child.name}</option>`
     });
-    var html = `<select class="collection_select-default children-select", name="category", id="category-children_select", required>
+    var html = `<select class="collection_select-default children-select", name="category", id="category-children_select">
                   <option value="">---</option>
                   ${option}
                 </select>
@@ -39,7 +39,7 @@ $(function(){
     grandchildren.forEach(function(grandchild){
       option += `<option value="${grandchild.id}">${grandchild.name}</option>`
     });
-    var html = `<select class="collection_select-default grandchildren-select", name="item[category_id]", id="category-grandchildren_select", required>
+    var html = `<select class="collection_select-default grandchildren-select", name="item[category_id]", id="category-grandchildren_select">
                   <option value="">---</option>
                   ${option}
                 </select>
@@ -72,7 +72,7 @@ $(function(){
       var html = `<label>サイズ</label>
                   <span class="required">必須</span>
                   <div class="select-wrap">
-                    <select class="collection_select-default size-select", name="item[size_id]", required>
+                    <select class="collection_select-default size-select", name="item[size_id]">
                     <option value="">---</option>
                     ${option}
                     </select><i class="fa fa-chevron-down"></i>
