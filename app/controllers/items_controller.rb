@@ -41,7 +41,7 @@ class ItemsController < ApplicationController
   # 削除
   def destroy
     if @item.destroy
-      redirect_to users_path
+      redirect_to root_path
     else
       render action: :show
     end
