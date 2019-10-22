@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   layout 'application.users', except: [:index, :show]
   
   def index
+    @all_new_items = Item.order("created_at DESC").limit(10)
     @ladies_items = Item.where(category_id: 1..199).order("created_at DESC").limit(10)
     @mens_items = Item.where(category_id: 200..344).order("created_at DESC").limit(10)
   end
