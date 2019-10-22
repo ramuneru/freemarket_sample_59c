@@ -23,7 +23,7 @@
               .title-text #{new_item.title}
   
 
-  .main-box__category
+  .main-box__category.ladies-10items
     .main-box__category__bar
       .main-box__category__bar__title
         レディース新着アイテム
@@ -46,7 +46,7 @@
               
               .title-text #{ladies_item.title}
 
-  .main-box__category
+  .main-box__category.mens-10items
     .main-box__category__bar
       .main-box__category__bar__title
         メンズ新着アイテム
@@ -68,3 +68,26 @@
               =image_tag mens_item.images[0].image.url, class: "image-box"
               
               .title-text #{mens_item.title}
+
+  .main-box__category.e-appliances-10items
+    .main-box__category__bar
+      .main-box__category__bar__title
+        家電・スマホ・カメラ新着アイテム
+      -# .main-box__category__bar__link
+      -#   =link_to "#", class: "more-detail-link" do
+      -#     もっと見る
+      -#     %i.fa.fa-chevron-right
+
+    .main-box__category__content
+      .main-box__category__content__grid
+        - @ele_app_items.each do |ele_app_item|
+          =link_to item_path(ele_app_item.id) do
+            .box
+              - unless ele_app_item.listing?
+                .item-sold-badge
+                .soldtext
+                  SOLD
+              .price ¥ #{ele_app_item.price.to_s(:delimited)}
+              = image_tag ele_app_item.images[0].image.url, class: "image-box"
+              
+              .title-text #{ele_app_item.title}
