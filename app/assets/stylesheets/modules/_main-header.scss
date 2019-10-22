@@ -191,10 +191,11 @@
           content: '\f00c'; //チェック
         }
       }
+      // マイページ サークルアバター用
       .circle-photo{
         width: 32px;
         height: 32px;
-        background-color: lightgray;
+        background-image: url("member_photo_noimage_thumb.png");
         border-radius: 50px;
         margin-right: 10px;
       }
