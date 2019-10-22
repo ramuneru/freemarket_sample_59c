@@ -12,7 +12,7 @@
                 出品画像
                 %span.sell-upload-box__title__required
                   必 須
-            %p 最大10枚までアップロードできます
+            %p 最大1枚までアップロードできます
             .sell-upload-box__image
               .image-container
                 .upload-images.have-image-0
@@ -21,8 +21,8 @@
                 .image-dropzone    
                   =img.file_field :image, class:"drop-file", id:'image_file_field'
                   %pre.text
-                    ドラッグアンドドロップ
-                    またはクリックしてファイルをアップロード
+                    -# ドラッグアンドドロップまたは
+                    クリックしてファイルをアップロード(1枚)
             = render "shared/error_message", column: "images"
               
 
