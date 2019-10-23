@@ -20,15 +20,22 @@
             %th 出品者
             %td 
               = @item.user.user_profile.nickname
+              .evaluation_face-icons
+                .good-face
+                  0
+                .normal-face
+                  0
+                .bad-face
+                  0
 
           %tr
             %th カテゴリー
             %td 
-              %p 
-                = @item.category.root.name
-              %p 
-                = @item.category.parent.name
               %p
+                = @item.category.root.name
+              %p.category_text
+                = @item.category.parent.name
+              %p.category_text
                 = @item.category.name
           %tr
             %th ブランド
