@@ -6,7 +6,7 @@ $(function(){
     children.forEach(function(child){
       option += `<option value="${child.id}">${child.name}</option>`
     });
-    var html = `<select class="collection_select-default children-select", name="category", id="category-children_select">
+    var html = `<select class="collection_select-default children-select", name="category_child_id", id="category-children_select">
                   <option value="">---</option>
                   ${option}
                 </select>

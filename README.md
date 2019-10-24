@@ -131,7 +131,7 @@
 - belongs_to :category
 - belongs_to :size
 
-- has_one :brand, dependent: :destroy
+- has_one :brand
 - has_one :trade_condition
 
 - has_many :images, dependent: :destroy
