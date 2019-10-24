@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_method
   belongs_to_active_hash :shipping_duration
   belongs_to     :user, optional: true
-  belongs_to     :category, dependent: :destroy
+  belongs_to     :category
   belongs_to     :size, optional: true
   has_many       :images, dependent: :destroy
 
