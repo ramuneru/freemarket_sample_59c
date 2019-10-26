@@ -12,7 +12,7 @@
                 出品画像
                 %span.sell-upload-box__title__required
                   必 須
-            %p 最大10枚までアップロードできます
+            %p 最大1枚までアップロードできます
             .sell-upload-box__image
               .image-container
                 .upload-images.have-image-0
@@ -21,8 +21,9 @@
                 .image-dropzone    
                   =img.file_field :image, class:"drop-file", id:'image_file_field'
                   %pre.text
-                    ドラッグアンドドロップ
-                    またはクリックしてファイルをアップロード
+                    -# ドラッグアンドドロップ
+                    クリックしてファイルを1枚アップロード
+            = render "shared/error_message", column: "images"
               
 
         .sell-content-box-top
@@ -31,13 +32,16 @@
             %span.sell-content-box-top__required
               必須
           =f.text_field :title, placeholder:'商品名(必須40文字まで)', class: "text_field"
+          = render "shared/error_message", column: "title"
           
           .sell-content-box-top__title.description
             商品説明
             %span.sell-content-box-top__required
               必須
           =f.text_area :description, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "text_area", rows: "5"
+          = render "shared/error_message", column: "description"
         
+
         .sell-content-box
           .sell-left-block
             %h3.head-text  商品の詳細
@@ -46,24 +50,42 @@
               %label カテゴリー
               %span.required 必須
               .select-wrap
-                = f.collection_select(:category_id, @category, :id, :name, {prompt: "---"}, class:"collection_select-default", id: "category-parent_select", selected: @item.category.root.name) 
-                = f.collection_select(:category_id, @category_child, :id, :name, {prompt:"---"}, class:"collection_select-default children-select", id: "category-children_select")
-                = f.collection_select(:category_id, @category_grandchild, :id, :name, {prompt:"---"}, class:"collection_select-default grandchildren-select", id: "category-grandchildren_select")
+                = f.collection_select(:category_parent_id, Category.where(ancestry: nil), :id, :name, {include_blank: "---",selected: @category_new.root.id}, class:"collection_select-default", id: "category-parent_select") 
+                -# = f.collection_select(:category_id, @category_children, :id, :name, {prompt:"---"}, class:"collection_select-default children-select", id: "category-children_select", selected: @item.category.children.name)
+                -# = f.collection_select(:category_id, @category_grandchildren, :id, :name, {prompt:"---"}, class:"collection_select-default grandchildren-select", id: "category-grandchildren_select")
                 
-
+                -# = f.collection_select(:category_id, Category.roots, :id, :name, {prompt: "---"}, class:"collection_select-default", id: "category-parent_select", selected: @item.category.root.name) 
+                -# = f.collection_select(:category_id, Category.parents, :id, :name, {prompt:"---"}, class:"collection_select-default children-select", id: "category-children_select", selected: @item.category.parent.name)
+                -# -# = f.collection_select(:category_id, Category.roots.children.children.siblings, :id, :name, {prompt:"---"}, class:"collection_select-default grandchildren-select", id: "category-grandchildren_select", selected: @item.category.name)
+                
                 %i.fa.fa-chevron-down
+
               .select-wrap#second-children
+                = f.collection_select(:category_child_id, @category_children, :id, :name, {include_blank:"---", selected: @category_new.parent.id}, class:"collection_select-default children-select", id: "category-children_select")
+                %i.fa.fa-chevron-down
 
               .select-wrap#third-children
+                = f.collection_select(:category_id,  @category_grandchildren, :id, :name, {include_blank:"---", selected: @category_new.id}, class:"collection_select-default grandchildren-select", id: "category-grandchildren_select")
+                %i.fa.fa-chevron-down
+
+            = render "shared/error_message", column: "category"
+              
 
             .form-block#size-select
-            
+              - if @category_new.size_id
+                %label サイズ
+                %span.required 必須
+                .select-wrap
+                  = f.collection_select(:size_id, @sizes, :id, :size, {include_blank:"---", selected: @size_id}, class:"collection_select-default size-select", id: "size_select")
+                  %i.fa.fa-chevron-down
+
+            = render "shared/error_message", column: "size"
 
             .form-block
               %label ブランド
               %span.optional 任意
               .select-wrap
-                -# ブランドテーブル未実装のため、現在は保留
+                -# ブランドテーブル未実装のため、現在は保留中
                 -# = f.collection_select(:, @, :id, :name, {prompt:"---"}, class:"collection_select-default", id: "")
                 -# = f.collection_select(プロパティ名, オブジェクトの配列, value属性の項目, テキストの項目 [, オプション])
                 -# %i.fa.fa-chevron-down
@@ -73,8 +95,9 @@
               %label 商品の状態
               %span.required 必須
               .select-wrap
-                = f.collection_select(:condition_id, Condition.all, :id, :condition, {prompt:"---"},{class:"collection_select-default condition-select"})
+                = f.collection_select(:condition_id, Condition.all, :id, :condition, {include_blank:"---"},{class:"collection_select-default condition-select"})
                 %i.fa.fa-chevron-down
+            = render "shared/error_message", column: "condition"
 
 
         .sell-content-box
@@ -87,29 +110,38 @@
               %label 配送料の負担
               %span.required 必須
               .select-wrap
-                = f.collection_select(:shipping_fee_burden_id, ShippingFeeBurden.all, :id, :burden, {prompt:"---"},{class:"collection_select-default shipping_fee_burden-select"})
+                = f.collection_select(:shipping_fee_burden_id, ShippingFeeBurden.all, :id, :burden, {include_blank:"---"},{class:"collection_select-default shipping_fee_burden-select"})
                 %i.fa.fa-chevron-down
+            = render "shared/error_message", column: "shipping_fee_burden"
+
 
             .form-block.shipping-method_hidden
               %label 配送の方法
               %span.required 必須
               .select-wrap
-                = f.collection_select(:shipping_method_id, ShippingMethod.all, :id, :name, {prompt:"---"},{class:"collection_select-default shipping_method"})
+                = f.collection_select(:shipping_method_id, ShippingMethod.all, :id, :name, {include_blank:"---"},{class:"collection_select-default shipping_method"})
                 %i.fa.fa-chevron-down
+            = render "shared/error_message", column: "shipping_method"
+
 
             .form-block
               %label 発送元の地域
               %span.required 必須
               .select-wrap
-                = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt:"---"},{class:"collection_select-default region-select"})
+                = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank:"---"},{class:"collection_select-default region-select"})
                 %i.fa.fa-chevron-down
+            = render "shared/error_message", column: "prefecture"
+
 
             .form-block
               %label 発送までの日数
               %span.required 必須
               .select-wrap
-                = f.collection_select(:shipping_duration_id, ShippingDuration.all, :id, :duration, {prompt:"---"},{class:"collection_select-default duration-select"})
+                = f.collection_select(:shipping_duration_id, ShippingDuration.all, :id, :duration, {include_blank:"---"},{class:"collection_select-default duration-select"})
                 %i.fa.fa-chevron-down
+            = render "shared/error_message", column: "shipping_duration"
+
+
 
         .sell-content-box
           .sell-left-block
@@ -118,26 +150,26 @@
               =link_to "?", "#", class: "link question"
           .sell-form-box
             .form-block
-              %ul
+              %ul.price-block
                 %li.sell-price
                   .price-left
                     %label 価格
                     %span.required 必須
                   .price-right
                     ¥
-                    =f.text_field :price, placeholder: "例）300", class: "price-input", required: true
-                %li.sell-fee
+                    =f.text_field :price, placeholder: "例）300", class: "price-input", value: @item.price
+                = render "shared/error_message", column: "price"                
                     
                 %li.margin
                   販売手数料
                   .fee 
-                    = "¥" + @price.to_s
+                    -# = "¥" + @fee.to_s
 
                 %li.profit
                   %label.bigger 
                     販売利益
                   .sales-profit 
-                    = "¥" + @ppp
+                    -# = "¥" + @profit
 
         .sell-content-box-bottom
           .text-tags
