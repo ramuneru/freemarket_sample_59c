@@ -1,8 +1,10 @@
 class ItemsController < ApplicationController
   require 'payjp'
-  before_action :set_item, only: [:show, :destroy, :buy, :pay, :edit]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  before_action :set_item, only: [:show, :destroy, :buy, :pay, :edit, :update]
   before_action :set_item_detail, only: [:buy]
   before_action :set_user_detail, only: [:buy, :pay]
+  before_action :set_selected_value, only: [:edit, :update]
   layout 'application.users', except: [:index, :show]
   
   def index
@@ -31,14 +33,8 @@ class ItemsController < ApplicationController
 
   # 編集ページ
   def edit
-    @items = Item.find(id_params[:id])
-    @category = @items.category.root.siblings
-    p = @item.category.ancestry
-    @category_child = @items.category.parent.siblings
-    @category_grandchild = @items.category.siblings
-    @category_children = Category.where()
-    @price = (@item.price * 0.1).floor
-    @ppp = (@item.price - @price).to_s
+    # set_selected_value を定義しています
+
   end
 
   # 削除
@@ -52,10 +48,21 @@ class ItemsController < ApplicationController
 
   # 更新
   def update
-    @item = Item.find(id_params[:id])
-    if @item.user_id == current_user.id
-      @item.update(params_new)
-      redirect_to root_path
+    
+    if params_new[:size_id].nil?
+      params_update = params_new.merge(size_id: nil)  
+    elsif params_new.has_key?(:size_id)
+      params_update = params_new.merge(size_id: params_new[:size_id])
+    else
+      params_update = params_new
+    end
+    
+    if @item.update(params_update)
+      redirect_to item_path
+    else
+      # @item.images.build
+      # @item = Item.find(params[:id])
+      render :edit
     end
   end    
   
@@ -153,5 +160,19 @@ class ItemsController < ApplicationController
   def set_user_detail
     @address = Address.find(current_user.id)
     @user_profile = UserProfile.find(current_user.id)
+  end
+
+  def set_selected_value
+    # editページ  選択済みページ
+    @category_new = @item.category
+    @category = @item.category.root
+    @category_children = @item.category.parent.siblings
+    @category_grandchildren = @item.category.siblings
+
+    @category_new = @item.category
+    @sizes = @item.size.siblings unless @item.size_id.nil?
+    @size_id = @item.size.id unless @item.size .nil?
+    @fee = (@item.price * 0.1).floor
+    @profit = (@item.price - @fee).to_s
   end
 end

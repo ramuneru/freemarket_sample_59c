@@ -1,3 +1,4 @@
+// 商品詳細ページSCSS
 *{
   box-sizing: border-box;
 }
@@ -72,8 +73,46 @@
     padding: 8px;
     border-collapse: collapse;
     border: 1px solid #f5f5f5;
+    p{
+      color: #0099e8;
+    }
+    // カテゴリーの子、孫 右矢印アイコン擬似要素
+    .category_text::before{
+      font-family: fontawesome;
+      content: "\f054";
+    }
   }
 }
+
+.evaluation_face-icons{
+  display: flex;
+  margin-top: 8px;
+  font-size: 16px;
+  .good-face:before{
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 16px;
+    color: #ef5185;
+    content: "\f599";
+  }
+  .normal-face:before{
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 16px;
+    color: #fba933;
+    content: "\f11a";
+    margin: 8px 0 0 16px;
+  }
+  .bad-face:before{
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 16px;
+    color: #6ab5d8;
+    content: "\f119";
+    margin: 8px 0 0 16px;
+  }
+}
+
 
 .price-section{
   display: inline-block;

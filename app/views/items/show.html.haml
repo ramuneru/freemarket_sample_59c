@@ -19,16 +19,24 @@
           %tr
             %th 出品者
             %td 
+              -# ユーザーの評価一覧 数値は未実装
               = @item.user.user_profile.nickname
+              .evaluation_face-icons
+                .good-face
+                  0
+                .normal-face
+                  0
+                .bad-face
+                  0
 
           %tr
             %th カテゴリー
             %td 
-              %p 
-                = @item.category.root.name
-              %p 
-                = @item.category.parent.name
               %p
+                = @item.category.root.name
+              %p.category_text
+                = @item.category.parent.name
+              %p.category_text
                 = @item.category.name
           %tr
             %th ブランド
@@ -88,7 +96,9 @@
           .item-button-container__left-block__like.item-button
             =link_to "#", class: "link" do
               =fa_icon "heart"
-              いいね! 6
+              -# いいね機能は未実装
+              いいね! 0
+
           .item-button-container__left-block__report.item-button
             =link_to "#", class: "link" do
               =fa_icon " flag"
