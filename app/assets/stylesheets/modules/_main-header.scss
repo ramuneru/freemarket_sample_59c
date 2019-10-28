@@ -191,10 +191,13 @@
           content: '\f00c'; //チェック
         }
       }
+
       // ログイン時アバターサークルフォト(ユーザーのアバター画像登録は未実装です)
+
       .circle-photo{
         width: 32px;
         height: 32px;
+        background-image: url("member_photo_noimage_thumb.png");
         border-radius: 50px;
         margin-right: 10px;
       }
