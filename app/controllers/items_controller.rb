@@ -50,8 +50,7 @@ class ItemsController < ApplicationController
   def update
     
     if params_new[:size_id].nil?
-      params_update = params_new.merge(size_id: nil) 
-    
+      params_update = params_new.merge(size_id: nil)  
     elsif params_new.has_key?(:size_id)
       params_update = params_new.merge(size_id: params_new[:size_id])
     else
@@ -59,7 +58,7 @@ class ItemsController < ApplicationController
     end
     
     if @item.update(params_update)
-      redirect_to root_path   
+      redirect_to item_path
     else
       # @item.images.build
       # @item = Item.find(params[:id])
