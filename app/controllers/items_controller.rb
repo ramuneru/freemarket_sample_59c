@@ -165,13 +165,14 @@ class ItemsController < ApplicationController
   def set_selected_value
     # editページ  選択済みページ
     @category_new = @item.category
+
     @category = @item.category.root
     @category_children = @item.category.parent.siblings
     @category_grandchildren = @item.category.siblings
 
-    @category_new = @item.category
     @sizes = @item.size.siblings unless @item.size_id.nil?
     @size_id = @item.size.id unless @item.size .nil?
+    
     @fee = (@item.price * 0.1).floor
     @profit = (@item.price - @fee).to_s
   end
