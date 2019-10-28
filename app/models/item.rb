@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash  :shipping_duration
   belongs_to              :user
   belongs_to              :category
-  # belongs_to              :size, optional: true
+  belongs_to              :size, optional: true
   
   has_many                :images, dependent: :destroy
   validates_presence_of  :images, message: "を登録してください"
