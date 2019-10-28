@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
     @mens_items = Item.where(category_id: 200..344).order("created_at DESC").limit(10)
     @ele_app_items = Item.where(category_id: 893..977).order("created_at DESC").limit(10)
 
+    @root_category = Category.all.where(ancestry: nil)
   end
 
   def new

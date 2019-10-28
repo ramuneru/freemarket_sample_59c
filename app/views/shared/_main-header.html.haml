@@ -18,7 +18,17 @@
           =link_to "#", class:'link' do
             .header-text__category
               カテゴリーから探す
-            
+          -# リンク先未実装の為ドロップダウンリスト表示のみ
+          - @root_category.each do |rc|
+            = link_to "#" do
+              = rc.name
+            - rc.children.each do |cd|
+              = link_to "#" do
+                = cd.name
+              - cd.children.each do |gc|
+                = link_to "#" do
+                  = gc.name
+
         .main-header__inner__bottom__left__block
           =link_to "#", class:'link' do
             .header-text__brand
