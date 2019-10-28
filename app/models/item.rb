@@ -24,11 +24,13 @@ class Item < ApplicationRecord
   # validates      :title, length:{ maximum: 40, message: 'を40文字以内で入力してください'} 
   # validates      :price, presence: true, numericality: { only_integer: true, greater_than: 300, less_than: 10000000, message: "を300円以上、9,999,999円以下で半角入力してください"}
 
+
   # accepts_nested_attributes_for :images
   # enum status: [:listing, :progress, :complete]
 
 
   # validate :category_with_size, if: :category_id
+
 
   # def category_with_size
   #   if category.size_id?
