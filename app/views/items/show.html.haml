@@ -79,10 +79,20 @@
         %span.item-shipping 
           = @item.shipping_fee_burden.burden
       
-      -if @item.user_id != current_user.id && @item.listing?
+      -# -if @item.user_id != current_user.id && @item.listing?
+      -#   =link_to buy_item_path do
+      -#     .purchase-button
+      -#       購入画面に進む
+      -if user_signed_in? && @item.user_id != current_user.id
         =link_to buy_item_path do
           .purchase-button
             購入画面に進む
+      
+      -unless user_signed_in?
+        =link_to new_user_session_path do
+          .purchase-button
+            購入画面に進む
+
       -unless @item.listing?
         .purchase-button2
           売約済み
@@ -111,7 +121,7 @@
             %span あんしん・あんぜんへの取り組み
 
   -# item showページ 出品アイテムの編集、出品停止ボタン
-  -if @item.user_id == current_user.id
+  -if user_signed_in? && @item.user_id == current_user.id
     = render "show_item_status_buttons" 
 
 
