@@ -18,19 +18,27 @@
           =link_to "#", class:'link' do
             .header-text__category
               カテゴリーから探す
-          -# リンク先未実装の為ドロップダウンリスト表示のみ
-          - @root_category.each do |rc|
-            = link_to "#" do
-              = rc.name
-            - rc.children.each do |cd|
-              = link_to "#" do
-                = cd.name
-              - cd.children.each do |gc|
-                = link_to "#" do
-                  = gc.name
+            -# リンク先未実装の為ドロップダウンリスト表示のみ
+            %ul.root-category-list
+              - Category.where(ancestry: nil).each do |rc|
+                %li.root-category-list__detail
+                  = link_to "#" do
+                    #{rc.name}
+                    %ul.children-category-list
+                      - rc.children.each do |cd|
+                        %li.children-category-list__detail
+                          = link_to "#" do
+                            #{cd.name}
+                            %ul.grandchildren-category-list
+                              - cd.children.each_with_index do |gc,i|
+                                %li.grandchildren-category-list__detail
+                                  - if (i < 14)
+                                    = link_to "#" do
+                                      #{gc.name}
 
-        .main-header__inner__bottom__left__block
-          =link_to "#", class:'link' do
+        
+        .main-header__inner__bottom__left__block      
+          =link_to "#", class:'link' do 
             .header-text__brand
               ブランドから探す
 

@@ -82,9 +82,13 @@
         font-weight: bold;
         vertical-align: middle;
         &__block{
+          cursor: pointer;
           padding-right: 10px;
           margin: 10px 0px 0px 10px;
           .header-text {
+            // a{
+            //   display: block;
+            // }
             &__category, &__brand{
               &:hover{
                 color: $link-blue;
