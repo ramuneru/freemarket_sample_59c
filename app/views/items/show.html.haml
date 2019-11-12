@@ -113,6 +113,7 @@
   -# item showページ 出品アイテムの編集、出品停止ボタン
   -if @item.user_id == current_user.id
     = render "show_item_status_buttons" 
+  - elsif user_signed_in? == false
 
 
   .comment-box
@@ -143,14 +144,14 @@
       %li
         =link_to "#" do
           .case.fb
-            =fa_icon "facebook-square"
+            %i.fab.fa-facebook-square
       %li
         =link_to "#" do
           .case.tw
-            =fa_icon "twitter"
+            %i.fab.fa-twitter
       %li
         =link_to "#" do
           .case.pt
-            =fa_icon "pinterest"
+            %i.fab.fa-pinterest
 
 = render "shared/main-footer" 
